@@ -1,0 +1,17 @@
+package com.example.backadmin.service.facade;
+
+import com.example.backadmin.bean.Commande;
+
+import java.util.List;
+
+public interface CommandeService {
+    Commande findByCode(String code);
+
+    List<Commande> findAll();
+
+    List<Commande> findByExpressionBesoinReference(String reference);
+
+    List<Commande> findByServiceDemandeurReference(String reference);
+
+    int save(Commande commande);
+}

@@ -1,0 +1,37 @@
+package com.example.backadmin.ws;
+
+import com.example.backadmin.bean.Employe;
+import com.example.backadmin.bean.ExpressionBesoinItem;
+import com.example.backadmin.service.facade.EmployeService;
+import com.example.backadmin.service.facade.ExpressionBesoinItemService;
+import com.example.backadmin.service.facade.ExpressionBesoinService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/v1/admin/expression-besoin-item")
+public class ExpressionBesoinItemWs {
+
+    @GetMapping("/expression-besoin/reference/{reference}")
+    public List<ExpressionBesoinItem> findByExpressionBesoinReference(@PathVariable String reference) {
+        return expressionBesoinItemService.findByExpressionBesoinReference(reference);
+    }
+    @GetMapping("/")
+    public List<ExpressionBesoinItem> findAll() {
+        return expressionBesoinItemService.findAll();
+    }
+    @GetMapping("/code/{code}")
+
+    public ExpressionBesoinItem findByCode(@PathVariable  String code) {
+        return expressionBesoinItemService.findByCode(code);
+    }
+@PostMapping("/")
+    public int save(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
+        return expressionBesoinItemService.save(expressionBesoinItem);
+    }
+
+    @Autowired
+    ExpressionBesoinItemService expressionBesoinItemService;
+}
