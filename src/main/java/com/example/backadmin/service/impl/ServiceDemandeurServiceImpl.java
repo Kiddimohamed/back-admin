@@ -17,10 +17,10 @@ public class ServiceDemandeurServiceImpl implements ServiceDemandeurService {
         return serviceDemandeurDao.findByReference(reference);
     }
 
-    @Override
-    public ServiceDemandeur findByEtablissementReference(String reference) {
-        return serviceDemandeurDao.findByEtablissementReference(reference);
-    }
+//    @Override
+//    public ServiceDemandeur findByEtablissementReference(String reference) {
+//        return serviceDemandeurDao.findByEtablissementReference(reference);
+//    }
 
     @Override
     public List<ServiceDemandeur> findAll() {
@@ -30,13 +30,11 @@ public class ServiceDemandeurServiceImpl implements ServiceDemandeurService {
     @Override
     public int save(ServiceDemandeur serviceDemandeur) {
         ServiceDemandeur serviceDemandeur1 = findByReference(serviceDemandeur.getReference());
-        Etablissement etablissement1 = etablissementService.findByReference(serviceDemandeur.getEtablissement().getReference());
-        serviceDemandeur.setEtablissement(etablissement1);
+//        Etablissement etablissement1 = etablissementService.findByReference(serviceDemandeur.getEtablissement().getReference());
+//        serviceDemandeur.setEtablissement(etablissement1);
 
         if (serviceDemandeur1 != null) {
             return -1;
-        } else if (etablissement1 == null) {
-            return -2;
         } else {
             serviceDemandeurDao.save(serviceDemandeur);
             return 1;

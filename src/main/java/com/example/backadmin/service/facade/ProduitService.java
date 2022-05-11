@@ -14,4 +14,6 @@ public interface ProduitService {
     List<Produit> findAll();
 
     int save(Produit produit);
+
+    Long getMaxId();
 }

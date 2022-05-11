@@ -1,5 +1,7 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,11 +11,14 @@ public class ExpressionBesoinItem {
     private Long id;
     private double quantite;
     private String code;
+    private String libelle;
+
 
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ExpressionBesoin expressionBesoin;
 
-    @OneToOne
+    @ManyToOne
     private Produit produit;
 
     public double getQuantite() {
@@ -63,5 +68,13 @@ public class ExpressionBesoinItem {
 
     public void setExpressionBesoins(ExpressionBesoin expressionBesoin) {
         this.expressionBesoin = expressionBesoin;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 }

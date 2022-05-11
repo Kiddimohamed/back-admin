@@ -17,8 +17,8 @@ public class ServiceDemandeur {
     @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
     private List<ExpressionBesoin> expressionBesoins;
 
-    @ManyToOne
-    Etablissement etablissement;
+//    @ManyToOne
+//    Etablissement etablissement;
 
     public Long getId() {
         return id;
@@ -28,13 +28,13 @@ public class ServiceDemandeur {
         this.id = id;
     }
 
-    public Etablissement getEtablissement() {
-        return etablissement;
-    }
-
-    public void setEtablissement(Etablissement etablissement) {
-        this.etablissement = etablissement;
-    }
+//    public Etablissement getEtablissement() {
+//        return etablissement;
+//    }
+//
+//    public void setEtablissement(Etablissement etablissement) {
+//        this.etablissement = etablissement;
+//    }
 
     public String getReference() {
         return reference;

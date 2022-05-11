@@ -1,5 +1,7 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class FaxType {
     private String libelle;
 
     @OneToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     List<Fax> faxList;
 
     public Long getId() {

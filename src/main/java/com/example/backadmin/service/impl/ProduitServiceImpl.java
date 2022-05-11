@@ -11,10 +11,11 @@ import java.util.List;
 @Service
 public class ProduitServiceImpl implements ProduitService {
 
-@Override
+    @Override
     public Produit findByLibelle(String libelle) {
         return produitDao.findByLibelle(libelle);
     }
+
     @Override
     public Produit findByNumeroInventaire(String numeroInventaire) {
         return produitDao.findByNumeroInventaire(numeroInventaire);
@@ -31,14 +32,17 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
-    public int save(Produit produit){
-    Produit produit1=findByCode(produit.getCode());
-    if (produit1 != null){
-        return -1;
-    }else{
+    public int save(Produit produit) {
+
+        produit.setCode("produit" + (getMaxId() + 1));
         produitDao.save(produit);
         return 1;
+
     }
+
+    @Override
+    public Long getMaxId() {
+        return produitDao.getMaxId();
     }
 
     @Autowired

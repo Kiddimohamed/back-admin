@@ -7,7 +7,7 @@ import java.util.List;
 public interface ServiceDemandeurService {
     ServiceDemandeur findByReference(String reference);
 
-    ServiceDemandeur findByEtablissementReference(String reference);
+//    ServiceDemandeur findByEtablissementReference(String reference);
 
     List<ServiceDemandeur> findAll();
 

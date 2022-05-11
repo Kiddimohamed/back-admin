@@ -20,9 +20,11 @@ public class Etablissement {
     private String siteWeb;
 
     @OneToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Commande> commandeList;
 
     @OneToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Fax> faxeList;
 
     @OneToMany
@@ -31,17 +33,17 @@ public class Etablissement {
 
     @OneToMany
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    List<ServiceDemandeur> serviceDemandeur;
+    private List<ServiceDemandeur> serviceDemandeurList;
 
     // TODO ajouter image
 
 
-    public List<ServiceDemandeur> getServiceDemandeur() {
-        return serviceDemandeur;
+    public List<ServiceDemandeur> getServiceDemandeurList() {
+        return serviceDemandeurList;
     }
 
-    public void setServiceDemandeur(List<ServiceDemandeur> serviceDemandeur) {
-        this.serviceDemandeur = serviceDemandeur;
+    public void setServiceDemandeurList(List<ServiceDemandeur> serviceDemandeurList) {
+        this.serviceDemandeurList = serviceDemandeurList;
     }
 
     public List<Commande> getCommandeList() {

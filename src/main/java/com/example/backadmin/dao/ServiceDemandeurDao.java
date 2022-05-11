@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface ServiceDemandeurDao extends JpaRepository<ServiceDemandeur,Long> {
 
     ServiceDemandeur findByReference(String reference);
-    ServiceDemandeur findByEtablissementReference(String reference);
+//    ServiceDemandeur findByEtablissementReference(String reference);
 
 
 }

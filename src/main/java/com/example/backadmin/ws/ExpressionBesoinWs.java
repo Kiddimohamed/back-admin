@@ -20,11 +20,6 @@ public class ExpressionBesoinWs {
         return expressionBesoinService.findByReference(reference);
     }
 
-    @GetMapping("/employe/reference/{reference}")
-    public List<ExpressionBesoin> findByEmployeReference(@PathVariable String reference) {
-        return expressionBesoinService.findByEmployeReference(reference);
-    }
-
     @GetMapping("/service-demandeur/reference/{reference}")
     public List<ExpressionBesoin> findByServiceDemandeurReference(@PathVariable String reference) {
         return expressionBesoinService.findByServiceDemandeurReference(reference);

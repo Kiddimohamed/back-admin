@@ -9,11 +9,12 @@ public interface ExpressionBesoinService {
 
     ExpressionBesoin findByReference(String reference);
 
-    List<ExpressionBesoin> findByEmployeReference(String reference);
 
     List<ExpressionBesoin> findByServiceDemandeurReference(String reference);
 
     List<ExpressionBesoin> findAll();
 
     int save(ExpressionBesoin expressionBesoin);
+
+    Long getMaxId();
 }

@@ -12,4 +12,6 @@ public interface ExpressionBesoinItemService {
     ExpressionBesoinItem findByCode(String code);
 
     int save(ExpressionBesoinItem expressionBesoinItem);
+
+    Long getMaxId();
 }

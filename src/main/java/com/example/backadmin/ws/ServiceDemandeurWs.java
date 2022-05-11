@@ -16,10 +16,10 @@ public class ServiceDemandeurWs {
         return serviceDemandeurService.findByReference(reference);
     }
 
-    @GetMapping("/etablissement/reference/{reference}")
-    public ServiceDemandeur findByEtablissementReference(@PathVariable String reference) {
-        return serviceDemandeurService.findByEtablissementReference(reference);
-    }
+//    @GetMapping("/etablissement/reference/{reference}")
+//    public ServiceDemandeur findByEtablissementReference(@PathVariable String reference) {
+//        return serviceDemandeurService.findByEtablissementReference(reference);
+//    }
 
     @GetMapping("/")
     public List<ServiceDemandeur> findAll() {

@@ -1,6 +1,9 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -11,18 +14,20 @@ public class ExpressionBesoin {
     private Long id;
     private String reference;
     private String objet;
-    private Date dateExpressionBesoin;
+    private LocalDateTime dateExpressionBesoin;
+    private String  statut;
     private double totalTTC;
     private double totalHT;
     private double TVA;
 
+
     @OneToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ExpressionBesoinItem> expressionBesoinItemList;
     @OneToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Commande> commandeList;
 
-    @ManyToOne
-    private Employe employe;
 
     @ManyToOne
     private ServiceDemandeur serviceDemandeur;
@@ -51,11 +56,11 @@ public class ExpressionBesoin {
         this.objet = objet;
     }
 
-    public Date getDateExpressionBesoin() {
+    public LocalDateTime getDateExpressionBesoin() {
         return dateExpressionBesoin;
     }
 
-    public void setDateExpressionBesoin(Date dateExpressionBesoin) {
+    public void setDateExpressionBesoin(LocalDateTime dateExpressionBesoin) {
         this.dateExpressionBesoin = dateExpressionBesoin;
     }
 
@@ -67,12 +72,12 @@ public class ExpressionBesoin {
         this.expressionBesoinItemList = expressionBesoinItemList;
     }
 
-    public Employe getEmploye() {
-        return employe;
+    public String getStatut() {
+        return statut;
     }
 
-    public void setEmploye(Employe employe) {
-        this.employe = employe;
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 
     public ServiceDemandeur getServiceDemandeur() {

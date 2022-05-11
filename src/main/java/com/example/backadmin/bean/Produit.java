@@ -1,5 +1,7 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,9 @@ public class Produit {
     private String prixUnitaire;
 
 
+    @OneToMany(mappedBy = "expressionBesoin")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<ExpressionBesoinItem> expressionBesoinItems;
 
 
     public Long getId() {
