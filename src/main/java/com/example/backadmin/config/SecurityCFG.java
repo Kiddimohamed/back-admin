@@ -24,11 +24,11 @@ public class SecurityCFG extends WebSecurityConfigurerAdapter {
         PasswordEncoder encoder = encoder();
         auth
                 .inMemoryAuthentication()
-                .withUser("carlos")
+                .withUser("simo")
                 .password(encoder.encode("admin123"))
                 .roles("USER")
                 .and()
-                .withUser("carlos2")
+                .withUser("admin")
                 .password(encoder.encode("admin123"))
                 .roles("USER", "ADMIN");
     }
