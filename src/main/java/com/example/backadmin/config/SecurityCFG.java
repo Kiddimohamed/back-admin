@@ -39,6 +39,7 @@ public class SecurityCFG extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/v1/admin/**",
+                        "/**",
                         "/swagger-resources/**",
                         "/swagger-ui.html",
                         "/webjars/**" ,
@@ -53,6 +54,7 @@ public class SecurityCFG extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/v1/admin/**");
+        web.ignoring().antMatchers("/**");
         web.ignoring().antMatchers("/swagger.json");
         web.ignoring().antMatchers("/swagger-ui.html");
         web.ignoring().antMatchers("/swagger-resources/**");
