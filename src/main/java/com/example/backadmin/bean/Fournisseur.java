@@ -7,13 +7,13 @@ import java.util.List;
 public class Fournisseur {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String reference;
-    private String nom;
-    private String adresse;
-    private String telephone;
-    private String fax;
-    private String ville;
-    private String email;
+    private String referenceFournisseur;
+    private String nomFournisseur;
+    private String adresseFournisseur;
+    private String telephoneFournisseur;
+    private String faxFournisseur;
+    private String villeFournisseur;
+    private String emailFournisseur;
 
     @OneToMany
     private List<Commande> commandeList;
@@ -22,20 +22,20 @@ public class Fournisseur {
 
 
 
-    public String getEmail() {
-        return email;
+    public String getEmailFournisseur() {
+        return emailFournisseur;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailFournisseur(String emailFournisseur) {
+        this.emailFournisseur = emailFournisseur;
     }
 
-    public String getVille() {
-        return ville;
+    public String getVilleFournisseur() {
+        return villeFournisseur;
     }
 
-    public void setVille(String ville) {
-        this.ville = ville;
+    public void setVilleFournisseur(String villeFournisseur) {
+        this.villeFournisseur = villeFournisseur;
     }
 
     public Long getId() {
@@ -46,44 +46,44 @@ public class Fournisseur {
         this.id = id;
     }
 
-    public String getReference() {
-        return reference;
+    public String getReferenceFournisseur() {
+        return referenceFournisseur;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public void setReferenceFournisseur(String referenceFournisseur) {
+        this.referenceFournisseur = referenceFournisseur;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomFournisseur() {
+        return nomFournisseur;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomFournisseur(String nomFournisseur) {
+        this.nomFournisseur = nomFournisseur;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getAdresseFournisseur() {
+        return adresseFournisseur;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAdresseFournisseur(String adresseFournisseur) {
+        this.adresseFournisseur = adresseFournisseur;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getTelephoneFournisseur() {
+        return telephoneFournisseur;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setTelephoneFournisseur(String telephoneFournisseur) {
+        this.telephoneFournisseur = telephoneFournisseur;
     }
 
-    public String getFax() {
-        return fax;
+    public String getFaxFournisseur() {
+        return faxFournisseur;
     }
 
-    public void setFax(String fax) {
-        this.fax = fax;
+    public void setFaxFournisseur(String faxFournisseur) {
+        this.faxFournisseur = faxFournisseur;
     }
 
     public List<Commande> getCommandeList() {

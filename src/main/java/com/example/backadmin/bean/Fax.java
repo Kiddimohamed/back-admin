@@ -9,8 +9,8 @@ public class Fax {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String reference;
-    private String objet;
+    private String referenceFax;
+    private String objetFax;
 
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -33,20 +33,20 @@ public class Fax {
         this.id = id;
     }
 
-    public String getReference() {
-        return reference;
+    public String getReferenceFax() {
+        return referenceFax;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public void setReferenceFax(String referenceFax) {
+        this.referenceFax = referenceFax;
     }
 
-    public String getObjet() {
-        return objet;
+    public String getObjetFax() {
+        return objetFax;
     }
 
-    public void setObjet(String objet) {
-        this.objet = objet;
+    public void setObjetFax(String objetFax) {
+        this.objetFax = objetFax;
     }
 
     public FaxType getFaxType() {

@@ -12,8 +12,8 @@ import java.util.List;
 public class FaxServiceImpl implements FaxService {
 
     @Override
-    public Fax findByReference(String reference) {
-        return faxDao.findByReference(reference);
+    public Fax findByReferenceFax(String referenceFax) {
+        return faxDao.findByReferenceFax(referenceFax);
     }
 
     @Override
@@ -22,8 +22,8 @@ public class FaxServiceImpl implements FaxService {
     }
 
     @Override
-    public List<Fax> findByFournisseurReference(String reference) {
-        return faxDao.findByFournisseurReference(reference);
+    public List<Fax> findByFournisseurReferenceFournisseur(String reference) {
+        return faxDao.findByFournisseurReferenceFournisseur(reference);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class FaxServiceImpl implements FaxService {
 
     @Override
     public int save(Fax fax) {
-        Fax fax1=findByReference(fax.getReference());
+        Fax fax1=findByReferenceFax(fax.getReferenceFax());
         prepare(fax);
         if(fax1!=null) {
             return -1;
@@ -54,11 +54,11 @@ public class FaxServiceImpl implements FaxService {
     private void prepare(Fax fax) {
         FaxType faxType = faxTypeService.findByCode(fax.getFaxType().getCode());
         fax.setFaxType(faxType);
-        Employe employe = employeService.findByReference(fax.getEmetteur().getReference());
+        Employe employe = employeService.findByReferenceEmploye(fax.getEmetteur().getReferenceEmploye());
         fax.setEmetteur(employe);
         ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(fax.getExpressionBesoin().getReference());
         fax.setExpressionBesoin(expressionBesoin);
-        Fournisseur fournisseur = fournisseurService.findByReference(fax.getFournisseur().getReference());
+        Fournisseur fournisseur = fournisseurService.findByReferenceFournisseur(fax.getFournisseur().getReferenceFournisseur());
         fax.setFournisseur(fournisseur);
     }
 

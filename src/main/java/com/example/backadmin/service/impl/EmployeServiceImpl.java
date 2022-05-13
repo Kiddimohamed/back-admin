@@ -13,13 +13,13 @@ import java.util.List;
 @Service
 public class EmployeServiceImpl implements EmployeService {
     @Override
-    public Employe findByReference(String reference) {
-        return employeDao.findByReference(reference);
+    public Employe findByReferenceEmploye(String referenceEmploye) {
+        return employeDao.findByReferenceEmploye(referenceEmploye);
     }
 
     @Override
-    public Employe findByNom(String nom) {
-        return employeDao.findByNom(nom);
+    public Employe findByNomEmploye(String nomEmploye) {
+        return employeDao.findByNomEmploye(nomEmploye);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class EmployeServiceImpl implements EmployeService {
     // TODO ValidateSave
     @Override
     public int save(Employe employe) {
-        Employe employe1 = findByReference(employe.getReference());
+        Employe employe1 = findByReferenceEmploye(employe.getReferenceEmploye());
         prepare(employe);
         if (employe1 != null) {
             return -1;

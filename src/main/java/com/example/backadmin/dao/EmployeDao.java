@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface EmployeDao extends JpaRepository<Employe,Long> {
 
-    Employe findByReference(String reference);
-    Employe findByNom(String nom);
+    Employe findByReferenceEmploye(String reference);
+    Employe findByNomEmploye(String nom);
     List<Employe> findByEtablissementReference(String reference);
 
 

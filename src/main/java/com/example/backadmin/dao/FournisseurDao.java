@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FournisseurDao  extends JpaRepository<Fournisseur,Long> {
 
-    Fournisseur findByReference(String reference);
-    Fournisseur findByVille(String ville);
+    Fournisseur findByReferenceFournisseur(String reference);
+    Fournisseur findByVilleFournisseur(String ville);
 
 
 }

@@ -12,13 +12,13 @@ import java.util.List;
 public class FournisseurServiceImpl implements FournisseurService {
 
     @Override
-    public Fournisseur findByReference(String reference) {
-        return fournisseurDao.findByReference(reference);
+    public Fournisseur findByReferenceFournisseur(String referenceFournisseur) {
+        return fournisseurDao.findByReferenceFournisseur(referenceFournisseur);
     }
 
     @Override
-    public Fournisseur findByVille(String ville) {
-        return fournisseurDao.findByVille(ville);
+    public Fournisseur findByVilleFournisseur(String villeFournisseur) {
+        return fournisseurDao.findByVilleFournisseur(villeFournisseur);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class FournisseurServiceImpl implements FournisseurService {
 
     @Override
     public int save(Fournisseur fournisseur){
-        Fournisseur fournisseurLoaded = findByReference(fournisseur.getReference());
+        Fournisseur fournisseurLoaded = findByReferenceFournisseur(fournisseur.getReferenceFournisseur());
         if (fournisseurLoaded != null){
             return -1;
         }else{

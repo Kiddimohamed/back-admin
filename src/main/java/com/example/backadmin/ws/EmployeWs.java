@@ -11,14 +11,14 @@ import java.util.List;
 @RequestMapping("/v1/admin/employe")
 public class EmployeWs {
     @GetMapping("/reference/{reference}")
-    public Employe findByReference(@PathVariable String reference) {
-        return employeService.findByReference(reference);
+    public Employe findByReferenceEmploye(@PathVariable String reference ){
+        return employeService.findByReferenceEmploye(reference);
     }
 
     @GetMapping("/nom/{nom}")
 
-    public Employe findByNom(@PathVariable String nom) {
-        return employeService.findByNom(nom);
+    public Employe findByNomEmploye(@PathVariable String nom) {
+        return employeService.findByNomEmploye(nom);
     }
 
     @GetMapping("/etablissement/reference/{reference}")

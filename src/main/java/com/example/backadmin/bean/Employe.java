@@ -7,12 +7,12 @@ public class Employe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String reference;
-    private String nom;
-    private String adresse;
-    private String telephone;
-    private String  fax;
-    private String fonction;
+    private String referenceEmploye;
+    private String nomEmploye;
+    private String adresseEmploye;
+    private String telephoneEmploye;
+    private String  faxEmploye;
+    private String fonctionEmploye;
 
     @ManyToOne
     private Etablissement etablissement;
@@ -26,52 +26,52 @@ public class Employe {
         this.id = id;
     }
 
-    public String getReference() {
-        return reference;
+    public String getReferenceEmploye() {
+        return referenceEmploye;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public void setReferenceEmploye(String referenceEmploye) {
+        this.referenceEmploye = referenceEmploye;
     }
 
-    public String getFonction() {
-        return fonction;
+    public String getFonctionEmploye() {
+        return fonctionEmploye;
     }
 
-    public void setFonction(String fonction) {
-        this.fonction = fonction;
+    public void setFonctionEmploye(String fonctionEmploye) {
+        this.fonctionEmploye = fonctionEmploye;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomEmployeEmploye() {
+        return nomEmploye;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomEmploye(String nomEmploye) {
+        this.nomEmploye = nomEmploye;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getAdresseEmploye() {
+        return adresseEmploye;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAdresseEmploye(String adresseEmploye) {
+        this.adresseEmploye = adresseEmploye;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getTelephoneEmploye() {
+        return telephoneEmploye;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setTelephoneEmploye(String telephoneEmploye) {
+        this.telephoneEmploye = telephoneEmploye;
     }
 
-    public String getFax() {
-        return fax;
+    public String getFaxEmploye() {
+        return faxEmploye;
     }
 
-    public void setFax(String fax) {
-        this.fax = fax;
+    public void setFaxEmploye(String faxEmploye) {
+        this.faxEmploye = faxEmploye;
     }
 
     public Etablissement getEtablissement() {

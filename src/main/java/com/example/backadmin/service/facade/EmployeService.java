@@ -5,9 +5,9 @@ import com.example.backadmin.bean.Employe;
 import java.util.List;
 
 public interface EmployeService {
-    Employe findByReference(String reference);
+    Employe findByReferenceEmploye(String referenceEmploye);
 
-    Employe findByNom(String nom);
+    Employe findByNomEmploye(String nomEmploye);
 
     List<Employe> findByEtablissementReference(String reference);
 

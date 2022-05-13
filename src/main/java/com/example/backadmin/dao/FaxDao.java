@@ -9,11 +9,11 @@ import java.util.List;
 @Repository
 public interface FaxDao extends JpaRepository<Fax, Long> {
 
-    Fax findByReference(String reference);
+    Fax findByReferenceFax(String referenceFax);
 
     Fax findByExpressionBesoinReference(String reference);
 
-    List<Fax> findByFournisseurReference(String reference);
+    List<Fax> findByFournisseurReferenceFournisseur(String reference);
 
     List<Fax> findByFaxTypeCode(String code);
 }

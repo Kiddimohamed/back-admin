@@ -12,14 +12,14 @@ import java.util.List;
 public class FournisseurWs {
 
     @GetMapping("/reference/{reference}")
-    public Fournisseur findByReference(@PathVariable String reference) {
-        return fournisseurService.findByReference(reference);
+    public Fournisseur findByReferenceFournisseur(@PathVariable String reference) {
+        return fournisseurService.findByReferenceFournisseur(reference);
     }
 
     @GetMapping("/ville/{ville}")
 
-    public Fournisseur findByVille(@PathVariable String ville) {
-        return fournisseurService.findByVille(ville);
+    public Fournisseur findByVilleFournisseur(@PathVariable String ville) {
+        return fournisseurService.findByVilleFournisseur(ville);
     }
 
     @GetMapping("/")

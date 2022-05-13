@@ -11,8 +11,8 @@ import java.util.List;
 @RequestMapping("/v1/admin/fax")
 public class FaxWs {
     @GetMapping("/reference/{reference}")
-    public Fax findByReference(@PathVariable String reference) {
-        return faxService.findByReference(reference);
+    public Fax findByReferenceFax(@PathVariable String reference) {
+        return faxService.findByReferenceFax(reference);
     }
 
     @GetMapping("/expression-besoin/reference/{reference}")
@@ -21,8 +21,8 @@ public class FaxWs {
     }
 
     @GetMapping("/fournisseur/reference/{reference}")
-    public List<Fax> findByFournisseurReference(@PathVariable String reference) {
-        return faxService.findByFournisseurReference(reference);
+    public List<Fax> findByFournisseurReferenceFournisseur(@PathVariable String reference) {
+        return faxService.findByFournisseurReferenceFournisseur(reference);
     }
 
     @GetMapping("/fax-type/code/{code}")

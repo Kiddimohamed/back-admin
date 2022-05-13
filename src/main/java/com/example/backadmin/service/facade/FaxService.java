@@ -5,11 +5,11 @@ import com.example.backadmin.bean.Fax;
 import java.util.List;
 
 public interface FaxService {
-    Fax findByReference(String reference);
+    Fax findByReferenceFax(String reference);
 
     Fax findByExpressionBesoinReference(String reference);
 
-    List<Fax> findByFournisseurReference(String reference);
+    List<Fax> findByFournisseurReferenceFournisseur(String referenceFournisseur);
 
     List<Fax> findByFaxTypeCode(String code);
 

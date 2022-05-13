@@ -5,9 +5,9 @@ import com.example.backadmin.bean.Fournisseur;
 import java.util.List;
 
 public interface FournisseurService {
-    Fournisseur findByReference(String reference);
+    Fournisseur findByReferenceFournisseur(String referenceFournisseur);
 
-    Fournisseur findByVille(String ville);
+    Fournisseur findByVilleFournisseur(String villeFournisseur);
 
     List<Fournisseur> findAll();
 

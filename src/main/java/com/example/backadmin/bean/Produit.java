@@ -62,8 +62,13 @@ public class Produit {
         this.numeroInventaire = numeroInventaire;
     }
 
+    public List<ExpressionBesoinItem> getExpressionBesoinItems() {
+        return expressionBesoinItems;
+    }
 
-
+    public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
+        this.expressionBesoinItems = expressionBesoinItems;
+    }
 
     public String getCode() {
         return code;
