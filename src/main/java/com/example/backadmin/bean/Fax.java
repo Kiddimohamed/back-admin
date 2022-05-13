@@ -3,6 +3,7 @@ package com.example.backadmin.bean;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Fax {
@@ -11,6 +12,7 @@ public class Fax {
     private Long id;
     private String referenceFax;
     private String objetFax;
+    private LocalDateTime dateFax;
 
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -24,6 +26,14 @@ public class Fax {
 
     @ManyToOne
     private Fournisseur fournisseur;
+
+    public LocalDateTime getDateFax() {
+        return dateFax;
+    }
+
+    public void setDateFax(LocalDateTime dateFax) {
+        this.dateFax = dateFax;
+    }
 
     public Long getId() {
         return id;
