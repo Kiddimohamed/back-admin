@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.9.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fax" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9de91684-f173-4cba-85eb-10be453770f8">
+
+    <parameter name="dateFax" class="java.util.Date"/>
+    <parameter name="ville" class="java.lang.String"/>
+    <parameter name="nomEmploye" class="java.lang.String"/>
+    <parameter name="telephoneEmploye" class="java.lang.String"/>
+    <parameter name="faxEmploye" class="java.lang.String"/>
+    <parameter name="objetFax" class="java.lang.String"/>
+    <parameter name="nomFournisseur" class="java.lang.String"/>
+    <parameter name="telephoneFournisseur" class="java.lang.String"/>
+    <parameter name="faxFournisseur" class="java.lang.String"/>
+
+    <field name="nom_fournisseur" class="java.lang.String">
+
+    </field>
+    <field name="telephone_fournisseur" class="java.lang.String">
+
+    </field>
+    <field name="fax_fournisseur" class="java.lang.String">
+
+    </field>
+    <field name="fax_employe" class="java.lang.String">
+
+    </field>
+    <field name="nom_employe" class="java.lang.String">
+
+    </field>
+    <field name="telephone_employe" class="java.lang.String">
+
+    </field>
+    <field name="objet_fax" class="java.lang.String">
+
+    </field>
+    <field name="date_fax" class="java.time.LocalDateTime">
+
+    </field>
+    <field name="adresse" class="java.lang.String">
+
+    </field>
+    <field name="ville" class="java.lang.String">
+
+    </field>
+    <field name="telephone" class="java.lang.String">
+
+    </field>
+    <field name="fax" class="java.lang.String">
+
+    </field>
+    <field name="email" class="java.lang.String">
+
+    </field>
+    <field name="site_web" class="java.lang.String">
+      </field>
+    <field name="libelle" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="libelle"/>
+        </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="92" splitType="Stretch">
+            <image>
+                <reportElement x="0" y="0" width="80" height="90" uuid="a60015f7-d498-4d3c-afc4-bdd862ef6290"/>
+                <imageExpression><![CDATA["C:/Users/Hp/Desktop/Projet-complet/Application/admin/admin/src/main/resources/Reports_IMG/Cady_ayyad_university.png"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="102" y="12" width="261" height="60" uuid="4b197897-ba1a-4833-a4d4-a522566b8f5e"/>
+                <textElement textAlignment="Center">
+                    <font size="13" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Royaume du Maroc
+Universite Cadi Ayyad - Marrakech
+La Présidence]]></text>
+            </staticText>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="33" splitType="Stretch">
+            <line>
+                <reportElement x="-20" y="-8" width="595" height="1" uuid="18cecf29-254c-4f0a-8382-81a598387f3b"/>
+            </line>
+            <textField>
+                <reportElement x="350" y="4" width="220" height="29" uuid="00af8095-ac41-4fe2-addd-ae40cf21fa32"/>
+                <textElement textAlignment="Left">
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ville}+" le : "+$P{dateFax}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="266" splitType="Stretch">
+            <rectangle>
+                <reportElement x="30" y="7" width="490" height="21" uuid="aa3bf9c4-e13b-43ef-acf5-b59dc8078974"/>
+                <graphicElement>
+                    <pen lineColor="#FFFFFF"/>
+                </graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="32" y="40" width="490" height="80" uuid="8a02b1c0-70d9-47b3-a3cf-7d91401ea8b6"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="32" y="134" width="490" height="120" uuid="04efd93f-2ef9-4f22-be85-64c9f6493e4b"/>
+            </rectangle>
+            <staticText>
+                <reportElement x="264" y="7" width="36" height="20" uuid="2a2f77ba-71ab-454a-b472-52aaaf482c32"/>
+                <textElement>
+                    <font size="15" isBold="true"/>
+                </textElement>
+                <text><![CDATA[FAX]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="90" y="70" width="90" height="20" uuid="df3970e4-6949-4f79-a048-555e0a828a02"/>
+                <textElement>
+                    <font size="15" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Routine]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="90" y="93" width="90" height="20" uuid="15cd68fc-717d-4717-bab4-39b2d39ef686"/>
+                <textElement>
+                    <font size="15" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Confidential]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="90" y="47" width="90" height="20" uuid="4bbc8c27-0cc9-4847-90da-8fc21e827881"/>
+                <textElement>
+                    <font size="15" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Urgent]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement x="40" y="47" width="21" height="21" uuid="bd4c6437-9b3c-412e-92ae-ef8c53428af8"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="40" y="70" width="21" height="21" uuid="87f6e937-c7c9-4616-918d-2bbfe4db9dbc"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="40" y="92" width="21" height="21" uuid="55fbe968-2061-4cf4-9157-ee3e842d8a19"/>
+            </rectangle>
+            <line>
+                <reportElement x="32" y="172" width="490" height="1" uuid="8301b74c-ccde-452e-88bf-6142938050bc"/>
+            </line>
+            <line>
+                <reportElement x="32" y="199" width="490" height="1" uuid="6e25b549-e090-4492-aade-818c6cfd7b13"/>
+            </line>
+            <line>
+                <reportElement x="32" y="224" width="490" height="1" uuid="f2952c61-1fa5-47aa-b6c3-c89d4b3ee4bb"/>
+            </line>
+            <line>
+                <reportElement x="278" y="135" width="1" height="86" uuid="9e29b4f5-d722-47cc-879f-c6c0ec619233"/>
+            </line>
+            <textField>
+                <reportElement x="32" y="134" width="246" height="36" uuid="49838546-373b-4ded-ad14-cbd12c1315c9"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Emetteur " + $P{nomEmploye}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="279" y="134" width="241" height="36" uuid="6fd67a2e-ebe8-46cb-903c-ea800487a245"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Destinataire " +$P{nomFournisseur}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="32" y="172" width="246" height="28" uuid="926b84bf-1c97-48a3-bc99-4310d14406a3"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Téléphone :  " + $P{telephoneEmploye}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="32" y="198" width="246" height="28" uuid="730991c9-a064-4197-86fa-0822003b1d58"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Fax : "+ $P{faxEmploye}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="276" y="173" width="246" height="25" uuid="daf5de86-a562-438e-ae7d-ee3badf17603"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Téléphone :  " + $P{telephoneFournisseur}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="278" y="200" width="246" height="24" uuid="65977046-a93e-46b6-8941-8d904e4e2597"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Fax : "+ $P{faxFournisseur}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="32" y="225" width="488" height="28" uuid="b0dd6bc5-c44e-4017-b20b-9875b2a906e8"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Objet : "+ $P{objetFax}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="160">
+            <staticText>
+                <reportElement x="30" y="-1" width="490" height="151" uuid="a217070b-bda2-4c37-bc65-08dd4f1dcee6"/>
+                <textElement>
+                    <font size="13" isBold="false" isItalic="false"/>
+                </textElement>
+                <text><![CDATA[Madame,Monsieur,
+
+		Prière de nous faire parvenir dans les plus brefs délais, votre meilleure offre pour les articles cités dans le tableau ci-joint (prière de nous retourner cette lettre signés et cachetés ).
+		Dans l'attente de votre réponse, veuillez agréer l'expression de nous sentiments distingués.
+⁭نتىنىتنىتنىن ]]></text>
+            </staticText>
+        </band>
+    </detail>
+    <summary>
+        <band height="42" splitType="Stretch">
+            <line>
+                <reportElement x="-20" y="3" width="595" height="1" uuid="a59f7f0a-008b-4a8b-89fd-b250f2660110"/>
+            </line>
+            <textField>
+                <reportElement x="20" y="10" width="511" height="31" uuid="cbceda78-334f-4cb1-ae14-63e91762e4a6"/>
+                <textElement textAlignment="Center">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{adresse} +" , "+$F{ville}+" , Tel : "+$F{telephone}+" -  Fax : "+$F{fax}+
+"Email : "+ $F{email}+   "    Site web :  "+ $F{site_web}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>
