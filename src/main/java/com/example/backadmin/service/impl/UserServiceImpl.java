@@ -22,23 +22,23 @@ public class UserServiceImpl implements UserService {
 //        return userDao.findBy(ref);
 //    }
 
+
     @Override
-    public User findByUserName(String name) {
-        return null;
+    public List<User> findAll() {
+        return userDao.findAll();
     }
 
     @Override
     public User findByRef(String ref) {
-        return null;
+        return userDao.findByRef(ref);
     }
-
-
 
     @Override
-    public List<User> findAll() {
-        return null;
+    public User findByUserName(String name) {
+        return userDao.findByUserName(name);
     }
-//
+
+    //
     @Override
     public int save(User user) {
         ServiceDemandeur serviceDemandeur=serviceDemandeurService.findByReference(user.getServiceDemandeur().getReference());
