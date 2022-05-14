@@ -21,7 +21,7 @@ public class Fax {
     @ManyToOne
     private Employe emetteur;
 
-    @OneToOne
+    @ManyToOne
     private ExpressionBesoin expressionBesoin;
 
     @ManyToOne

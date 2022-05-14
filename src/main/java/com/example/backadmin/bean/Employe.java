@@ -42,7 +42,7 @@ public class Employe {
         this.fonctionEmploye = fonctionEmploye;
     }
 
-    public String getNomEmployeEmploye() {
+    public String getNomEmploye() {
         return nomEmploye;
     }
 
