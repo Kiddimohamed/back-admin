@@ -54,4 +54,5 @@ public class User {
     public void setExpressionBesoins(List<ExpressionBesoin> expressionBesoins) {
         this.expressionBesoins = expressionBesoins;
     }
+
 }
