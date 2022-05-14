@@ -10,7 +10,7 @@ public interface ExpressionBesoinService {
     ExpressionBesoin findByReference(String reference);
 
 
-    List<ExpressionBesoin> findByServiceDemandeurReference(String reference);
+//    List<ExpressionBesoin> findByUserReference(String reference);
 
     List<ExpressionBesoin> findAll();
 

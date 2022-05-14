@@ -15,7 +15,7 @@ public class ExpressionBesoin {
     private String reference;
     private String objet;
     private LocalDateTime dateExpressionBesoin;
-    private String  statut;
+    private String statut;
     private double totalTTC;
     private double totalHT;
     private double TVA;
@@ -30,7 +30,7 @@ public class ExpressionBesoin {
 
 
     @ManyToOne
-    private ServiceDemandeur serviceDemandeur;
+    private User user;
 
     public Long getId() {
         return id;
@@ -80,12 +80,12 @@ public class ExpressionBesoin {
         this.statut = statut;
     }
 
-    public ServiceDemandeur getServiceDemandeur() {
-        return serviceDemandeur;
+    public User getUser() {
+        return user;
     }
 
-    public void setServiceDemandeur(ServiceDemandeur serviceDemandeur) {
-        this.serviceDemandeur = serviceDemandeur;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Commande> getCommandeList() {
