@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface UserService {
     User findByRef(String ref);
+    User findByUserName(String name);
 
     int save(User user);
 
