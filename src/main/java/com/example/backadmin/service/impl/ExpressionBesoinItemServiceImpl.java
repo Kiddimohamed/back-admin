@@ -32,8 +32,8 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
 
     @Override
     public int save(ExpressionBesoinItem expressionBesoinItem) {
-        ExpressionBesoin expressionBesoin=expressionBesoinService.findByReference(expressionBesoinItem.getExpressionBesoin().getReference());
-        Produit produit=produitService.findByCode(expressionBesoinItem.getProduit().getCode());
+        ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(expressionBesoinItem.getExpressionBesoin().getReference());
+        Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
         expressionBesoinItem.setProduit(produit);
         expressionBesoinItem.setExpressionBesoin(expressionBesoin);
         if (expressionBesoinItem.getQuantite() <= 0) {
@@ -45,16 +45,15 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
         }
     }
 
-   @Override
+    @Override
     public Long getMaxId() {
         return expressionBesoinItemDao.getMaxId();
     }
 
     @Autowired
     private ExpressionBesoinItemDao expressionBesoinItemDao;
- @Autowired
+    @Autowired
     private ExpressionBesoinService expressionBesoinService;
-
     @Autowired
     private ProduitService produitService;
 
