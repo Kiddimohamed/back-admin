@@ -2,7 +2,7 @@ package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.ExpressionBesoin;
 import com.example.backadmin.bean.Produit;
-import com.example.backadmin.bean.ServiceDemandeur;
+import com.example.backadmin.bean.User;
 import com.example.backadmin.dao.ExpressionBesoinDao;
 import com.example.backadmin.service.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 @Service
 public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
@@ -26,11 +27,6 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
 
     @Override
-    public List<ExpressionBesoin> findByServiceDemandeurReference(String reference) {
-        return expressionBesoinDao.findByServiceDemandeurReference(reference);
-    }
-
-    @Override
     public List<ExpressionBesoin> findAll() {
         return expressionBesoinDao.findAll();
     }
@@ -41,9 +37,11 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     @Override
     public int save(ExpressionBesoin expressionBesoin) {
         prepare(expressionBesoin);
+
 //        int res = validate(expressionBesoin);
 //        if (res > 0) {
 //        }
+
         return handelprocess(expressionBesoin);
 
 
@@ -56,12 +54,13 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     private void prepare(ExpressionBesoin expressionBesoin) {
 //        Etablissement etablissement = etablissementService.findByReference(expressionBesoin.getServiceDemandeur().getEtablissement().getReference());
-
-        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(expressionBesoin.getServiceDemandeur().getReference());
-
-//        serviceDemandeur.setEtablissement(etablissement);
-        expressionBesoin.setServiceDemandeur(serviceDemandeur);
-
+//
+//        User user = userService.findByUserName(expressionBesoin.getUser().getUserName());
+//        expressionBesoin.setUser(user);
+//        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(expressionBesoin.getServiceDemandeur().getReference());
+//
+////        serviceDemandeur.setEtablissement(etablissement);
+//        expressionBesoin.setServiceDemandeur(serviceDemandeur);
 
 //        expressionBesoin.getExpressionBesoinItems().forEach(e -> {
 //
@@ -77,8 +76,8 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
         if (expressionBesoin1 != null) {
             return -1;
-        } else if (expressionBesoin.getServiceDemandeur() == null) {
-            return -2;
+//        } else if (expressionBesoin.getUser().getServiceDemandeur() == null) {
+//            return -2;
         } else {
             return 1;
         }
@@ -86,23 +85,24 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
 
     public int handelprocess(ExpressionBesoin expressionBesoin) {
-        expressionBesoin.setStatut("En attente");
+
         expressionBesoin.setDateExpressionBesoin(LocalDateTime.now());
-        expressionBesoin.setReference("Exb-" + (getMaxId() + 1));
+        expressionBesoin.setStatut("en Cours");
+//        expressionBesoin.setUserName(expressionBesoin.getUser().getUserName());
         expressionBesoinDao.save(expressionBesoin);
-        expressionBesoin.getExpressionBesoinItemList().forEach(expressionBesoinItem -> {
-            produitService.save(expressionBesoinItem.getProduit());
-            Produit produit=produitService.findByCode(expressionBesoinItem.getProduit().getCode());
+//        expressionBesoin.getExpressionBesoinItemList().forEach(expressionBesoinItem -> {
+//            produitService.save(expressionBesoinItem.getProduit());
+//            Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
+//
+//            expressionBesoinItem.setExpressionBesoin(expressionBesoin);
+//            expressionBesoinItem.setProduit(produit);
+//            //expressionBesoinItem.setProduit(produit);
+//
+//            expressionBesoinItemService.save(expressionBesoinItem);
+//
+//        });
 
-            expressionBesoinItem.setExpressionBesoin(expressionBesoin);
-            expressionBesoinItem.setProduit(produit);
-            //expressionBesoinItem.setProduit(produit);
-            expressionBesoinItem.setCode("ExpI-" + getMaxId() + "-" + (expressionBesoinItemService.getMaxId() + 1));
-
-            expressionBesoinItemService.save(expressionBesoinItem);
-
-        });
-
+//        userService.save(expressionBesoin.getUser());
 
         return 1;
     }
@@ -120,7 +120,8 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     @Autowired
     EtablissementService etablissementService;
     @Autowired
-    ServiceDemandeurService serviceDemandeurService;
-    @Autowired
     ExpressionBesoinItemService expressionBesoinItemService;
+    @Autowired
+    UserService userService;
+
 }

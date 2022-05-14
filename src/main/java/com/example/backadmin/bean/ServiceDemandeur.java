@@ -15,7 +15,7 @@ public class ServiceDemandeur {
 
     @OneToMany
     @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-    private List<ExpressionBesoin> expressionBesoins;
+    private List<User> users;
 
 //    @ManyToOne
 //    Etablissement etablissement;
@@ -44,11 +44,11 @@ public class ServiceDemandeur {
         this.reference = reference;
     }
 
-    public List<ExpressionBesoin> getExpressionBesoins() {
-        return expressionBesoins;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setExpressionBesoins(List<ExpressionBesoin> expressionBesoins) {
-        this.expressionBesoins = expressionBesoins;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

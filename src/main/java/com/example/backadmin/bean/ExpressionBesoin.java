@@ -15,10 +15,11 @@ public class ExpressionBesoin {
     private String reference;
     private String objet;
     private LocalDateTime dateExpressionBesoin;
-    private String  statut;
+    private String statut;
     private double totalTTC;
     private double totalHT;
     private double TVA;
+//    private String userName;
 
 
     @OneToMany
@@ -30,7 +31,7 @@ public class ExpressionBesoin {
 
 
     @ManyToOne
-    private ServiceDemandeur serviceDemandeur;
+    private User user;
 
     public Long getId() {
         return id;
@@ -80,12 +81,12 @@ public class ExpressionBesoin {
         this.statut = statut;
     }
 
-    public ServiceDemandeur getServiceDemandeur() {
-        return serviceDemandeur;
+    public User getUser() {
+        return user;
     }
 
-    public void setServiceDemandeur(ServiceDemandeur serviceDemandeur) {
-        this.serviceDemandeur = serviceDemandeur;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Commande> getCommandeList() {
@@ -116,6 +117,13 @@ public class ExpressionBesoin {
         return TVA;
     }
 
+//    public String getUserName() {
+//        return userName;
+//    }
+//
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
 
     public void setTVA(double TVA) {
         this.TVA = TVA;
