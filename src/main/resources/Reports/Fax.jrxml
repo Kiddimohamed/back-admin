@@ -178,10 +178,6 @@ La Présidence]]></text>
 				</textElement>
 				<textFieldExpression><![CDATA["Objet : "+ $P{objetFax}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="95" y="15" width="100" height="30" uuid="46b4b59d-8e13-4375-834f-43ff07d2728b"/>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<detail>

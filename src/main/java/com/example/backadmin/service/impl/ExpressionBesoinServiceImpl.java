@@ -2,6 +2,7 @@ package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.ExpressionBesoin;
 import com.example.backadmin.bean.Produit;
+import com.example.backadmin.bean.ServiceDemandeur;
 import com.example.backadmin.bean.User;
 import com.example.backadmin.dao.ExpressionBesoinDao;
 import com.example.backadmin.service.facade.*;
@@ -53,17 +54,17 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 //
         userService.save(expressionBesoin.getUser());
         User user = userService.findByRef(expressionBesoin.getUser().getRef());
-        expressionBesoin.setUser(user);
+          expressionBesoin.setUser(user);
 //        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(expressionBesoin.getServiceDemandeur().getReference());
 //
 ////        serviceDemandeur.setEtablissement(etablissement);
-//        expressionBesoin.setServiceDemandeur(serviceDemandeur);
+//      expressionBesoin.setServiceDemandeur(serviceDemandeur);
 
-//        expressionBesoin.getExpressionBesoinItems().forEach(e -> {
+//        expressionBesoin.getExpressionBesoinItemList().forEach(e -> {
 //
 //            e.setExpressionBesoin(expressionBesoin);
 
-//            ExpressionBesoin expressionBesoin1 = expressionBesoinService.findByRef(e.getExpressionBesoin().getRef());
+//            ExpressionBesoin expressionBesoin1 = findByReference(e.getExpressionBesoin().getReference());
 //        });
     }
 
@@ -93,7 +94,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 //
 //            expressionBesoinItem.setExpressionBesoin(expressionBesoin);
 //            expressionBesoinItem.setProduit(produit);
-//            //expressionBesoinItem.setProduit(produit);
+//           //expressionBesoinItem.setProduit(produit);
 //
 //            expressionBesoinItemService.save(expressionBesoinItem);
 //
@@ -120,5 +121,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     ExpressionBesoinItemService expressionBesoinItemService;
     @Autowired
     UserService userService;
+    @Autowired
+    ServiceDemandeurService serviceDemandeurService;
 
 }
