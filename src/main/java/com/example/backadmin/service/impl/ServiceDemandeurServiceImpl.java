@@ -7,6 +7,7 @@ import com.example.backadmin.service.facade.EtablissementService;
 import com.example.backadmin.service.facade.ServiceDemandeurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,13 @@ public class ServiceDemandeurServiceImpl implements ServiceDemandeurService {
         return serviceDemandeurDao.findByReference(reference);
     }
 
+    @Override
+    @Transactional
+    public int deleteByReference(String ref) {
+        return 0;
+    }
+
+
 //    @Override
 //    public ServiceDemandeur findByEtablissementReference(String reference) {
 //        return serviceDemandeurDao.findByEtablissementReference(reference);
@@ -25,6 +33,14 @@ public class ServiceDemandeurServiceImpl implements ServiceDemandeurService {
     @Override
     public List<ServiceDemandeur> findAll() {
         return serviceDemandeurDao.findAll();
+    }
+
+    @Override
+    public void updateService(ServiceDemandeur serviceDemandeur,String reference) {
+        ServiceDemandeur service=serviceDemandeurDao.findByReference(serviceDemandeur.getReference());
+        service.setReference(reference);
+//        serviceDemandeurDao.save(service);
+
     }
 
     @Override

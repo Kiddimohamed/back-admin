@@ -25,6 +25,11 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
         return expressionBesoinDao.findByReference(reference);
     }
 
+    @Override
+    public List<ExpressionBesoin> findByStatut(String statut) {
+        return expressionBesoinDao.findByStatut(statut);
+    }
+
 
     @Override
     public List<ExpressionBesoin> findAll() {
@@ -84,9 +89,10 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     public int handelprocess(ExpressionBesoin expressionBesoin) {
 
         expressionBesoin.setDateExpressionBesoin(LocalDateTime.now());
-        expressionBesoin.setStatut("en Cours");
+//        expressionBesoin.setStatut("en Cours");
 //        expressionBesoin.setUserName(expressionBesoin.getUser().getUserName());
         expressionBesoinDao.save(expressionBesoin);
+        System.out.println(expressionBesoin.getStatut());
 //        expressionBesoin.getExpressionBesoinItemList().forEach(expressionBesoinItem -> {
 //            produitService.save(expressionBesoinItem.getProduit());
 //            Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
