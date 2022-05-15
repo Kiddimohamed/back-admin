@@ -7,11 +7,11 @@ import java.util.List;
 public interface ServiceDemandeurService {
     ServiceDemandeur findByReference(String reference);
 
-    int deleteByReference(String ref);
+    void deleteByReference(String reference);
 //    ServiceDemandeur findByEtablissementReference(String reference);
 
     List<ServiceDemandeur> findAll();
-    void updateService(ServiceDemandeur serviceDemandeur,String reference);
+    void updateService(ServiceDemandeur serviceDemandeur);
 
     int save(ServiceDemandeur serviceDemandeur);
 }

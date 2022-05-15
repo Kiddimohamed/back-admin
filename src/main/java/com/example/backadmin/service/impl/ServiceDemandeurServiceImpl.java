@@ -20,8 +20,8 @@ public class ServiceDemandeurServiceImpl implements ServiceDemandeurService {
 
     @Override
     @Transactional
-    public int deleteByReference(String ref) {
-        return 0;
+    public void deleteByReference(String reference) {
+        serviceDemandeurDao.deleteByReference(reference);
     }
 
 
@@ -36,11 +36,11 @@ public class ServiceDemandeurServiceImpl implements ServiceDemandeurService {
     }
 
     @Override
-    public void updateService(ServiceDemandeur serviceDemandeur,String reference) {
-        ServiceDemandeur service=serviceDemandeurDao.findByReference(serviceDemandeur.getReference());
-        service.setReference(reference);
-//        serviceDemandeurDao.save(service);
+    public void updateService(ServiceDemandeur serviceDemandeur) {
 
+
+    }
+    private void update(ServiceDemandeur serviceDemandeur){
     }
 
     @Override
