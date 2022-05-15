@@ -26,14 +26,20 @@ public class ServiceDemandeurWs {
 //        serviceDemandeurService.delete(serviceDemandeur);
 //    }
 
-    @DeleteMapping("/reference/{reference}")
-    public int deleteByReference(@PathVariable String reference) {
-        return serviceDemandeurService.deleteByReference(reference);
-    }
 
-    @PostMapping("/update/")
-    public void updateService(@RequestBody ServiceDemandeur serviceDemandeur, @PathVariable String reference) {
-        serviceDemandeurService.updateService(serviceDemandeur, reference);
+    //    @DeleteMapping("/reference/{reference}")
+//    public int deleteByReference(@PathVariable String reference) {
+//        return serviceDemandeurService.deleteByReference(reference);
+//    }
+//
+//    @PostMapping("/update/")
+//    public void updateService(@RequestBody ServiceDemandeur serviceDemandeur, @PathVariable String reference) {
+//        serviceDemandeurService.updateService(serviceDemandeur, reference);
+//    }
+
+    @DeleteMapping("/reference/{reference}")
+    public void deleteByReference(@PathVariable String reference) {
+        serviceDemandeurService.deleteByReference(reference);
     }
 
     @GetMapping("/")
