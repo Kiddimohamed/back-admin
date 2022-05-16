@@ -31,11 +31,11 @@ public class ServiceDemandeurWs {
 //    public int deleteByReference(@PathVariable String reference) {
 //        return serviceDemandeurService.deleteByReference(reference);
 //    }
-//
-//    @PostMapping("/update/")
-//    public void updateService(@RequestBody ServiceDemandeur serviceDemandeur, @PathVariable String reference) {
-//        serviceDemandeurService.updateService(serviceDemandeur, reference);
-//    }
+
+    @PutMapping("/update/{ref}/{nom}")
+    public void updateService(@PathVariable String ref, @PathVariable String nom) {
+        serviceDemandeurService.updateService(ref, nom);
+    }
 
     @DeleteMapping("/reference/{reference}")
     public void deleteByReference(@PathVariable String reference) {

@@ -5,13 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ServiceDemandeurDao extends JpaRepository<ServiceDemandeur,Long> {
+public interface ServiceDemandeurDao extends JpaRepository<ServiceDemandeur, Long> {
 // void delete(ServiceDemandeur serviceDemandeur);
 
-   void deleteByReference(String reference);
+    void deleteByReference(String reference);
 
     ServiceDemandeur findByReference(String reference);
-//    ServiceDemandeur findByEtablissementReference(String reference);
+
+    //    ServiceDemandeur findByEtablissementReference(String reference);
 
 
 }

@@ -12,9 +12,10 @@ public class ServiceDemandeur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
+    private String nom;
 
     @OneToMany
-    @JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<User> users;
 
 //    @ManyToOne
@@ -28,10 +29,17 @@ public class ServiceDemandeur {
         this.id = id;
     }
 
-//    public Etablissement getEtablissement() {
+    //    public Etablissement getEtablissement() {
 //        return etablissement;
 //    }
 //
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 //    public void setEtablissement(Etablissement etablissement) {
 //        this.etablissement = etablissement;
 //    }
