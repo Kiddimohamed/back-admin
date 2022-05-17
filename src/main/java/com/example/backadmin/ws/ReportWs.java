@@ -18,6 +18,11 @@ public class ReportWs {
         return reportService.imprimerFax(referenceFax);
     }
 
+    @GetMapping("/commande/{commandeCode}")
+    public String imprimerCommande(@PathVariable String commandeCode) throws FileNotFoundException, JRException {
+        return reportService.imprimerCommande(commandeCode);
+    }
+
     @Autowired
     ReportService reportService;
 }

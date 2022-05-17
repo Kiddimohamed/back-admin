@@ -1,7 +1,6 @@
 package com.example.backadmin.bean;
 
 import net.sf.jasperreports.web.commands.Command;
-import org.bouncycastle.asn1.cmp.GenRepContent;
 
 import javax.persistence.*;
 import java.util.Date;
