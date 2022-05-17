@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.9.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BonCommande" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7313a999-2c14-49c7-a4cf-f892436a9625">
-
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YWRtaW5fZGF0YS5jb21tYW5kZV9pdGVtIEFTICwzNywxMDIsZmNlNTJhNmEtN2Y4ZS00ODViLTlh
+MjYtMDg5OGI0MDE3MjM2Ow==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="fax"/>
 	<parameter name="exercice" class="java.lang.String"/>
 	<parameter name="chapitre" class="java.lang.String"/>
 	<parameter name="article" class="java.lang.String"/>
@@ -10,26 +14,21 @@
 	<parameter name="natureDePrestation" class="java.lang.String"/>
 	<parameter name="raisonSocial" class="java.lang.String"/>
 	<parameter name="adresse" class="java.lang.String"/>
-	<parameter name="dateCommande" class="java.lang.String"/>
-	<parameter name="totalTtc" class="java.lang.String"/>
-	<parameter name="tva" class="java.lang.String"/>
-	<parameter name="totalHt" class="java.lang.String"/>
+	<parameter name="dateCommande" class="java.util.Date"/>
+	<parameter name="totalTtc" class="java.lang.Double"/>
+	<parameter name="tva" class="java.lang.Double"/>
+	<parameter name="totalHt" class="java.lang.Double"/>
 
 	<field name="libelle" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+		</field>
 	<field name="prixUHT" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+		</field>
 	<field name="prixTHT" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="quantite" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+		</field>
 	<field name="code" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+		</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

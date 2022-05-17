@@ -9,7 +9,7 @@ public class ReceptionItem {
     private Long id;
     private String referenceReceptionItem;
     private double quantite;
-    private double NumInventaire;
+    private double numInventaire;
     private String libelle;
     @ManyToOne
     private Produit produit;
@@ -49,11 +49,11 @@ public class ReceptionItem {
     }
 
     public double getNumInventaire() {
-        return NumInventaire;
+        return numInventaire;
     }
 
     public void setNumInventaire(double numInventaire) {
-        NumInventaire = numInventaire;
+        numInventaire = numInventaire;
     }
 
     public Produit getProduit() {

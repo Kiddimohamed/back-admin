@@ -9,6 +9,7 @@ public class Fournisseur {
     private Long id;
     private String referenceFournisseur;
     private String nomFournisseur;
+    private String raisonSocial;
     private String adresseFournisseur;
     private String telephoneFournisseur;
     private String faxFournisseur;
@@ -20,7 +21,13 @@ public class Fournisseur {
 // TODO CategoryProduit
 
 
+    public String getRaisonSocial() {
+        return raisonSocial;
+    }
 
+    public void setRaisonSocial(String raisonSocial) {
+        this.raisonSocial = raisonSocial;
+    }
 
     public String getEmailFournisseur() {
         return emailFournisseur;

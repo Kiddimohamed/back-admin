@@ -39,8 +39,9 @@ public class CommandeServiceImpl implements CommandeService {
         if (commande1 != null) {
             return -1;
         } else if (commande.getEtablissement() == null || commande.getExpressionBesoin() == null || commande.getFournisseur() == null || commande.getOrdonnateur() == null || commande.getServiceDemandeur() == null) {
-            return -2;
+            return -4;
         } else {
+            commande.getExpressionBesoin().setStatut("En attent de livraison");
             commandeDao.save(commande);
             commande.getCommandeItemList().forEach(commandeItem -> {
                 commandeItem.setCommande(commande);
@@ -59,6 +60,8 @@ public class CommandeServiceImpl implements CommandeService {
         commande.setEtablissement(etablissement);
         ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(commande.getServiceDemandeur().getReference());
         commande.setServiceDemandeur(serviceDemandeur);
+        Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
+        commande.setFournisseur(fournisseur);
     }
 
     @Autowired
@@ -74,6 +77,8 @@ public class CommandeServiceImpl implements CommandeService {
     CommandeItemService commandeItemService;
 
 
+    @Autowired
+    FournisseurService fournisseurService;
     @Autowired
     EtablissementService etablissementService;
 

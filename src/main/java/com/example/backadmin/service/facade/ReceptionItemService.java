@@ -1,14 +1,13 @@
-package com.example.backadmin.dao;
+package com.example.backadmin.service.facade;
 
 import com.example.backadmin.bean.ReceptionItem;
-import jdk.dynalink.linker.LinkerServices;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ReceptionItemDao extends JpaRepository<ReceptionItem,Long> {
-
+public interface ReceptionItemService {
     ReceptionItem findByReferenceReceptionItem(String reference);
 
     List<ReceptionItem> findByReceptionReferenceReception(String referenceReception);
+
+    List<ReceptionItem> findAll();
 }

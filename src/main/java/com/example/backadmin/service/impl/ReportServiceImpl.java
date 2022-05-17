@@ -77,8 +77,31 @@ public class ReportServiceImpl implements ReportService {
         return "okey";
     }
 
+    @Override
+    public String imprimerReception(String receptionReference) throws FileNotFoundException, JRException {
+        List<ReceptionItem> data =receptionItemService.findAll();
+
+        Reception  reception=receptionService.findByReferenceReception(receptionReference);
+        File file = ResourceUtils.getFile("classpath:Reports\\BonReception.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource datesource = new JRBeanCollectionDataSource(data);
+        Map<String, Object> parametres = new HashMap<String, Object>();
+        parametres.put("numCommande", "2222222222222");
+        parametres.put("raisonSocialFournisseur", reception.getFournisseur().getRaisonSocial());
+        parametres.put("dateReception",reception.getDateReception());
+        JasperPrint print = JasperFillManager.fillReport(jasperReport, parametres,datesource);
+        JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\Hp\\Desktop" + "\\BonDeCommande_" + reception.getReferenceReception() + "_" + reception.getId() + ".pdf");
+
+
+        return "okey";
+    }
+
     @Autowired
     FournisseurService fournisseurService;
+    @Autowired
+    ReceptionItemService receptionItemService;
+    @Autowired
+    ReceptionService receptionService;
     @Autowired
     FaxService faxService;
     @Autowired

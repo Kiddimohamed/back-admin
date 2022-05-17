@@ -1,60 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.9.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BonReception" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e381850-fa72-4582-a6af-3882bee1d4a2">
-	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[YWRtaW5fZGF0YS5yZWNlcHRpb25faXRlbSBBUyAsMTYyLDEzNixlYTYxMjA4Ny0yMDdlLTQyMjEt
-OGRkMS0zNWIzZWVkMDQ2OWE7]]>
-	</property>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="fax"/>
 	<parameter name="numCommande" class="java.lang.String"/>
 	<parameter name="raisonSocialFournisseur" class="java.lang.String"/>
-	<parameter name="dateReception" class="java.lang.String"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT *
-FROM admin_data.reception_item]]>
-	</queryString>
+	<parameter name="dateReception" class="java.util.Date"/>
 	<field name="id" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.name" value="id"/>
-		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="num_inventaire" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="num_inventaire"/>
-		<property name="com.jaspersoft.studio.field.label" value="num_inventaire"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
+	<field name="numInventaire" class="java.lang.Double">
 	</field>
 	<field name="quantite" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="quantite"/>
-		<property name="com.jaspersoft.studio.field.label" value="quantite"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="reference_reception_item" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="reference_reception_item"/>
-		<property name="com.jaspersoft.studio.field.label" value="reference_reception_item"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	<field name="referenceReceptionItem" class="java.lang.String">
 	</field>
 	<field name="produit" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.name" value="produit"/>
-		<property name="com.jaspersoft.studio.field.label" value="produit"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="reception" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.name" value="reception"/>
-		<property name="com.jaspersoft.studio.field.label" value="reception"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+		</field>
 	<field name="libelle" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="libelle"/>
-		<property name="com.jaspersoft.studio.field.label" value="libelle"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+		</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -151,7 +114,7 @@ FROM admin_data.reception_item]]>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{num_inventaire}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{numInventaire}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="320" y="-1" width="80" height="30" uuid="7015e6e1-0e67-49ad-ba10-dd94643d6b25">

@@ -8,4 +8,6 @@ public interface ReportService {
     String imprimerFax(String referenceFax) throws FileNotFoundException, JRException;
 
     String imprimerCommande(String commandeCode) throws FileNotFoundException, JRException;
+
+    String imprimerReception(String receptionReference) throws FileNotFoundException, JRException;
 }

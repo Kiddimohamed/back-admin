@@ -21,6 +21,9 @@ public class Produit {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ExpressionBesoinItem> expressionBesoinItems;
 
+    @ManyToOne
+    private ProduitType produitType;
+
 
     public Long getId() {
         return id;
@@ -68,6 +71,14 @@ public class Produit {
 
     public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
         this.expressionBesoinItems = expressionBesoinItems;
+    }
+
+    public ProduitType getProduitType() {
+        return produitType;
+    }
+
+    public void setProduitType(ProduitType produitType) {
+        this.produitType = produitType;
     }
 
     public String getCode() {
