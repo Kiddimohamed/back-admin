@@ -206,7 +206,7 @@ La Présidence]]></text>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{adresse} +" , "+$P{ville}+" , Tel : "+$P{telephone}+" -  Fax : "+$P{fax}+
-"Email : "+ $P{email}+   "    Site web :  "+ $P{siteWeb}]]></textFieldExpression>
+"Email : "+ $P{emai`l}+   "    Site web :  "+ $P{siteWeb}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

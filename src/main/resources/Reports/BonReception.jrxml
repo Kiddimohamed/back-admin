@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.9.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BonReception" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e381850-fa72-4582-a6af-3882bee1d4a2">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YWRtaW5fZGF0YS5yZWNlcHRpb25faXRlbSBBUyAsMTYyLDEzNixlYTYxMjA4Ny0yMDdlLTQyMjEt
+OGRkMS0zNWIzZWVkMDQ2OWE7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="fax"/>
+	<parameter name="numCommande" class="java.lang.String"/>
+	<parameter name="raisonSocialFournisseur" class="java.lang.String"/>
+	<parameter name="dateReception" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM admin_data.reception_item]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_inventaire" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="num_inventaire"/>
+		<property name="com.jaspersoft.studio.field.label" value="num_inventaire"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quantite" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="quantite"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantite"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reference_reception_item" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="reference_reception_item"/>
+		<property name="com.jaspersoft.studio.field.label" value="reference_reception_item"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="produit" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="produit"/>
+		<property name="com.jaspersoft.studio.field.label" value="produit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reception" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="reception"/>
+		<property name="com.jaspersoft.studio.field.label" value="reception"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="libelle" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="libelle"/>
+		<property name="com.jaspersoft.studio.field.label" value="libelle"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reception_item"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<image>
+				<reportElement x="13" y="-4" width="100" height="100" uuid="1378652c-f2ff-4d18-9211-90ba2600a6db"/>
+				<imageExpression><![CDATA["C:/Users/Hp/Desktop/Projet-complet/Application/admin/admin/src/main/resources/Reports_IMG/Cady_ayyad_university.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="180" y="3" width="250" height="73" uuid="596083bd-8697-432c-8ede-d3e67f1bb68a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="19" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Universite CADI AYYAD Presidence- Marrakech]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="158" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="20" width="210" height="30" uuid="e14b39a1-43ed-4b8c-bcca-244d5e40e242"/>
+				<textElement>
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bon De Reception]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="52" width="310" height="31" uuid="e1801202-acec-4bac-b1d3-4b0cec9800fb"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BON DE COMMANDE N :"+$P{numCommande}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="109" width="500" height="31" uuid="4d83e269-1440-4cdb-9db4-dbeb423acd07"/>
+				<textFieldExpression><![CDATA["RAISON SOCIAL DU FOURNISSEUR   :  "+$P{raisonSocialFournisseur}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="400" y="0" width="157" height="30" uuid="c03debbd-b8af-4e01-8e58-1a44ac474ee7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9dfb5e9-af1f-43b8-86cf-8f963ca0d9cf"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[num_inventaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="80" height="30" uuid="a64517a5-fba0-4f37-bc4c-8a34401c0a27">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0be0f7d7-1de3-43a6-90fc-af9b747a1677"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[quantite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="320" height="30" uuid="082c7e13-cdbb-4a24-b374-9e1c087120af">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b780d1c-bba5-4188-9bd6-fccb271be6d3"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[libelle]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="400" y="-1" width="157" height="30" uuid="b214d3ea-0351-4f48-ab68-af81b1ee4d28">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9dfb5e9-af1f-43b8-86cf-8f963ca0d9cf"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{num_inventaire}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="-1" width="80" height="30" uuid="7015e6e1-0e67-49ad-ba10-dd94643d6b25">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0be0f7d7-1de3-43a6-90fc-af9b747a1677"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{quantite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="-1" width="319" height="30" uuid="a8b0e9a6-5b27-4748-ba72-a633fca4b094">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b780d1c-bba5-4188-9bd6-fccb271be6d3"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="208" splitType="Stretch">
+			<textField>
+				<reportElement x="214" y="-3" width="214" height="30" uuid="53566e84-dc05-4de9-abc1-fdad9e48690d"/>
+				<textFieldExpression><![CDATA["Marrakech le :  "+$P{dateReception}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="30" width="214" height="30" uuid="161691d3-36e5-4d38-b309-2d4b37fcc56c"/>
+				<textFieldExpression><![CDATA["Le President"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
