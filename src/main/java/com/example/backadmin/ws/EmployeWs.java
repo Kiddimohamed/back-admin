@@ -3,6 +3,7 @@ package com.example.backadmin.ws;
 import com.example.backadmin.bean.Employe;
 import com.example.backadmin.service.facade.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +29,13 @@ public class EmployeWs {
     @GetMapping("/")
     public List<Employe> findAll() {
         return employeService.findAll();
+    }
+    @GetMapping("/AllExpressionServices")
+    public ResponseEntity<String> getAllExpressionServices(){
+        return employeService.getAllExpressionServices();
+    }@GetMapping("/EnattenteExpressionServices")
+    public ResponseEntity<String> getEnattenteExpressionServices(){
+        return employeService.getEnattenteExpressionServices();
     }
     @PostMapping("/")
     public int save(@RequestBody Employe employe) {
