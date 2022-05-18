@@ -1,6 +1,7 @@
 package com.example.backadmin.service.facade;
 
 import com.example.backadmin.bean.Employe;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface EmployeService {
 
 
     int save(Employe employe);
-}
+    public ResponseEntity<String> getAllExpressionServices();
+    public ResponseEntity<String> getEnattenteExpressionServices();
+
+    }

@@ -35,10 +35,12 @@ public class ExpressionBesoinWs {
         return expressionBesoinService.findAll();
     }
 
+
     @PostMapping("/")
     public int save(@RequestBody ExpressionBesoin expressionBesoin) {
         return expressionBesoinService.save(expressionBesoin);
     }
+
 
     @Autowired
     ExpressionBesoinService expressionBesoinService;
