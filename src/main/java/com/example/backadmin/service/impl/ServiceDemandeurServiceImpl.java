@@ -36,10 +36,10 @@ public class ServiceDemandeurServiceImpl implements ServiceDemandeurService {
     }
 
     @Override
-    public void updateService(String ref, String nom) {
-        ServiceDemandeur serviceDemandeur1=serviceDemandeurDao.findByReference(ref);
-        serviceDemandeur1.setNom(nom);
-        serviceDemandeurDao.save(serviceDemandeur1);
+    public void updateService(ServiceDemandeur serviceDemandeur,String nom) {
+        ServiceDemandeur s=serviceDemandeurDao.findByReference(serviceDemandeur.getReference());
+        s.setNom(nom);
+        serviceDemandeurDao.save(s);
     }
 
     private void update(ServiceDemandeur serviceDemandeur){

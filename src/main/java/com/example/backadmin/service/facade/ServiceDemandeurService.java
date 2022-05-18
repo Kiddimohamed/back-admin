@@ -11,7 +11,7 @@ public interface ServiceDemandeurService {
 //    ServiceDemandeur findByEtablissementReference(String reference);
 
     List<ServiceDemandeur> findAll();
-    void updateService(String ref,String nom);
+    void updateService(ServiceDemandeur serviceDemandeur,String nom);
 
     int save(ServiceDemandeur serviceDemandeur);
 }

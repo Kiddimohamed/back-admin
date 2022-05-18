@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/v1/admin/employe")
 public class EmployeWs {
     @GetMapping("/reference/{reference}")
-    public Employe findByReferenceEmploye(@PathVariable String reference ){
+    public Employe findByReferenceEmploye(@PathVariable String reference) {
         return employeService.findByReferenceEmploye(reference);
     }
 
@@ -27,17 +27,22 @@ public class EmployeWs {
     public List<Employe> findByEtablissementReference(@PathVariable String reference) {
         return employeService.findByEtablissementReference(reference);
     }
+
     @GetMapping("/")
     public List<Employe> findAll() {
         return employeService.findAll();
     }
+
     @GetMapping("/AllExpressionServices")
-    public ResponseEntity<String> getAllExpressionServices(){
+    public ResponseEntity<String> getAllExpressionServices() {
         return employeService.getAllExpressionServices();
-    }@GetMapping("/EnattenteExpressionServices")
-    public ResponseEntity<String> getEnattenteExpressionServices(){
+    }
+
+    @GetMapping("/EnattenteExpressionServices")
+    public ResponseEntity<String> getEnattenteExpressionServices() {
         return employeService.getEnattenteExpressionServices();
     }
+
     @PostMapping("/")
     public int save(@RequestBody Employe employe) {
         return employeService.save(employe);

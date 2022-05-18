@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/v1/admin/service-demandeur")
 public class ServiceDemandeurWs {
@@ -32,9 +33,9 @@ public class ServiceDemandeurWs {
 //        return serviceDemandeurService.deleteByReference(reference);
 //    }
 
-    @PutMapping("/update/{ref}/{nom}")
-    public void updateService(@PathVariable String ref, @PathVariable String nom) {
-        serviceDemandeurService.updateService(ref, nom);
+    @PutMapping("/update/{nom}")
+    public void updateService(@RequestBody ServiceDemandeur serviceDemandeur,@PathVariable String nom) {
+        serviceDemandeurService.updateService(serviceDemandeur, nom);
     }
 
     @DeleteMapping("/reference/{reference}")
