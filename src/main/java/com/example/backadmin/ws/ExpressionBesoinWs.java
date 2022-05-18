@@ -20,19 +20,27 @@ public class ExpressionBesoinWs {
         return expressionBesoinService.findByReference(reference);
     }
 
-//    @GetMapping("/service-demandeur/reference/{reference}")
+    //    @GetMapping("/service-demandeur/reference/{reference}")
 //    public List<ExpressionBesoin> findByServiceDemandeurReference(@PathVariable String reference) {
 //        return expressionBesoinService.findByServiceDemandeurReference(reference);
 //    }
+
+    @GetMapping("/statut/{statut}")
+    public List<ExpressionBesoin> findByStatut(@PathVariable String statut) {
+        return expressionBesoinService.findByStatut(statut);
+    }
 
     @GetMapping("/")
     public List<ExpressionBesoin> findAll() {
         return expressionBesoinService.findAll();
     }
+
+
     @PostMapping("/")
     public int save(@RequestBody ExpressionBesoin expressionBesoin) {
         return expressionBesoinService.save(expressionBesoin);
     }
+
 
     @Autowired
     ExpressionBesoinService expressionBesoinService;

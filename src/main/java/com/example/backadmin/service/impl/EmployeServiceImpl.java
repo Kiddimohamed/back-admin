@@ -6,8 +6,12 @@ import com.example.backadmin.dao.EmployeDao;
 import com.example.backadmin.service.facade.EmployeService;
 import com.example.backadmin.service.facade.EtablissementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -59,4 +63,34 @@ public class EmployeServiceImpl implements EmployeService {
 
     @Autowired
     EtablissementService etablissementService;
+
+
+
+
+
+    //microservice************************************
+    @Autowired
+    private RestTemplate restTemplate;
+    @Autowired
+    private WebClient.Builder webClientBuilder;
+    @Override
+    public ResponseEntity<String> getAllExpressionServices(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8095/centre-project/v1/expression-besoin/", HttpMethod.GET, entity, String.class);
+        System.out.println(response);
+        return response;
+
+
+    }@Override
+    public ResponseEntity<String> getEnattenteExpressionServices(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8095/centre-project/v1/expression-besoin/statut/"+"En Attente", HttpMethod.GET, entity, String.class);
+        System.out.println(response);
+        return response;
+
+    }
 }
