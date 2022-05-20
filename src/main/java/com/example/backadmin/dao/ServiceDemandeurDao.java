@@ -11,6 +11,7 @@ public interface ServiceDemandeurDao extends JpaRepository<ServiceDemandeur, Lon
     void deleteByReference(String reference);
 
     ServiceDemandeur findByReference(String reference);
+    ServiceDemandeur findByNom(String nom);
 
     //    ServiceDemandeur findByEtablissementReference(String reference);
 

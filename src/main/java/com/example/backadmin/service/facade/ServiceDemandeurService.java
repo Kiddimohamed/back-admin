@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ServiceDemandeurService {
     ServiceDemandeur findByReference(String reference);
+    ServiceDemandeur findByNom(String nom);
 
     void deleteByReference(String reference);
 //    ServiceDemandeur findByEtablissementReference(String reference);

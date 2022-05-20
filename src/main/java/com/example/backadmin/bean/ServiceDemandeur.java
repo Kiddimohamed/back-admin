@@ -33,6 +33,7 @@ public class ServiceDemandeur {
 //        return etablissement;
 //    }
 //
+
     public String getNom() {
         return nom;
     }
@@ -40,6 +41,7 @@ public class ServiceDemandeur {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
 //    public void setEtablissement(Etablissement etablissement) {
 //        this.etablissement = etablissement;
 //    }

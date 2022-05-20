@@ -17,6 +17,11 @@ public class ServiceDemandeurWs {
     public ServiceDemandeur findByReference(@PathVariable String reference) {
         return serviceDemandeurService.findByReference(reference);
     }
+    @GetMapping("/nom/{nom}")
+    public ServiceDemandeur findByNom(@PathVariable String nom) {
+        return serviceDemandeurService.findByNom(nom);
+    }
+
 
     //    @GetMapping("/etablissement/reference/{reference}")
 //    public ServiceDemandeur findByEtablissementReference(@PathVariable String reference) {
@@ -33,9 +38,9 @@ public class ServiceDemandeurWs {
 //        return serviceDemandeurService.deleteByReference(reference);
 //    }
 
-    @PutMapping("/update/{nom}")
+    @PutMapping("/update/nom/{nom}")
     public void updateService(@RequestBody ServiceDemandeur serviceDemandeur,@PathVariable String nom) {
-        serviceDemandeurService.updateService(serviceDemandeur, nom);
+        serviceDemandeurService.updateService(serviceDemandeur,nom);
     }
 
     @DeleteMapping("/reference/{reference}")
