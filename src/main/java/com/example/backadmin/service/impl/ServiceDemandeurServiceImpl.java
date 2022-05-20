@@ -18,6 +18,12 @@ public class ServiceDemandeurServiceImpl implements ServiceDemandeurService {
         return serviceDemandeurDao.findByReference(reference);
     }
 
+
+    @Override
+    public ServiceDemandeur findByNom(String nom) {
+        return serviceDemandeurDao.findByNom(nom);
+    }
+
     @Override
     @Transactional
     public void deleteByReference(String reference) {
