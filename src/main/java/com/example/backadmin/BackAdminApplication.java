@@ -16,8 +16,9 @@ public class BackAdminApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
     @Bean
-    public WebClient.Builder getWebClientBuilder(){
+    public WebClient.Builder getWebClientBuilder() {
         return WebClient.builder();
     }
 }
