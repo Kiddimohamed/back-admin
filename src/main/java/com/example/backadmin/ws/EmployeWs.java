@@ -38,9 +38,9 @@ public class EmployeWs {
         return employeService.getAllExpressionServices();
     }
 
-    @GetMapping("/EnattenteExpressionServices")
-    public ResponseEntity<String> getEnattenteExpressionServices() {
-        return employeService.getEnattenteExpressionServices();
+    @GetMapping("/en-attente-expression-services")
+    public ResponseEntity<String> getEnAttenteExpressionServices() {
+        return employeService.getEnAttenteExpressionServices();
     }
 
     @PostMapping("/")

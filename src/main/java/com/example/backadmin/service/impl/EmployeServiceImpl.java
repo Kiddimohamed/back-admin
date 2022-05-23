@@ -84,11 +84,11 @@ public class EmployeServiceImpl implements EmployeService {
 
 
     }@Override
-    public ResponseEntity<String> getEnattenteExpressionServices(){
+    public ResponseEntity<String> getEnAttenteExpressionServices(){
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8095/centre-project/v1/expression-besoin/statut/"+"En Attente", HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8095/centre-project/v1/expression-besoin/statut/En%20attente", HttpMethod.GET, entity, String.class);
         System.out.println(response);
         return response;
 

@@ -9,7 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String ref;
-    private String userName;
+    private String username;
     @ManyToOne
     private ServiceDemandeur serviceDemandeur;
     @OneToMany
@@ -31,12 +31,12 @@ public class User {
         this.ref = ref;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public ServiceDemandeur getServiceDemandeur() {
