@@ -11,20 +11,17 @@ public class Commande {
     private Long id;
     private String code;
     private String exercice;
-    private String chapitre;
-    private String article;
-    private String paragraphe;
 
+    // todo envoi de mail a fournisseur
 
-
-    private String ligne;
-    private String naturePrestation;
     private String raisonSociale;
     private String adresse;
     private double totalTtc;
     private double totalHt;
     private double TVA;
     private Date dateCommande;
+    private String etablissement;
+    private String serviceDemandeur;
 
     @ManyToOne
     private Employe ordonnateur;
@@ -32,14 +29,23 @@ public class Commande {
     @ManyToOne
     private ExpressionBesoin expressionBesoin;
 
-    @ManyToOne
-    private Etablissement etablissement;
+    //
+    //    @ManyToOne
+    //    private Etablissement etablissement;
 
     @ManyToOne
     private Fournisseur fournisseur;
+    @ManyToOne
+    private Ligne ligne;
+    @ManyToOne
+    private NaturePrestation naturePrestation;
+    @ManyToOne
+    private Chapitre chapitre;
+    @ManyToOne
+    private Article article;
+    @ManyToOne
+    private Paragraphe paragraphe;
 
-     @ManyToOne
-    private ServiceDemandeur serviceDemandeur;
 
     @OneToMany
     private List<CommandeItem> commandeItemList;
@@ -61,14 +67,6 @@ public class Commande {
         this.id = id;
     }
 
-    public ServiceDemandeur getServiceDemandeur() {
-        return serviceDemandeur;
-    }
-
-    public void setServiceDemandeur(ServiceDemandeur serviceDemandeur) {
-        this.serviceDemandeur = serviceDemandeur;
-    }
-
     public String getCode() {
         return code;
     }
@@ -85,44 +83,44 @@ public class Commande {
         this.exercice = exercice;
     }
 
-    public String getChapitre() {
-        return chapitre;
-    }
-
-    public void setChapitre(String chapitre) {
-        this.chapitre = chapitre;
-    }
-
-    public String getArticle() {
-        return article;
-    }
-
-    public void setArticle(String article) {
-        this.article = article;
-    }
-
-    public String getParagraphe() {
-        return paragraphe;
-    }
-
-    public void setParagraphe(String paragraphe) {
-        this.paragraphe = paragraphe;
-    }
-
-    public String getLigne() {
+    public Ligne getLigne() {
         return ligne;
     }
 
-    public void setLigne(String ligne) {
+    public void setLigne(Ligne ligne) {
         this.ligne = ligne;
     }
 
-    public String getNaturePrestation() {
+    public NaturePrestation getNaturePrestation() {
         return naturePrestation;
     }
 
-    public void setNaturePrestation(String naturePrestation) {
+    public void setNaturePrestation(NaturePrestation naturePrestation) {
         this.naturePrestation = naturePrestation;
+    }
+
+    public Chapitre getChapitre() {
+        return chapitre;
+    }
+
+    public void setChapitre(Chapitre chapitre) {
+        this.chapitre = chapitre;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+
+    public Paragraphe getParagraphe() {
+        return paragraphe;
+    }
+
+    public void setParagraphe(Paragraphe paragraphe) {
+        this.paragraphe = paragraphe;
     }
 
     public String getRaisonSociale() {
@@ -156,6 +154,7 @@ public class Commande {
     public void setTotalHt(double totalHt) {
         this.totalHt = totalHt;
     }
+
     public double getTVA() {
         return TVA;
     }
@@ -189,13 +188,13 @@ public class Commande {
         this.expressionBesoin = expressionBesoin;
     }
 
-    public Etablissement getEtablissement() {
-        return etablissement;
-    }
-
-    public void setEtablissement(Etablissement etablissement) {
-        this.etablissement = etablissement;
-    }
+//    public Etablissement getEtablissement() {
+//        return etablissement;
+//    }
+//
+//    public void setEtablissement(Etablissement etablissement) {
+//        this.etablissement = etablissement;
+//    }
 
     public Fournisseur getFournisseur() {
         return fournisseur;
@@ -203,5 +202,21 @@ public class Commande {
 
     public void setFournisseur(Fournisseur fournisseur) {
         this.fournisseur = fournisseur;
+    }
+
+    public String getEtablissement() {
+        return etablissement;
+    }
+
+    public void setEtablissement(String etablissement) {
+        this.etablissement = etablissement;
+    }
+
+    public String getServiceDemandeur() {
+        return serviceDemandeur;
+    }
+
+    public void setServiceDemandeur(String serviceDemandeur) {
+        this.serviceDemandeur = serviceDemandeur;
     }
 }

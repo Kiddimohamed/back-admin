@@ -33,7 +33,7 @@ public class EmployeWs {
         return employeService.findAll();
     }
 
-    @GetMapping("/AllExpressionServices")
+    @GetMapping("/all-expression-services")
     public ResponseEntity<String> getAllExpressionServices() {
         return employeService.getAllExpressionServices();
     }

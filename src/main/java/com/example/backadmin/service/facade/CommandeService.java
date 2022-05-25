@@ -11,7 +11,7 @@ public interface CommandeService {
 
     List<Commande> findByExpressionBesoinReference(String reference);
 
-    List<Commande> findByServiceDemandeurReference(String reference);
+//    List<Commande> findByServiceDemandeurReference(String reference);
 
     int save(Commande commande);
 }

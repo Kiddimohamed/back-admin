@@ -26,11 +26,11 @@ public class CommandeServiceImpl implements CommandeService {
     public List<Commande> findByExpressionBesoinReference(String reference) {
         return commandeDao.findByExpressionBesoinReference(reference);
     }
-
-    @Override
-    public List<Commande> findByServiceDemandeurReference(String reference) {
-        return commandeDao.findByServiceDemandeurReference(reference);
-    }
+//
+//    @Override
+//    public List<Commande> findByServiceDemandeurReference(String reference) {
+//        return commandeDao.findByServiceDemandeurReference(reference);
+//    }
 
     @Override
     public int save(Commande commande) {
@@ -56,10 +56,10 @@ public class CommandeServiceImpl implements CommandeService {
         commande.setOrdonnateur(employe);
         ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(commande.getExpressionBesoin().getReference());
         commande.setExpressionBesoin(expressionBesoin);
-        Etablissement etablissement = etablissementService.findByReference(commande.getEtablissement().getReference());
-        commande.setEtablissement(etablissement);
-        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(commande.getServiceDemandeur().getReference());
-        commande.setServiceDemandeur(serviceDemandeur);
+//        Etablissement etablissement = etablissementService.findByReference(commande.getOrdonnateur().getEtablissement().getReference());
+//        commande.setEtablissement(etablissement);
+//        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(commande.getServiceDemandeur().getReference());
+//        commande.setServiceDemandeur(serviceDemandeur);
         Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
         commande.setFournisseur(fournisseur);
     }

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ReceptionDao extends JpaRepository<Reception,Long> {
-    //TODO creat Dao and Services To Reception and reception item
     Reception findByReferenceReception(String reference);
     List<Reception> findAll();
 }
