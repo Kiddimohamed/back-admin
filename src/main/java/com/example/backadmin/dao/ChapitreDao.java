@@ -11,5 +11,6 @@ public interface ChapitreDao extends JpaRepository<Chapitre,Long> {
     Chapitre findByReference(String reference);
     int deleteByReference(String reference);
     List<Chapitre> findByChapitreTypeReference(String reference);
+    List<Chapitre> findByExerciceReference(String reference);
 
 }

@@ -59,11 +59,11 @@ public class ReportServiceImpl implements ReportService {
         JRBeanCollectionDataSource datesource = new JRBeanCollectionDataSource(data);
         Map<String, Object> parametres = new HashMap<String, Object>();
         parametres.put("exercice", commande.getExercice());
-        parametres.put("chapitre", commande.getChapitre().getChapitreType().getType());
-        parametres.put("article", commande.getArticle().getCode());
-        parametres.put("paragraphe", commande.getParagraphe().getLibellePara());
+        parametres.put("chapitre", commande.getLigne().getParagraphe().getArticle().getChapitre().getChapitreType().getType());
+        parametres.put("article", commande.getLigne().getParagraphe().getArticle().getCode());
+        parametres.put("paragraphe", commande.getLigne().getParagraphe().getLibellePara());
         parametres.put("ligne", commande.getLigne().getCode());
-        parametres.put("natureDePrestation", commande.getNaturePrestation().getTypeNaturePrestation().getLibelle());
+        parametres.put("natureDePrestation", commande.getLigne().getNaturePrestation().getNaturePrestationType().getLibelle());
         parametres.put("raisonSocial", commande.getRaisonSociale());
         parametres.put("adresse",commande.getAdresse());
         parametres.put("dateCommande", commande.getDateCommande());

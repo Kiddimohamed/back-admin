@@ -31,7 +31,6 @@ public class CommandeWs {
 //    public List<Commande> findByServiceDemandeurReference(@PathVariable String reference) {
 //        return commandeService.findByServiceDemandeurReference(reference);
 //    }
-   // todo remplir les dao
 
     @PostMapping("/")
     public int save(@RequestBody Commande commande) {

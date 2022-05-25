@@ -37,14 +37,6 @@ public class Commande {
     private Fournisseur fournisseur;
     @ManyToOne
     private Ligne ligne;
-    @ManyToOne
-    private NaturePrestation naturePrestation;
-    @ManyToOne
-    private Chapitre chapitre;
-    @ManyToOne
-    private Article article;
-    @ManyToOne
-    private Paragraphe paragraphe;
 
 
     @OneToMany
@@ -89,38 +81,6 @@ public class Commande {
 
     public void setLigne(Ligne ligne) {
         this.ligne = ligne;
-    }
-
-    public NaturePrestation getNaturePrestation() {
-        return naturePrestation;
-    }
-
-    public void setNaturePrestation(NaturePrestation naturePrestation) {
-        this.naturePrestation = naturePrestation;
-    }
-
-    public Chapitre getChapitre() {
-        return chapitre;
-    }
-
-    public void setChapitre(Chapitre chapitre) {
-        this.chapitre = chapitre;
-    }
-
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
-        this.article = article;
-    }
-
-    public Paragraphe getParagraphe() {
-        return paragraphe;
-    }
-
-    public void setParagraphe(Paragraphe paragraphe) {
-        this.paragraphe = paragraphe;
     }
 
     public String getRaisonSociale() {
@@ -179,6 +139,7 @@ public class Commande {
     public void setOrdonnateur(Employe ordonnateur) {
         this.ordonnateur = ordonnateur;
     }
+
 
     public ExpressionBesoin getExpressionBesoin() {
         return expressionBesoin;

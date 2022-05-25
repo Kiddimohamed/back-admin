@@ -14,10 +14,8 @@ public interface CommandeDao extends JpaRepository<Commande, Long> {
     List<Commande> findByExpressionBesoinReference(String reference);
     List<Commande> findByFournisseurReferenceFournisseur(String reference);
     List<Commande> findByLigneReference(String reference);
-    List<Commande> findByNaturePrestationReference(String reference);
-    List<Commande> findByChapitreReference(String reference);
-    List<Commande> findByArticleReference(String reference);
-    List<Commande> findByParagrapheReference(String reference);
+// todo find by other classes
+
 //    List<Commande> findByServiceDemandeurReference(String reference);
 
 }

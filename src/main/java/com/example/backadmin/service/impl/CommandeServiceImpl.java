@@ -60,9 +60,27 @@ public class CommandeServiceImpl implements CommandeService {
 //        commande.setEtablissement(etablissement);
 //        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(commande.getServiceDemandeur().getReference());
 //        commande.setServiceDemandeur(serviceDemandeur);
-        Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
+        Fournisseur fournisseur = fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
         commande.setFournisseur(fournisseur);
+        Ligne ligne=ligneService.findByReference(commande.getLigne().getReference());
+        commande.setLigne(ligne);
     }
+
+
+    //jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+
+
+    @Override
+    public List<Commande> findByFournisseurReferenceFournisseur(String reference) {
+        return commandeDao.findByFournisseurReferenceFournisseur(reference);
+    }
+
+    @Override
+    public List<Commande> findByLigneReference(String reference) {
+        return commandeDao.findByLigneReference(reference);
+    }
+
+
 
     @Autowired
     CommandeDao commandeDao;
@@ -73,6 +91,8 @@ public class CommandeServiceImpl implements CommandeService {
     @Autowired
     ExpressionBesoinItemService expressionBesoinItemService;
 
+    @Autowired
+    LigneService ligneService;
     @Autowired
     CommandeItemService commandeItemService;
 

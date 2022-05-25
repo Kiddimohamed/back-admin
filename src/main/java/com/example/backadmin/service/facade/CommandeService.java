@@ -14,4 +14,10 @@ public interface CommandeService {
 //    List<Commande> findByServiceDemandeurReference(String reference);
 
     int save(Commande commande);
+
+    List<Commande> findByFournisseurReferenceFournisseur(String reference);
+
+    List<Commande> findByLigneReference(String reference);
+
+
 }

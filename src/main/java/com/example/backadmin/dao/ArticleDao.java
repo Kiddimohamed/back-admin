@@ -13,5 +13,3 @@ public interface ArticleDao extends JpaRepository<Article,Long> {
      List<Article> findByChapitreReference(String reference);
 
 }
-//todo ajouter les listes
-//todo Reparer dao avec Les class

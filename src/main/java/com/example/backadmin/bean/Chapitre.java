@@ -11,6 +11,8 @@ public class Chapitre {
     private String reference;
     private String libelleType;
     @ManyToOne
+    Exercice exercice;
+    @ManyToOne
     private ChapitreType chapitreType;
     @OneToMany
     private List<Article> articleList;
@@ -53,5 +55,13 @@ public class Chapitre {
 
     public void setLibelleType(String libelleType) {
         this.libelleType = libelleType;
+    }
+
+    public Exercice getExercice() {
+        return exercice;
+    }
+
+    public void setExercice(Exercice exercice) {
+        this.exercice = exercice;
     }
 }
