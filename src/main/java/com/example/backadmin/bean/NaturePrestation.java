@@ -11,7 +11,7 @@ public class NaturePrestation {
     private String libelle;
     private String libelleType;
     @ManyToOne
-    private TypeNaturePrestation typeNaturePrestation;
+    private NaturePrestationType naturePrestationType;
     //todo report Commande Modify L empllacement de total
 
     public Long getId() {
@@ -39,12 +39,12 @@ public class NaturePrestation {
         this.libelle = libelle;
     }
 
-    public TypeNaturePrestation getTypeNaturePrestation() {
-        return typeNaturePrestation;
+    public NaturePrestationType getNaturePrestationType() {
+        return naturePrestationType;
     }
 
-    public void setTypeNaturePrestation(TypeNaturePrestation typeNaturePrestation) {
-        this.typeNaturePrestation = typeNaturePrestation;
+    public void setNaturePrestationType(NaturePrestationType naturePrestationType) {
+        this.naturePrestationType = naturePrestationType;
 
     }
 

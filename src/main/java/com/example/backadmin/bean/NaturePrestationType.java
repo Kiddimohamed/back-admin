@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class TypeNaturePrestation {
+public class NaturePrestationType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;

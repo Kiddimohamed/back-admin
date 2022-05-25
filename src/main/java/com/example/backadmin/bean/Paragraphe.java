@@ -8,7 +8,7 @@ public class Paragraphe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long  id;
-    private String referencePara;
+    private String reference;
 
     private String libelleArticle;
     private String libelleChapitre;
@@ -28,12 +28,12 @@ public class Paragraphe {
         this.id = id;
     }
 
-    public String getReferencePara() {
-        return referencePara;
+    public String getReference() {
+        return reference;
     }
 
-    public void setReferencePara(String referencePara) {
-        this.referencePara = referencePara;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public Article getArticle() {
