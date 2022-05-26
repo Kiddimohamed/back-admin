@@ -46,6 +46,7 @@ public class ArticleServiceImpl implements ArticleService {
         } else if (article.getChapitre().getReference() == null) {
             return -2;
         } else {
+            article.setLibelleChapitre(article.getChapitre().getLibelle());
             articleDao.save(article);
             return 1;
         }

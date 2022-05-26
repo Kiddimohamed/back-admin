@@ -8,4 +8,6 @@ public interface ExerciceService {
     Exercice findByReference(String reference);
 
     List<Exercice> findAll();
+
+    int save(Exercice exercice);
 }

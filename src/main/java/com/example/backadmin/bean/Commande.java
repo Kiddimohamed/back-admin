@@ -1,5 +1,7 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +12,6 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
-    private String exercice;
 
     // todo envoi de mail a fournisseur
 
@@ -36,13 +37,15 @@ public class Commande {
     @ManyToOne
     private Fournisseur fournisseur;
     @ManyToOne
-    private Ligne ligne;
+    private Rubrique rubrique;
 
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
     private List<CommandeItem> commandeItemList;
 
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public List<CommandeItem> getCommandeItemList() {
         return commandeItemList;
     }
@@ -67,21 +70,6 @@ public class Commande {
         this.code = code;
     }
 
-    public String getExercice() {
-        return exercice;
-    }
-
-    public void setExercice(String exercice) {
-        this.exercice = exercice;
-    }
-
-    public Ligne getLigne() {
-        return ligne;
-    }
-
-    public void setLigne(Ligne ligne) {
-        this.ligne = ligne;
-    }
 
     public String getRaisonSociale() {
         return raisonSociale;
@@ -156,6 +144,14 @@ public class Commande {
 //    public void setEtablissement(Etablissement etablissement) {
 //        this.etablissement = etablissement;
 //    }
+
+    public Rubrique getRubrique() {
+        return rubrique;
+    }
+
+    public void setRubrique(Rubrique rubrique) {
+        this.rubrique = rubrique;
+    }
 
     public Fournisseur getFournisseur() {
         return fournisseur;

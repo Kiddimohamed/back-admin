@@ -48,9 +48,16 @@ public class LigneServiceImpl implements LigneService {
         prepare(ligne);
         if (ligne1 != null) {
             return -1;
-        } else if (ligne.getParagraphe() == null || ligne.getLibelleNaturePrestation() == null) {
-            return -2;
+        } else if (ligne.getParagraphe() == null ) {
+            return -3;
+
+        }else if(ligne.getNaturePrestation() == null) {
+          return -4;
         } else {
+            ligne.setLibelleArticle(ligne.getParagraphe().getLibelleArticle());
+            ligne.setLibelleChapitre(ligne.getParagraphe().getLibelleChapitre());
+            ligne.setLibelleParagraphe(ligne.getParagraphe().getCode());
+            ligne.setCodeNaturePrestation(ligne.getNaturePrestation().getLibelle());
             ligneDao.save(ligne);
             return 1;
         }

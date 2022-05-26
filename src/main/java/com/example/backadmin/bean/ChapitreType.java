@@ -1,5 +1,7 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class ChapitreType {
     private Long id;
     private String reference;
     private String type;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
     private List<Chapitre> chapitres;
 

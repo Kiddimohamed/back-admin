@@ -44,6 +44,7 @@ public class NaturePrestationServiceImpl implements NaturePrestationService {
         }else if(naturePrestation.getNaturePrestationType()==null){
             return -2;}
         else{
+            naturePrestation.setLibelleType(naturePrestation.getNaturePrestationType().getLibelle());
             naturePrestationDao.save(naturePrestation);
             return 1;
         }

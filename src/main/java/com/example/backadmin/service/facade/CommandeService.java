@@ -17,7 +17,7 @@ public interface CommandeService {
 
     List<Commande> findByFournisseurReferenceFournisseur(String reference);
 
-    List<Commande> findByLigneReference(String reference);
+    List<Commande> findByRubriqueReference(String reference);
 
 
 }

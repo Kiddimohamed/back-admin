@@ -2,9 +2,11 @@ package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.Chapitre;
 import com.example.backadmin.bean.ChapitreType;
+import com.example.backadmin.bean.Exercice;
 import com.example.backadmin.dao.ChapitreDao;
 import com.example.backadmin.service.facade.ChapitreService;
 import com.example.backadmin.service.facade.ChapitreTypeService;
+import com.example.backadmin.service.facade.ExerciceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,9 +49,11 @@ public class ChapitreServiceImpl implements ChapitreService {
         prepare(chapitre);
         if(chapitre1!=null){
             return -1;
-        }else if (chapitre.getChapitreType()==null){
+        }else if (chapitre.getChapitreType()==null || chapitre.getExercice()==null){
             return -2;
         }else{
+            chapitre.setLibelleExercice(chapitre.getExercice().getLibelle());
+            chapitre.setLibelleType(chapitre.getChapitreType().getType());
             chapitreDao.save(chapitre);
             return 1;
         }
@@ -58,8 +62,12 @@ public class ChapitreServiceImpl implements ChapitreService {
     private void prepare(Chapitre chapitre) {
         ChapitreType chapitreType= chapitreTypeService.findByReference(chapitre.getChapitreType().getReference());
         chapitre.setChapitreType(chapitreType);
+        Exercice exercice=exerciceService.findByReference(chapitre.getExercice().getReference());
+        chapitre.setExercice(exercice);
     }
 
+    @Autowired
+    ExerciceService exerciceService;
     @Autowired
     ChapitreDao chapitreDao;
     @Autowired

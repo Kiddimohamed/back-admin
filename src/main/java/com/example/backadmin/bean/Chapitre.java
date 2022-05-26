@@ -1,5 +1,7 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,11 +11,14 @@ public class Chapitre {
     @Id
     private Long id;
     private String reference;
+    private String libelle;
     private String libelleType;
+    private String libelleExercice;
     @ManyToOne
     Exercice exercice;
     @ManyToOne
     private ChapitreType chapitreType;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
     private List<Article> articleList;
 
@@ -63,5 +68,21 @@ public class Chapitre {
 
     public void setExercice(Exercice exercice) {
         this.exercice = exercice;
+    }
+
+    public String getLibelleExercice() {
+        return libelleExercice;
+    }
+
+    public void setLibelleExercice(String libelleExercice) {
+        this.libelleExercice = libelleExercice;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 }

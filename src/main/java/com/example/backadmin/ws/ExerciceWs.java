@@ -3,10 +3,8 @@ package com.example.backadmin.ws;
 import com.example.backadmin.bean.Exercice;
 import com.example.backadmin.service.facade.ExerciceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
@@ -21,6 +19,12 @@ public class ExerciceWs {
     @GetMapping("/")
     public List<Exercice> findAll() {
         return exerciceService.findAll();
+    }
+
+
+    @PostMapping("/")
+    public int save(@RequestBody Exercice exercice) {
+        return exerciceService.save(exercice);
     }
 
     @Autowired

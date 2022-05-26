@@ -8,11 +8,14 @@ public class NaturePrestation {
     @Id
     private Long id;
     private String reference;
+    private String code;
     private String libelle;
     private String libelleType;
+
     @ManyToOne
     private NaturePrestationType naturePrestationType;
-    //todo report Commande Modify L empllacement de total
+
+    //todo report Commande Modify L emplacement de total
 
     public Long getId() {
 
@@ -46,6 +49,14 @@ public class NaturePrestation {
     public void setNaturePrestationType(NaturePrestationType naturePrestationType) {
         this.naturePrestationType = naturePrestationType;
 
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getLibelleType() {

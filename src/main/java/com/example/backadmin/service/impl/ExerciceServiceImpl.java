@@ -20,6 +20,17 @@ public class ExerciceServiceImpl implements ExerciceService {
         return exerciceDao.findAll();
     }
 
+
+    @Override
+    public int save(Exercice exercice){
+        Exercice exercice1=findByReference(exercice.getReference());
+        if (exercice1!=null){
+            return -1;
+        }else {
+            exerciceDao.save(exercice);
+            return 1;
+        }
+    }
     @Autowired
     ExerciceDao exerciceDao;
 }

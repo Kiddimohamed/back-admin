@@ -19,7 +19,7 @@ public class ExpressionBesoin {
     private double totalHT;
     private double TVA;
 //    private String userName;
-
+//todo libelle chapitre and ChapitretYpe
 
     @OneToMany
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

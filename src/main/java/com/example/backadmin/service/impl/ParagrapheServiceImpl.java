@@ -44,6 +44,8 @@ public class ParagrapheServiceImpl implements ParagrapheService {
         }else if(paragraphe.getArticle()==null){
             return -2;
         }else{
+            paragraphe.setLibelleArticle(paragraphe.getArticle().getCode());
+            paragraphe.setLibelleChapitre(paragraphe.getArticle().getLibelleChapitre());
             paragrapheDao.save(paragraphe);
             return 1;
         }
