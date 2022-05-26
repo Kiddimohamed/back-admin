@@ -3,8 +3,10 @@ package com.example.backadmin.service.impl;
 import com.example.backadmin.bean.ExpressionBesoin;
 import com.example.backadmin.bean.Produit;
 import com.example.backadmin.bean.ServiceDemandeur;
-import com.example.backadmin.bean.User;
+
 import com.example.backadmin.dao.ExpressionBesoinDao;
+import com.example.backadmin.security.bean.User;
+import com.example.backadmin.security.service.facade.UserService;
 import com.example.backadmin.service.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
