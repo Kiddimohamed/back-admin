@@ -14,9 +14,13 @@ public class Fournisseur {
     private String faxFournisseur;
     private String villeFournisseur;
     private String emailFournisseur;
+    @OneToMany
+    private List<TypeFournisseur> typeFournisseur;
 
     @OneToMany
     private List<Commande> commandeList;
+    @OneToMany
+    private List<ExpressionBesoinItem> expressionBesoinItems;
 // TODO CategoryProduit
 
 
@@ -92,5 +96,21 @@ public class Fournisseur {
 
     public void setCommandeList(List<Commande> commandeList) {
         this.commandeList = commandeList;
+    }
+
+    public List<TypeFournisseur> getTypeFournisseur() {
+        return typeFournisseur;
+    }
+
+    public void setTypeFournisseur(List<TypeFournisseur> typeFournisseur) {
+        this.typeFournisseur = typeFournisseur;
+    }
+
+    public List<ExpressionBesoinItem> getExpressionBesoinItems() {
+        return expressionBesoinItems;
+    }
+
+    public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
+        this.expressionBesoinItems = expressionBesoinItems;
     }
 }

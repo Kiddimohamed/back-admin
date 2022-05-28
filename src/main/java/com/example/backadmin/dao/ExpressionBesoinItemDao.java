@@ -11,6 +11,8 @@ import java.util.List;
 public interface ExpressionBesoinItemDao extends JpaRepository<ExpressionBesoinItem, Long> {
 
     List<ExpressionBesoinItem> findByExpressionBesoinReference(String reference);
+    List<ExpressionBesoinItem> findByExpressionBesoinStatut(String statut);
+    List<ExpressionBesoinItem> findByStatut(String statut);
     ExpressionBesoinItem findByCode(String code);
     @Query("SELECT coalesce(max(expI.id), 0) FROM ExpressionBesoinItem expI")
     Long getMaxId();

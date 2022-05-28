@@ -34,6 +34,11 @@ public class FournisseurWs {
         return fournisseurService.save(fournisseur);
     }
 
+    @GetMapping("/type-fournisseur/reference/{reference}")
+    public List<Fournisseur> findByTypeFournisseurReference(@PathVariable String reference) {
+        return fournisseurService.findByTypeFournisseurReference(reference);
+    }
+
     @Autowired
     FournisseurService fournisseurService;
 }

@@ -13,23 +13,35 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/admin/expression-besoin-item")
 public class ExpressionBesoinItemWs {
+    @GetMapping("/expression-besoin/statut/{statut}")
+    public List<ExpressionBesoinItem> findByExpressionBesoinStatut(@PathVariable String statut) {
+        return expressionBesoinItemService.findByExpressionBesoinStatut(statut);
+    }
 
     @GetMapping("/expression-besoin/reference/{reference}")
     public List<ExpressionBesoinItem> findByExpressionBesoinReference(@PathVariable String reference) {
         return expressionBesoinItemService.findByExpressionBesoinReference(reference);
     }
+
     @GetMapping("/")
     public List<ExpressionBesoinItem> findAll() {
         return expressionBesoinItemService.findAll();
     }
+
     @GetMapping("/code/{code}")
 
-    public ExpressionBesoinItem findByCode(@PathVariable  String code) {
+    public ExpressionBesoinItem findByCode(@PathVariable String code) {
         return expressionBesoinItemService.findByCode(code);
     }
-@PostMapping("/")
+
+    @PostMapping("/")
     public int save(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
         return expressionBesoinItemService.save(expressionBesoinItem);
+    }
+
+    @GetMapping("/statut/{statut}")
+    public List<ExpressionBesoinItem> findByStatut(@PathVariable String statut) {
+        return expressionBesoinItemService.findByStatut(statut);
     }
 
     @Autowired

@@ -9,9 +9,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String ref;
-    private String userName;
-    @ManyToOne
-    private ServiceDemandeur serviceDemandeur;
+    private String username;
+    private String serviceDemandeur;
     @OneToMany
     private List<ExpressionBesoin> expressionBesoins;
 
@@ -31,19 +30,19 @@ public class User {
         this.ref = ref;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String Username) {
+        this.username = Username;
     }
 
-    public ServiceDemandeur getServiceDemandeur() {
+    public String getServiceDemandeur() {
         return serviceDemandeur;
     }
 
-    public void setServiceDemandeur(ServiceDemandeur serviceDemandeur) {
+    public void setServiceDemandeur(String serviceDemandeur) {
         this.serviceDemandeur = serviceDemandeur;
     }
 

@@ -21,6 +21,11 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     }
 
     @Override
+    public List<ExpressionBesoinItem> findByExpressionBesoinStatut(String statut) {
+        return expressionBesoinItemDao.findByExpressionBesoinStatut(statut);
+    }
+
+    @Override
     public List<ExpressionBesoinItem> findAll() {
         return expressionBesoinItemDao.findAll();
     }
@@ -43,6 +48,11 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
             expressionBesoinItemDao.save(expressionBesoinItem);
             return 1;
         }
+    }
+
+    @Override
+    public List<ExpressionBesoinItem> findByStatut(String statut) {
+        return expressionBesoinItemDao.findByStatut(statut);
     }
 
     @Override

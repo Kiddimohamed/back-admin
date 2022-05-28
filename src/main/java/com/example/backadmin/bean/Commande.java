@@ -14,9 +14,6 @@ public class Commande {
     private String chapitre;
     private String article;
     private String paragraphe;
-
-
-
     private String ligne;
     private String naturePrestation;
     private String raisonSociale;

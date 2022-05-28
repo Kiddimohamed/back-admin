@@ -90,7 +90,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
         expressionBesoin.setDateExpressionBesoin(LocalDateTime.now());
 //        expressionBesoin.setStatut("en Cours");
-//        expressionBesoin.setUserName(expressionBesoin.getUser().getUserName());
+//        expressionBesoin.setUsername(expressionBesoin.getUser().getUsername());
         expressionBesoinDao.save(expressionBesoin);
         System.out.println(expressionBesoin.getStatut());
 //        expressionBesoin.getExpressionBesoinItemList().forEach(expressionBesoinItem -> {
