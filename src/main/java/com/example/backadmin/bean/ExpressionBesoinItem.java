@@ -18,6 +18,9 @@ public class ExpressionBesoinItem {
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ExpressionBesoin expressionBesoin;
+    @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Fournisseur fournisseur;
 
     @ManyToOne
     private Produit produit;
@@ -88,6 +91,12 @@ public class ExpressionBesoinItem {
         this.statut = statut;
     }
 
-
+    public Fournisseur getFournisseur() {
+        return fournisseur;
     }
+
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
+    }
+}
 

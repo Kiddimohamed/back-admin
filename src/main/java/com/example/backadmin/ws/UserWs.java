@@ -1,7 +1,7 @@
 package com.example.backadmin.ws;
 
-import com.example.backadmin.bean.User;
-import com.example.backadmin.service.facade.UserService;
+import com.example.backadmin.security.bean.User;
+import com.example.backadmin.security.service.facade.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +21,7 @@ public class UserWs {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody User user) {
+    public User save(@RequestBody User user) {
         return userService.save(user);
     }
 

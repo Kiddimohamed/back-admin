@@ -20,8 +20,8 @@ public class Fournisseur {
 
     @OneToMany
     private List<Commande> commandeList;
-    @OneToMany
-    private List<ExpressionBesoinItem> expressionBesoinItems;
+
+
 // TODO CategoryProduit
 
 
@@ -113,11 +113,5 @@ public class Fournisseur {
         this.typeFournisseur = typeFournisseur;
     }
 
-    public List<ExpressionBesoinItem> getExpressionBesoinItems() {
-        return expressionBesoinItems;
-    }
 
-    public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
-        this.expressionBesoinItems = expressionBesoinItems;
-    }
 }

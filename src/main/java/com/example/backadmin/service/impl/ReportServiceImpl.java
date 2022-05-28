@@ -52,27 +52,27 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public String imprimerCommande(String commandeCode) throws FileNotFoundException, JRException {
-        List<CommandeItem> data =commandeItemService.findByCommandeCode(commandeCode);
-        Commande commande=commandeService.findByCode(commandeCode);
-        File file = ResourceUtils.getFile("classpath:Reports\\BonDeCommande.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource datesource = new JRBeanCollectionDataSource(data);
-        Map<String, Object> parametres = new HashMap<String, Object>();
-        parametres.put("exercice", commande.getExercice());
-        parametres.put("chapitre", commande.getChapitre().getChapitreType().getType());
-        parametres.put("article", commande.getArticle().getCode());
-        parametres.put("paragraphe", commande.getParagraphe().getLibellePara());
-        parametres.put("ligne", commande.getLigne().getCode());
-        parametres.put("natureDePrestation", commande.getNaturePrestation().getTypeNaturePrestation().getLibelle());
-        parametres.put("raisonSocial", commande.getRaisonSociale());
-        parametres.put("adresse",commande.getAdresse());
-        parametres.put("dateCommande", commande.getDateCommande());
-        parametres.put("totalTtc", commande.getTotalTtc());
-        parametres.put("totalHt", commande.getTotalHt());
-        parametres.put("tva",commande.getTVA());
-        JasperPrint print = JasperFillManager.fillReport(jasperReport, parametres,datesource);
-        JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\Hp\\Desktop" + "\\BonDeCommande_" + commande.getCode() + "_" + commande.getExpressionBesoin().getReference() + ".pdf");
-
+//        List<CommandeItem> data =commandeItemService.findByCommandeCode(commandeCode);
+//        Commande commande=commandeService.findByCode(commandeCode);
+//        File file = ResourceUtils.getFile("classpath:Reports\\BonDeCommande.jrxml");
+//        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+//        JRBeanCollectionDataSource datesource = new JRBeanCollectionDataSource(data);
+//        Map<String, Object> parametres = new HashMap<String, Object>();
+//        parametres.put("exercice", commande.getExercice());
+//        parametres.put("chapitre", commande.getChapitre().getChapitreType().getType());
+//        parametres.put("article", commande.getArticle().getCode());
+//        parametres.put("paragraphe", commande.getParagraphe().getLibellePara());
+//        parametres.put("ligne", commande.getLigne().getCode());
+//        parametres.put("natureDePrestation", commande.getNaturePrestation().getTypeNaturePrestation().getLibelle());
+//        parametres.put("raisonSocial", commande.getRaisonSociale());
+//        parametres.put("adresse",commande.getAdresse());
+//        parametres.put("dateCommande", commande.getDateCommande());
+//        parametres.put("totalTtc", commande.getTotalTtc());
+//        parametres.put("totalHt", commande.getTotalHt());
+//        parametres.put("tva",commande.getTVA());
+//        JasperPrint print = JasperFillManager.fillReport(jasperReport, parametres,datesource);
+//        JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\Hp\\Desktop" + "\\BonDeCommande_" + commande.getCode() + "_" + commande.getExpressionBesoin().getReference() + ".pdf");
+//
 
         return "okey";
     }
