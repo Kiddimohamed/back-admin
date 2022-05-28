@@ -1,6 +1,6 @@
 package com.example.backadmin.service.impl;
 
-import com.example.backadmin.bean.Etablissement;
+
 import com.example.backadmin.bean.ServiceDemandeur;
 import com.example.backadmin.dao.ServiceDemandeurDao;
 import com.example.backadmin.service.facade.EtablissementService;

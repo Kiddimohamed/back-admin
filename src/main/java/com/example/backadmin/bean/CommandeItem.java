@@ -8,7 +8,10 @@ public class CommandeItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
+    private String libelle;
     private double quantite;
+    private double prixUHT;
+    private double prixTHT;
 
     @OneToOne
     private Produit produit;
@@ -57,4 +60,27 @@ public class CommandeItem {
         this.quantite = quantite;
     }
 
+    public double getPrixUHT() {
+        return prixUHT;
     }
+
+    public void setPrixUHT(double prixUHT) {
+        this.prixUHT = prixUHT;
+    }
+
+    public double getPrixTHT() {
+        return prixTHT;
+    }
+
+    public void setPrixTHT(double prixTHT) {
+        this.prixTHT = prixTHT;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+}

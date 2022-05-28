@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EtablissementDao extends JpaRepository<Etablissement, Long> {
-
     Etablissement findByReference(String reference);
     Etablissement findByVille(String ville);
 }

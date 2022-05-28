@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.9.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fax" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9de91684-f173-4cba-85eb-10be453770f8">
-	<parameter name="dateFax" class="java.util.Date"/>
+	<parameter name="dateFax" class="java.time.LocalDateTime"/>
 	<parameter name="ville" class="java.lang.String"/>
 	<parameter name="nomEmploye" class="java.lang.String"/>
 	<parameter name="telephoneEmploye" class="java.lang.String"/>
@@ -15,23 +15,6 @@
 	<parameter name="fax" class="java.lang.String"/>
 	<parameter name="email" class="java.lang.String"/>
 	<parameter name="siteWeb" class="java.lang.String"/>
-	<field name="nom_fournisseur" class="java.lang.String"/>
-	<field name="telephone_fournisseur" class="java.lang.String"/>
-	<field name="fax_fournisseur" class="java.lang.String"/>
-	<field name="fax_employe" class="java.lang.String"/>
-	<field name="nom_employe" class="java.lang.String"/>
-	<field name="telephone_employe" class="java.lang.String"/>
-	<field name="objet_fax" class="java.lang.String"/>
-	<field name="date_fax" class="java.time.LocalDateTime"/>
-	<field name="adresse" class="java.lang.String"/>
-	<field name="ville" class="java.lang.String"/>
-	<field name="telephone" class="java.lang.String"/>
-	<field name="fax" class="java.lang.String"/>
-	<field name="email" class="java.lang.String"/>
-	<field name="site_web" class="java.lang.String"/>
-	<field name="libelle" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="libelle"/>
-	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -67,7 +50,7 @@ La Présidence]]></text>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="266" splitType="Stretch">
+		<band height="254" splitType="Stretch">
 			<rectangle>
 				<reportElement x="30" y="7" width="490" height="21" uuid="aa3bf9c4-e13b-43ef-acf5-b59dc8078974"/>
 				<graphicElement>
@@ -131,49 +114,49 @@ La Présidence]]></text>
 			</line>
 			<textField>
 				<reportElement x="32" y="134" width="246" height="36" uuid="49838546-373b-4ded-ad14-cbd12c1315c9"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Emetteur " + $P{nomEmploye}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="279" y="134" width="241" height="36" uuid="6fd67a2e-ebe8-46cb-903c-ea800487a245"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Destinataire " +$P{nomFournisseur}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="172" width="246" height="28" uuid="926b84bf-1c97-48a3-bc99-4310d14406a3"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Téléphone :  " + $P{telephoneEmploye}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="198" width="246" height="28" uuid="730991c9-a064-4197-86fa-0822003b1d58"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Fax : "+ $P{faxEmploye}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="276" y="173" width="246" height="25" uuid="daf5de86-a562-438e-ae7d-ee3badf17603"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Téléphone :  " + $P{telephoneFournisseur}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="278" y="200" width="246" height="24" uuid="65977046-a93e-46b6-8941-8d904e4e2597"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Fax : "+ $P{faxFournisseur}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="225" width="488" height="28" uuid="b0dd6bc5-c44e-4017-b20b-9875b2a906e8"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Objet : "+ $P{objetFax}]]></textFieldExpression>
@@ -181,9 +164,9 @@ La Présidence]]></text>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="160">
+		<band height="292">
 			<staticText>
-				<reportElement x="30" y="-1" width="490" height="151" uuid="a217070b-bda2-4c37-bc65-08dd4f1dcee6"/>
+				<reportElement x="30" y="15" width="490" height="151" uuid="a217070b-bda2-4c37-bc65-08dd4f1dcee6"/>
 				<textElement>
 					<font size="13" isBold="false" isItalic="false"/>
 				</textElement>
@@ -191,17 +174,20 @@ La Présidence]]></text>
 
 		Prière de nous faire parvenir dans les plus brefs délais, votre meilleure offre pour les articles cités dans le tableau ci-joint (prière de nous retourner cette lettre signés et cachetés ).
 		Dans l'attente de votre réponse, veuillez agréer l'expression de nous sentiments distingués.
-⁭نتىنىتنىتنىن ]]></text>
+]]></text>
 			</staticText>
 		</band>
 	</detail>
-	<summary>
-		<band height="42" splitType="Stretch">
-			<line>
-				<reportElement x="-20" y="3" width="595" height="1" uuid="a59f7f0a-008b-4a8b-89fd-b250f2660110"/>
-			</line>
+	<columnFooter>
+		<band height="54"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="52"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="65">
 			<textField>
-				<reportElement x="20" y="10" width="511" height="31" uuid="cbceda78-334f-4cb1-ae14-63e91762e4a6"/>
+				<reportElement x="0" y="17" width="570" height="31" uuid="cbceda78-334f-4cb1-ae14-63e91762e4a6"/>
 				<textElement textAlignment="Center">
 					<font size="10"/>
 				</textElement>
@@ -209,5 +195,5 @@ La Présidence]]></text>
 "Email : "+ $P{email}+   "    Site web :  "+ $P{siteWeb}]]></textFieldExpression>
 			</textField>
 		</band>
-	</summary>
+	</lastPageFooter>
 </jasperReport>

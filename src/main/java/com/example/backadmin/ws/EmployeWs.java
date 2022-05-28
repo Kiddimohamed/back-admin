@@ -31,14 +31,14 @@ public class EmployeWs {
         return employeService.findAll();
     }
 
-    @GetMapping("/AllExpressionServices")
+    @GetMapping("/all-expression-services")
     public ResponseEntity<String> getAllExpressionServices() {
         return employeService.getAllExpressionServices();
     }
 
-    @GetMapping("/EnattenteExpressionServices")
-    public ResponseEntity<String> getEnattenteExpressionServices() {
-        return employeService.getEnattenteExpressionServices();
+    @GetMapping("/en-attente-expression-services")
+    public ResponseEntity<String> getEnAttenteExpressionServices() {
+        return employeService.getEnAttenteExpressionServices();
     }
 
     @PostMapping("/")

@@ -1,5 +1,6 @@
 package com.example.backadmin.service.impl;
 
+import com.example.backadmin.bean.Commande;
 import com.example.backadmin.bean.CommandeItem;
 import com.example.backadmin.bean.Produit;
 import com.example.backadmin.dao.CommandeItemDao;
@@ -26,6 +27,7 @@ public class CommandeItemServiceImpl implements CommandeItemService {
     @Override
     public int save(CommandeItem commandeItem) {
         CommandeItem commandeItem1 = findByCode(commandeItem.getCode());
+
         Produit produit = produitService.findByCode(commandeItem.getProduit().getCode());
         commandeItem.setProduit(produit);
 
@@ -47,6 +49,8 @@ public class CommandeItemServiceImpl implements CommandeItemService {
     @Autowired
     private CommandeItemDao commandeItemDao;
 
+    @Autowired
+    private CommandeService commandeService;
     @Autowired
     private ProduitService produitService;
 

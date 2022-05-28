@@ -26,11 +26,11 @@ public class CommandeServiceImpl implements CommandeService {
     public List<Commande> findByExpressionBesoinReference(String reference) {
         return commandeDao.findByExpressionBesoinReference(reference);
     }
-
-    @Override
-    public List<Commande> findByServiceDemandeurReference(String reference) {
-        return commandeDao.findByServiceDemandeurReference(reference);
-    }
+//
+//    @Override
+//    public List<Commande> findByServiceDemandeurReference(String reference) {
+//        return commandeDao.findByServiceDemandeurReference(reference);
+//    }
 
     @Override
     public int save(Commande commande) {
@@ -39,8 +39,9 @@ public class CommandeServiceImpl implements CommandeService {
         if (commande1 != null) {
             return -1;
         } else if (commande.getEtablissement() == null || commande.getExpressionBesoin() == null || commande.getFournisseur() == null || commande.getOrdonnateur() == null || commande.getServiceDemandeur() == null) {
-            return -2;
+            return -4;
         } else {
+            commande.getExpressionBesoin().setStatut("En attent de livraison");
             commandeDao.save(commande);
             commande.getCommandeItemList().forEach(commandeItem -> {
                 commandeItem.setCommande(commande);
@@ -55,10 +56,12 @@ public class CommandeServiceImpl implements CommandeService {
         commande.setOrdonnateur(employe);
         ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(commande.getExpressionBesoin().getReference());
         commande.setExpressionBesoin(expressionBesoin);
-        Etablissement etablissement = etablissementService.findByReference(commande.getEtablissement().getReference());
-        commande.setEtablissement(etablissement);
-        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(commande.getServiceDemandeur().getReference());
-        commande.setServiceDemandeur(serviceDemandeur);
+//        Etablissement etablissement = etablissementService.findByReference(commande.getOrdonnateur().getEtablissement().getReference());
+//        commande.setEtablissement(etablissement);
+//        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(commande.getServiceDemandeur().getReference());
+//        commande.setServiceDemandeur(serviceDemandeur);
+        Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
+        commande.setFournisseur(fournisseur);
     }
 
     @Autowired
@@ -74,6 +77,8 @@ public class CommandeServiceImpl implements CommandeService {
     CommandeItemService commandeItemService;
 
 
+    @Autowired
+    FournisseurService fournisseurService;
     @Autowired
     EtablissementService etablissementService;
 
