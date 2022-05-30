@@ -1,5 +1,6 @@
 package com.example.backadmin.bean;
 
+import com.example.backadmin.security.bean.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class ExpressionBesoin {
     private double totalHT;
     private double TVA;
 //    private String userName;
-//todo libelle chapitre and ChapitretYpe
+
 
     @OneToMany
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

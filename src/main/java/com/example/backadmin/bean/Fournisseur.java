@@ -15,9 +15,13 @@ public class Fournisseur {
     private String faxFournisseur;
     private String villeFournisseur;
     private String emailFournisseur;
+    @OneToMany
+    private List<TypeFournisseur> typeFournisseur;
 
     @OneToMany
     private List<Commande> commandeList;
+
+
 // TODO CategoryProduit
 
 
@@ -100,4 +104,14 @@ public class Fournisseur {
     public void setCommandeList(List<Commande> commandeList) {
         this.commandeList = commandeList;
     }
+
+    public List<TypeFournisseur> getTypeFournisseur() {
+        return typeFournisseur;
+    }
+
+    public void setTypeFournisseur(List<TypeFournisseur> typeFournisseur) {
+        this.typeFournisseur = typeFournisseur;
+    }
+
+
 }

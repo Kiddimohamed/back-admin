@@ -3,6 +3,7 @@ package com.example.backadmin.bean;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class ExpressionBesoinItem {
@@ -12,14 +13,18 @@ public class ExpressionBesoinItem {
     private double quantite;
     private String code;
     private String libelle;
-
+    private String statut;
 
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ExpressionBesoin expressionBesoin;
+    @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Fournisseur fournisseur;
 
     @ManyToOne
     private Produit produit;
+
 
     public double getQuantite() {
         return quantite;
@@ -77,4 +82,21 @@ public class ExpressionBesoinItem {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public Fournisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
+    }
 }
+

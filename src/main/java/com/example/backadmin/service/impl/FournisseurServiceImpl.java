@@ -1,5 +1,4 @@
 package com.example.backadmin.service.impl;
-
 import com.example.backadmin.bean.Fournisseur;
 import com.example.backadmin.dao.FournisseurDao;
 import com.example.backadmin.service.facade.FournisseurService;
@@ -35,6 +34,11 @@ public class FournisseurServiceImpl implements FournisseurService {
             fournisseurDao.save(fournisseur);
             return 1;
         }
+    }
+
+    @Override
+    public List<Fournisseur> findByTypeFournisseurReference(String reference) {
+        return fournisseurDao.findByTypeFournisseurReference(reference);
     }
 
     @Autowired

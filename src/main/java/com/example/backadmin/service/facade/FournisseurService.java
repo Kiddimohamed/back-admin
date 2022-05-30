@@ -12,4 +12,7 @@ public interface FournisseurService {
     List<Fournisseur> findAll();
 
     int save(Fournisseur fournisseur);
+
+    List<Fournisseur> findByTypeFournisseurReference(String reference);
+
 }
