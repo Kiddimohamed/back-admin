@@ -41,14 +41,15 @@ public class UserServiceImpl implements UserService {
     //
     @Override
     public int save(User user) {
-        ServiceDemandeur serviceDemandeur=serviceDemandeurService.findByReference(user.getServiceDemandeur().getReference());
-        user.setServiceDemandeur(serviceDemandeur);
+//        ServiceDemandeur serviceDemandeur=serviceDemandeurService.findByReference(user.getServiceDemandeur().getReference());
+//        user.setServiceDemandeur(serviceDemandeur);
         User user1=findByRef(user.getRef());
         if (user1!=null){
-            return -1;
-        }else if(serviceDemandeur==null){
-            return -2;
-        }else{
+            return -1;}
+//        }else if(serviceDemandeur==null){
+//            return -2;
+//        }
+else{
             userDao.save(user);
             return 1;
         }

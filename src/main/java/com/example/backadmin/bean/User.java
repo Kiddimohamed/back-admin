@@ -10,8 +10,8 @@ public class User {
     private Long id;
     private String ref;
     private String username;
-    @ManyToOne
-    private ServiceDemandeur serviceDemandeur;
+//    @ManyToOne
+    private String serviceDemandeur;
     @OneToMany
     private List<ExpressionBesoin> expressionBesoins;
 
@@ -39,11 +39,11 @@ public class User {
         this.username = username;
     }
 
-    public ServiceDemandeur getServiceDemandeur() {
+    public String getServiceDemandeur() {
         return serviceDemandeur;
     }
 
-    public void setServiceDemandeur(ServiceDemandeur serviceDemandeur) {
+    public void setServiceDemandeur(String serviceDemandeur) {
         this.serviceDemandeur = serviceDemandeur;
     }
 

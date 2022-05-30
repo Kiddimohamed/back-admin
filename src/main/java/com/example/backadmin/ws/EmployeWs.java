@@ -38,6 +38,7 @@ public class EmployeWs {
         return employeService.getAllExpressionServices();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/en-attente-expression-services")
     public ResponseEntity<String> getEnAttenteExpressionServices() {
         return employeService.getEnAttenteExpressionServices();
