@@ -36,10 +36,7 @@ public class FournisseurServiceImpl implements FournisseurService {
         }
     }
 
-    @Override
-    public List<Fournisseur> findByTypeFournisseurReference(String reference) {
-        return fournisseurDao.findByTypeFournisseurReference(reference);
-    }
+
 
     @Autowired
     FournisseurDao fournisseurDao;

@@ -4,9 +4,9 @@ import com.example.backadmin.bean.ExpressionBesoin;
 import com.example.backadmin.bean.Produit;
 import com.example.backadmin.bean.ServiceDemandeur;
 
+import com.example.backadmin.bean.User;
 import com.example.backadmin.dao.ExpressionBesoinDao;
-import com.example.backadmin.security.bean.User;
-import com.example.backadmin.security.service.facade.UserService;
+
 import com.example.backadmin.service.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,14 +60,16 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 //        Etablissement etablissement = etablissementService.findByReference(expressionBesoin.getServiceDemandeur().getEtablissement().getReference());
 //
         userService.save(expressionBesoin.getUser());
-        User user = userService.findByRef(expressionBesoin.getUser().getRef());
+        User user = userService.findByRef(expressionBesoin.getUser().getReference());
           expressionBesoin.setUser(user);
+
+
 //        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(expressionBesoin.getServiceDemandeur().getReference());
 //
 ////        serviceDemandeur.setEtablissement(etablissement);
 //      expressionBesoin.setServiceDemandeur(serviceDemandeur);
 
-//        expressionBesoin.getExpressionBesoinItemList().forEach(e -> {
+//        expressionBesoin.getExpressionBesoinItems().forEach(e -> {
 //
 //            e.setExpressionBesoin(expressionBesoin);
 
@@ -95,8 +97,12 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 //        expressionBesoin.setStatut("en Cours");
 //        expressionBesoin.setUsername(expressionBesoin.getUser().getUsername());
         expressionBesoinDao.save(expressionBesoin);
+//        expressionBesoin.getExpressionBesoinItems().forEach(e->{
+//            e.setExpressionBesoin(expressionBesoin);
+//            expressionBesoinItemService.save(e);
+//        });
         System.out.println(expressionBesoin.getStatut());
-//        expressionBesoin.getExpressionBesoinItemList().forEach(expressionBesoinItem -> {
+//        expressionBesoin.getExpressionBesoinItems().forEach(expressionBesoinItem -> {
 //            produitService.save(expressionBesoinItem.getProduit());
 //            Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
 //

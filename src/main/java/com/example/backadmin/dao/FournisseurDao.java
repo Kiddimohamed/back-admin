@@ -11,5 +11,4 @@ public interface FournisseurDao  extends JpaRepository<Fournisseur,Long> {
 
     Fournisseur findByReferenceFournisseur(String reference);
     Fournisseur findByVilleFournisseur(String ville);
-    List<Fournisseur> findByTypeFournisseurReference(String reference);
 }

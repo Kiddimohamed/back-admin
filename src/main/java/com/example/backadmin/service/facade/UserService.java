@@ -1,14 +1,12 @@
-package com.example.backadmin.security.service.facade;
+package com.example.backadmin.service.facade;
 
 
-import com.example.backadmin.security.bean.User;
+import com.example.backadmin.bean.User;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface UserService extends UserDetailsService {
-    String signIn(User user);
+public interface UserService  {
 
 
     List<User> findAll();
