@@ -3,7 +3,6 @@ package com.example.backadmin.ws;
 import com.example.backadmin.bean.Exercice;
 import com.example.backadmin.service.facade.ExerciceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

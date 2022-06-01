@@ -1,8 +1,6 @@
 package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.ExpressionBesoin;
-import com.example.backadmin.bean.Produit;
-import com.example.backadmin.bean.ServiceDemandeur;
 
 import com.example.backadmin.bean.User;
 import com.example.backadmin.dao.ExpressionBesoinDao;
@@ -60,7 +58,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 //        Etablissement etablissement = etablissementService.findByReference(expressionBesoin.getServiceDemandeur().getEtablissement().getReference());
 //
         userService.save(expressionBesoin.getUser());
-        User user = userService.findByRef(expressionBesoin.getUser().getReference());
+        User user = userService.findByRef(expressionBesoin.getUser().getRef());
           expressionBesoin.setUser(user);
 
 

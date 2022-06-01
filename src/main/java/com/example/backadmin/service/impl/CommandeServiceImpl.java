@@ -43,7 +43,7 @@ public class CommandeServiceImpl implements CommandeService {
         } else {
             commande.getExpressionBesoin().setStatut("En attent de livraison");
             commande.setEtablissement(commande.getOrdonnateur().getEtablissement().getReference());
-            commande.setServiceDemandeur(commande.getExpressionBesoin().getUser().getServiceDemandeur());
+//            commande.setServiceDemandeur(commande.getExpressionBesoin().getUser().getServiceDemandeur());
 
             commandeDao.save(commande);
             commande.getCommandeItemList().forEach(commandeItem -> {

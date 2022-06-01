@@ -14,6 +14,7 @@ public class ExpressionBesoinItem {
     private String code;
     private String libelle;
     private String statut;
+    private String ref;
 
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -97,6 +98,14 @@ public class ExpressionBesoinItem {
 
     public void setFournisseur(Fournisseur fournisseur) {
         this.fournisseur = fournisseur;
+    }
+
+    public String getRef() {
+        return ref;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
     }
 }
 

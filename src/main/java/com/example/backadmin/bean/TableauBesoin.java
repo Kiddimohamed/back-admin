@@ -15,8 +15,8 @@ public class TableauBesoin {
     private double ht;
     private LocalDateTime dateTableauBesoin;
 
-    @OneToMany
-    private List<Fournisseur> fournisseurs;
+    @OneToOne
+    private  Fournisseur fournisseur;
     @OneToMany
     private List<ExpressionBesoinItem> expressionBesoinItems;
 
@@ -68,12 +68,12 @@ public class TableauBesoin {
         this.ht = ht;
     }
 
-    public List<Fournisseur> getFournisseurs() {
-        return fournisseurs;
+    public Fournisseur getFournisseur() {
+        return fournisseur;
     }
 
-    public void setFournisseurs(List<Fournisseur> fournisseurs) {
-        this.fournisseurs = fournisseurs;
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
     }
 
     public LocalDateTime getDateTableauBesoin() {

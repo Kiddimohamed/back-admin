@@ -2,13 +2,11 @@ package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.User;
 import com.example.backadmin.dao.UserDao;
-
-import com.example.backadmin.service.facade.ServiceDemandeurService;
 import com.example.backadmin.service.facade.UserService;
+import com.example.backadmin.service.facade.ServiceDemandeurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -25,7 +23,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     ServiceDemandeurService serviceDemandeurService;
 
-
+//    @Override
+//    public String signIn(User user) {
+//        try {
+//            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+//                    user.getUsername(), user.getPassword()
+//            ));
+//        } catch (BadCredentialsException e) {
+//            throw new BadCredentialsException("bad creditiel for username " + user.getUsername());
+//        }
+//        User loadUserByUsername = loadUserByUsername(user.getUsername());
+//        String token = jwtUtil.generateToken(loadUserByUsername);
+//        return token;
+//    }
 
     @Override
     public List<User> findAll() {
@@ -34,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByRef(String ref) {
-        return userDao.findByReference(ref);
+        return userDao.findByRef(ref);
     }
 
     @Override
@@ -63,26 +73,29 @@ public class UserServiceImpl implements UserService {
         // }
     }
 
+    @Override
+    public ResponseEntity<String> getAllService() {
+        return null;
+    }
+
+
+//    @Override
+//    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userDao.findByUsername(username);
+//        if (user == null || user.getId() == null) {
+//            throw new UsernameNotFoundException("user " + username + " not founded");
+//        } else {
+//            return user;
+//        }
+//
+//    }
+
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
     private WebClient.Builder webClientBuilder;
 
-    @Override
-    public ResponseEntity<String> getAllService() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8096/v1/admin/service-demandeur/", HttpMethod.GET, entity, String.class);
-        return response;
 
-    }
-
-
-    @Autowired
-    UserService userService;
-
-    //microservice
 
     @Override
     public ResponseEntity<String> getAllServices() {
@@ -91,9 +104,15 @@ public class UserServiceImpl implements UserService {
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
         ResponseEntity<String> response = restTemplate.exchange("http://localhost:8096/v1/admin/service-demandeur/", HttpMethod.GET, entity, String.class);
         return response;
-
-
     }
+
+
+    @Autowired
+    UserService userService;
+
+    //microservice
+
+
 
     @Override
     public int findServiceIfExist(String service){
