@@ -1,6 +1,6 @@
 package com.example.backadmin.bean;
 
-import com.example.backadmin.security.bean.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -21,10 +21,10 @@ public class ExpressionBesoin {
     private double TVA;
 //    private String Username;
 
-
+    @JsonIgnore
     @OneToMany
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<ExpressionBesoinItem> expressionBesoinItemList;
+    private List<ExpressionBesoinItem> expressionBesoinItems;
     @OneToMany
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Commande> commandeList;
@@ -65,12 +65,12 @@ public class ExpressionBesoin {
         this.dateExpressionBesoin = dateExpressionBesoin;
     }
 
-    public List<ExpressionBesoinItem> getExpressionBesoinItemList() {
-        return expressionBesoinItemList;
+    public List<ExpressionBesoinItem> getExpressionBesoinItems() {
+        return expressionBesoinItems;
     }
 
-    public void setExpressionBesoinItemList(List<ExpressionBesoinItem> expressionBesoinItemList) {
-        this.expressionBesoinItemList = expressionBesoinItemList;
+    public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
+        this.expressionBesoinItems = expressionBesoinItems;
     }
 
     public String getStatut() {

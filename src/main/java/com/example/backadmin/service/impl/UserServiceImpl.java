@@ -1,21 +1,13 @@
-package com.example.backadmin.security.service.impl;
+package com.example.backadmin.service.impl;
 
-import com.example.backadmin.bean.ServiceDemandeur;
-import com.example.backadmin.security.bean.User;
+import com.example.backadmin.bean.User;
+import com.example.backadmin.dao.UserDao;
 
-
-import com.example.backadmin.security.dao.UserDao;
-import com.example.backadmin.security.service.facade.RoleService;
-import com.example.backadmin.security.service.facade.UserService;
-import com.example.backadmin.security.service.util.JwtUtil;
 import com.example.backadmin.service.facade.ServiceDemandeurService;
+import com.example.backadmin.service.facade.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -29,30 +21,11 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private RoleService roleService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private JwtUtil jwtUtil;
+
     @Autowired
     ServiceDemandeurService serviceDemandeurService;
 
-    @Override
-    public String signIn(User user) {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    user.getUsername(), user.getPassword()
-            ));
-        } catch (BadCredentialsException e) {
-            throw new BadCredentialsException("bad creditiel for username " + user.getUsername());
-        }
-        User loadUserByUsername = loadUserByUsername(user.getUsername());
-        String token = jwtUtil.generateToken(loadUserByUsername);
-        return token;
-    }
+
 
     @Override
     public List<User> findAll() {
@@ -61,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByRef(String ref) {
-        return userDao.findByRef(ref);
+        return userDao.findByReference(ref);
     }
 
     @Override
@@ -86,20 +59,8 @@ public class UserServiceImpl implements UserService {
 
         //   roleService.save(user.getAuthorities());
         //   userDao.save(user);
-          return null;
+          return userDao.save(user);
         // }
-    }
-
-
-    @Override
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(username);
-        if (user == null || user.getId() == null) {
-            throw new UsernameNotFoundException("user " + username + " not founded");
-        } else {
-            return user;
-        }
-
     }
 
     @Autowired

@@ -38,13 +38,13 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     @Override
     public int save(ExpressionBesoinItem expressionBesoinItem) {
         ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(expressionBesoinItem.getExpressionBesoin().getReference());
-        Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
-        expressionBesoinItem.setProduit(produit);
+//        Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
+//        expressionBesoinItem.setProduit(produit);
         expressionBesoinItem.setExpressionBesoin(expressionBesoin);
         if (expressionBesoinItem.getQuantite() <= 0) {
             return -1;
         } else {
-            expressionBesoinItem.setLibelle(expressionBesoinItem.getProduit().getLibelle());
+//            expressionBesoinItem.setLibelle(expressionBesoinItem.getProduit().getLibelle());
             expressionBesoinItemDao.save(expressionBesoinItem);
             return 1;
         }

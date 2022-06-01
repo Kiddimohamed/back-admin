@@ -13,6 +13,5 @@ public interface FournisseurService {
 
     int save(Fournisseur fournisseur);
 
-    List<Fournisseur> findByTypeFournisseurReference(String reference);
 
 }
