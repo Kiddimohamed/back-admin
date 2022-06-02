@@ -1,5 +1,7 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,15 +10,18 @@ public class Paragraphe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long  id;
-    private String referencePara;
+    private String reference;
+    private String code;
+    private String libellePara;
+
 
     private String libelleArticle;
     private String libelleChapitre;
-    private String libellePara;
 
 
     @ManyToOne
     private Article article;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
     private List<Ligne> ligneList;
 
@@ -28,12 +33,12 @@ public class Paragraphe {
         this.id = id;
     }
 
-    public String getReferencePara() {
-        return referencePara;
+    public String getReference() {
+        return reference;
     }
 
-    public void setReferencePara(String referencePara) {
-        this.referencePara = referencePara;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public Article getArticle() {
@@ -74,6 +79,14 @@ public class Paragraphe {
 
     public void setLibellePara(String libellePara) {
         this.libellePara = libellePara;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
 

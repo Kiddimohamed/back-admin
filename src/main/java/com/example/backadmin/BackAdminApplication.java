@@ -1,17 +1,16 @@
 package com.example.backadmin;
 
 
-import com.example.backadmin.bean.User;
 import com.example.backadmin.service.facade.UserService;
+import com.example.backadmin.service.impl.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
-
-import java.util.Arrays;
+import org.springframework.context.event.EventListener;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 
 @SpringBootApplication
 public class BackAdminApplication {
@@ -31,4 +30,13 @@ public class BackAdminApplication {
     }
     @Autowired
     private UserService userService;
+
+    /*@Autowired
+    private EmailSenderService senderService;
+
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void sendMail() {
+        senderService.sendEmail();
+    }*/
 }

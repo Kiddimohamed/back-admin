@@ -6,15 +6,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class ChapitreType {
-    @Id
+public class Exercice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
     private String reference;
-    private String type;
+    private String libelle;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
-    private List<Chapitre> chapitres;
+    private List<Chapitre> chapitreList;
 
     public Long getId() {
         return id;
@@ -32,19 +33,19 @@ public class ChapitreType {
         this.reference = reference;
     }
 
-    public String getType() {
-        return type;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
-    public List<Chapitre> getChapitres() {
-        return chapitres;
+    public List<Chapitre> getChapitreList() {
+        return chapitreList;
     }
 
-    public void setChapitres(List<Chapitre> chapitres) {
-        this.chapitres = chapitres;
+    public void setChapitreList(List<Chapitre> chapitreList) {
+        this.chapitreList = chapitreList;
     }
 }

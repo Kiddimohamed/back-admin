@@ -1,6 +1,7 @@
 package com.example.backadmin.bean;
 
 
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
@@ -10,11 +11,17 @@ public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String reference;
+    private String ref;
     private String username;
     private String serviceDemandeur;
+
     @OneToMany
     private List<ExpressionBesoin> expressionBesoins;
+//
+//    public ServiceDemandeur getServiceDemandeur() {return serviceDemandeur;}
+//
+//    public void setServiceDemandeur(ServiceDemandeur serviceDemandeur) {this.serviceDemandeur = serviceDemandeur;}
+
 
     public Long getId() {
         return id;
@@ -24,12 +31,12 @@ public class User  {
         this.id = id;
     }
 
-    public String getReference() {
-        return reference;
+    public String getRef() {
+        return ref;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public void setRef(String ref) {
+        this.ref = ref;
     }
 
     public String getUsername() {

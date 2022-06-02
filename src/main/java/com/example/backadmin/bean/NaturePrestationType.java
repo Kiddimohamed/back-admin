@@ -1,15 +1,19 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class TypeNaturePrestation {
+public class NaturePrestationType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     private String reference;
     private String libelle;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
     private List<NaturePrestation> naturePrestationList;
 

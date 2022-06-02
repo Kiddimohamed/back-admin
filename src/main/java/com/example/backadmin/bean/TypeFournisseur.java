@@ -9,6 +9,24 @@ public class TypeFournisseur {
     public Long id;
     public String reference;
     public String type;
+    public String description;
+    public String image;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Long getId() {
         return id;

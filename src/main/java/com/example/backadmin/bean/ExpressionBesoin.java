@@ -19,7 +19,7 @@ public class ExpressionBesoin {
     private double totalTTC;
     private double totalHT;
     private double TVA;
-//    private String Username;
+//    private String userName;
 
     @JsonIgnore
     @OneToMany
@@ -117,12 +117,12 @@ public class ExpressionBesoin {
         return TVA;
     }
 
-//    public String getUsername() {
-//        return Username;
+//    public String getUserName() {
+//        return userName;
 //    }
 //
-//    public void setUsername(String Username) {
-//        this.Username = Username;
+//    public void setUserName(String userName) {
+//        this.userName = userName;
 //    }
 
     public void setTVA(double TVA) {

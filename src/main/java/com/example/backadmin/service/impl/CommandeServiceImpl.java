@@ -42,6 +42,9 @@ public class CommandeServiceImpl implements CommandeService {
             return -4;
         } else {
             commande.getExpressionBesoin().setStatut("En attent de livraison");
+            commande.setEtablissement(commande.getOrdonnateur().getEtablissement().getReference());
+//            commande.setServiceDemandeur(commande.getExpressionBesoin().getUser().getServiceDemandeur());
+
             commandeDao.save(commande);
             commande.getCommandeItemList().forEach(commandeItem -> {
                 commandeItem.setCommande(commande);
@@ -60,9 +63,27 @@ public class CommandeServiceImpl implements CommandeService {
 //        commande.setEtablissement(etablissement);
 //        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(commande.getServiceDemandeur().getReference());
 //        commande.setServiceDemandeur(serviceDemandeur);
-        Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
+        Fournisseur fournisseur = fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
         commande.setFournisseur(fournisseur);
+        Rubrique rubrique=rubriqueService.findByReference(commande.getRubrique().getReference());
+        commande.setRubrique(rubrique);
     }
+
+
+    //jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+
+
+    @Override
+    public List<Commande> findByFournisseurReferenceFournisseur(String reference) {
+        return commandeDao.findByFournisseurReferenceFournisseur(reference);
+    }
+
+    @Override
+    public List<Commande> findByRubriqueReference(String reference) {
+        return commandeDao.findByRubriqueReference(reference);
+    }
+
+
 
     @Autowired
     CommandeDao commandeDao;
@@ -73,6 +94,10 @@ public class CommandeServiceImpl implements CommandeService {
     @Autowired
     ExpressionBesoinItemService expressionBesoinItemService;
 
+    @Autowired
+    RubriqueService rubriqueService;
+    @Autowired
+    LigneService ligneService;
     @Autowired
     CommandeItemService commandeItemService;
 

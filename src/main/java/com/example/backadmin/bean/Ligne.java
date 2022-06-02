@@ -1,6 +1,9 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Ligne {
@@ -9,23 +12,27 @@ public class Ligne {
     private Long id;
     private String reference;
     private String code;
-    private String rebrique;
+    private String libelle;
     private String creditPaiement;
     private String Rap;
     private String Arrieres;
-    private String codeFonc;
-    private String codeCGNC;
+    private String libelleFonc;
+    private String libelleCGNC;
 
     private String libelleArticle;
     private String libelleChapitre;
     private String libelleParagraphe;
-    private String libelleNaturePrestation;
+    private String codeNaturePrestation;
 
     @ManyToOne
     private NaturePrestation naturePrestation;
 
     @ManyToOne
     private Paragraphe paragraphe;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany
+    private List<Rubrique> rubriqueList;
 
     public Long getId() {
         return id;
@@ -43,21 +50,15 @@ public class Ligne {
         this.reference = reference;
     }
 
-    public String getCode() {
-        return code;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
-    public String getRebrique() {
-        return rebrique;
-    }
 
-    public void setRebrique(String rebrique) {
-        this.rebrique = rebrique;
-    }
 
     public String getCreditPaiement() {
         return creditPaiement;
@@ -83,20 +84,20 @@ public class Ligne {
         Arrieres = arrieres;
     }
 
-    public String getCodeFonc() {
-        return codeFonc;
+    public String getLibelleFonc() {
+        return libelleFonc;
     }
 
-    public void setCodeFonc(String codeFonc) {
-        this.codeFonc = codeFonc;
+    public void setLibelleFonc(String libelleFonc) {
+        this.libelleFonc = libelleFonc;
     }
 
-    public String getCodeCGNC() {
-        return codeCGNC;
+    public String getLibelleCGNC() {
+        return libelleCGNC;
     }
 
-    public void setCodeCGNC(String codeCGNC) {
-        this.codeCGNC = codeCGNC;
+    public void setLibelleCGNC(String libelleCGNC) {
+        this.libelleCGNC = libelleCGNC;
     }
 
     public String getLibelleArticle() {
@@ -123,12 +124,12 @@ public class Ligne {
         this.libelleParagraphe = libelleParagraphe;
     }
 
-    public String getLibelleNaturePrestation() {
-        return libelleNaturePrestation;
+    public String getCodeNaturePrestation() {
+        return codeNaturePrestation;
     }
 
-    public void setLibelleNaturePrestation(String libelleNaturePrestation) {
-        this.libelleNaturePrestation = libelleNaturePrestation;
+    public void setCodeNaturePrestation(String codeNaturePrestation) {
+        this.codeNaturePrestation = codeNaturePrestation;
     }
 
     public NaturePrestation getNaturePrestation() {
@@ -145,5 +146,21 @@ public class Ligne {
 
     public void setParagraphe(Paragraphe paragraphe) {
         this.paragraphe = paragraphe;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public List<Rubrique> getRubriqueList() {
+        return rubriqueList;
+    }
+
+    public void setRubriqueList(List<Rubrique> rubriqueList) {
+        this.rubriqueList = rubriqueList;
     }
 }

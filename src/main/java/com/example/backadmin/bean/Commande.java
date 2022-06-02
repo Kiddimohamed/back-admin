@@ -1,5 +1,7 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -10,18 +12,17 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
-    private String exercice;
-    private String chapitre;
-    private String article;
-    private String paragraphe;
-    private String ligne;
-    private String naturePrestation;
+
+    // todo envoi de mail a fournisseur
+
     private String raisonSociale;
     private String adresse;
     private double totalTtc;
     private double totalHt;
     private double TVA;
     private Date dateCommande;
+    private String etablissement;
+    private String serviceDemandeur;
 
     @ManyToOne
     private Employe ordonnateur;
@@ -29,19 +30,22 @@ public class Commande {
     @ManyToOne
     private ExpressionBesoin expressionBesoin;
 
-    @ManyToOne
-    private Etablissement etablissement;
+    //
+    //    @ManyToOne
+    //    private Etablissement etablissement;
 
     @ManyToOne
     private Fournisseur fournisseur;
+    @ManyToOne
+    private Rubrique rubrique;
 
-     @ManyToOne
-    private ServiceDemandeur serviceDemandeur;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
     private List<CommandeItem> commandeItemList;
 
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public List<CommandeItem> getCommandeItemList() {
         return commandeItemList;
     }
@@ -58,14 +62,6 @@ public class Commande {
         this.id = id;
     }
 
-    public ServiceDemandeur getServiceDemandeur() {
-        return serviceDemandeur;
-    }
-
-    public void setServiceDemandeur(ServiceDemandeur serviceDemandeur) {
-        this.serviceDemandeur = serviceDemandeur;
-    }
-
     public String getCode() {
         return code;
     }
@@ -74,53 +70,6 @@ public class Commande {
         this.code = code;
     }
 
-    public String getExercice() {
-        return exercice;
-    }
-
-    public void setExercice(String exercice) {
-        this.exercice = exercice;
-    }
-
-    public String getChapitre() {
-        return chapitre;
-    }
-
-    public void setChapitre(String chapitre) {
-        this.chapitre = chapitre;
-    }
-
-    public String getArticle() {
-        return article;
-    }
-
-    public void setArticle(String article) {
-        this.article = article;
-    }
-
-    public String getParagraphe() {
-        return paragraphe;
-    }
-
-    public void setParagraphe(String paragraphe) {
-        this.paragraphe = paragraphe;
-    }
-
-    public String getLigne() {
-        return ligne;
-    }
-
-    public void setLigne(String ligne) {
-        this.ligne = ligne;
-    }
-
-    public String getNaturePrestation() {
-        return naturePrestation;
-    }
-
-    public void setNaturePrestation(String naturePrestation) {
-        this.naturePrestation = naturePrestation;
-    }
 
     public String getRaisonSociale() {
         return raisonSociale;
@@ -153,6 +102,7 @@ public class Commande {
     public void setTotalHt(double totalHt) {
         this.totalHt = totalHt;
     }
+
     public double getTVA() {
         return TVA;
     }
@@ -178,6 +128,7 @@ public class Commande {
         this.ordonnateur = ordonnateur;
     }
 
+
     public ExpressionBesoin getExpressionBesoin() {
         return expressionBesoin;
     }
@@ -186,12 +137,20 @@ public class Commande {
         this.expressionBesoin = expressionBesoin;
     }
 
-    public Etablissement getEtablissement() {
-        return etablissement;
+//    public Etablissement getEtablissement() {
+//        return etablissement;
+//    }
+//
+//    public void setEtablissement(Etablissement etablissement) {
+//        this.etablissement = etablissement;
+//    }
+
+    public Rubrique getRubrique() {
+        return rubrique;
     }
 
-    public void setEtablissement(Etablissement etablissement) {
-        this.etablissement = etablissement;
+    public void setRubrique(Rubrique rubrique) {
+        this.rubrique = rubrique;
     }
 
     public Fournisseur getFournisseur() {
@@ -200,5 +159,21 @@ public class Commande {
 
     public void setFournisseur(Fournisseur fournisseur) {
         this.fournisseur = fournisseur;
+    }
+
+    public String getEtablissement() {
+        return etablissement;
+    }
+
+    public void setEtablissement(String etablissement) {
+        this.etablissement = etablissement;
+    }
+
+    public String getServiceDemandeur() {
+        return serviceDemandeur;
+    }
+
+    public void setServiceDemandeur(String serviceDemandeur) {
+        this.serviceDemandeur = serviceDemandeur;
     }
 }
