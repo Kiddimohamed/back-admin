@@ -17,9 +17,9 @@ public class Fournisseur {
     private String emailFournisseur;
 
 
-
     @OneToMany
     private List<Commande> commandeList;
+
 
 
 // TODO CategoryProduit
@@ -104,8 +104,6 @@ public class Fournisseur {
     public void setCommandeList(List<Commande> commandeList) {
         this.commandeList = commandeList;
     }
-
-
 
 
 }

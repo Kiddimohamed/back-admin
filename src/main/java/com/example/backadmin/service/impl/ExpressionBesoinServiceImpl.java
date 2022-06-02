@@ -58,10 +58,12 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     private void prepare(ExpressionBesoin expressionBesoin) {
 //        Etablissement etablissement = etablissementService.findByReference(expressionBesoin.getServiceDemandeur().getEtablissement().getReference());
-//
-        userService.save(expressionBesoin.getUser());
+
         User user = userService.findByRef(expressionBesoin.getUser().getReference());
-          expressionBesoin.setUser(user);
+        if (user == null) {
+            userService.save(expressionBesoin.getUser());
+        }
+        expressionBesoin.setUser(user);
 
 
 //        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(expressionBesoin.getServiceDemandeur().getReference());

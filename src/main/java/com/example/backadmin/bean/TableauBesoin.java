@@ -10,15 +10,11 @@ public class TableauBesoin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
-    private double tva;
-    private double ttc;
-    private double ht;
-    private LocalDateTime dateTableauBesoin;
 
-    @OneToMany
-    private List<Fournisseur> fournisseurs;
-    @OneToMany
-    private List<ExpressionBesoinItem> expressionBesoinItems;
+    @ManyToOne
+    private ExpressionBesoin expressionBesoin;
+    @ManyToOne
+    private Fournisseur fournisseur;
 
     public Long getId() {
         return id;
@@ -36,51 +32,25 @@ public class TableauBesoin {
         this.reference = reference;
     }
 
-    public List<ExpressionBesoinItem> getExpressionBesoinItems() {
-        return expressionBesoinItems;
+
+
+
+
+    public ExpressionBesoin getExpressionBesoin() {
+        return expressionBesoin;
     }
 
-    public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
-        this.expressionBesoinItems = expressionBesoinItems;
+    public void setExpressionBesoin(ExpressionBesoin expressionBesoin) {
+        this.expressionBesoin = expressionBesoin;
     }
 
-    public double getTva() {
-        return tva;
+    public Fournisseur getFournisseur() {
+        return fournisseur;
     }
 
-    public void setTva(double tva) {
-        this.tva = tva;
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
     }
 
-    public double getTtc() {
-        return ttc;
-    }
 
-    public void setTtc(double ttc) {
-        this.ttc = ttc;
-    }
-
-    public double getHt() {
-        return ht;
-    }
-
-    public void setHt(double ht) {
-        this.ht = ht;
-    }
-
-    public List<Fournisseur> getFournisseurs() {
-        return fournisseurs;
-    }
-
-    public void setFournisseurs(List<Fournisseur> fournisseurs) {
-        this.fournisseurs = fournisseurs;
-    }
-
-    public LocalDateTime getDateTableauBesoin() {
-        return dateTableauBesoin;
-    }
-
-    public void setDateTableauBesoin(LocalDateTime dateTableauBesoin) {
-        this.dateTableauBesoin = dateTableauBesoin;
-    }
 }
