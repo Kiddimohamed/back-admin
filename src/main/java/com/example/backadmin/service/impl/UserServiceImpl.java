@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByRef(String ref) {
-        return userDao.findByRef(ref);
+    public User findByReference(String ref) {
+        return userDao.findByReference(ref);
     }
 
     @Override

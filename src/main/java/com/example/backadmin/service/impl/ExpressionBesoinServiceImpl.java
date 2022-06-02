@@ -59,7 +59,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     private void prepare(ExpressionBesoin expressionBesoin) {
 //        Etablissement etablissement = etablissementService.findByReference(expressionBesoin.getServiceDemandeur().getEtablissement().getReference());
 
-        User user = userService.findByRef(expressionBesoin.getUser().getReference());
+        User user = userService.findByReference(expressionBesoin.getUser().getReference());
         if (user == null) {
             userService.save(expressionBesoin.getUser());
         }
@@ -99,10 +99,10 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 //        expressionBesoin.setStatut("en Cours");
 //        expressionBesoin.setUsername(expressionBesoin.getUser().getUsername());
         expressionBesoinDao.save(expressionBesoin);
-//        expressionBesoin.getExpressionBesoinItems().forEach(e->{
-//            e.setExpressionBesoin(expressionBesoin);
-//            expressionBesoinItemService.save(e);
-//        });
+        expressionBesoin.getExpressionBesoinItems().forEach(e->{
+            e.setExpressionBesoin(expressionBesoin);
+            expressionBesoinItemService.save(e);
+        });
         System.out.println(expressionBesoin.getStatut());
 //        expressionBesoin.getExpressionBesoinItems().forEach(expressionBesoinItem -> {
 //            produitService.save(expressionBesoinItem.getProduit());

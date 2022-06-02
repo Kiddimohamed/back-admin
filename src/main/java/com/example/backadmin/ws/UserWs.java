@@ -14,7 +14,7 @@ public class UserWs {
 
     @GetMapping("/ref/{ref}")
     public User findByRef(@PathVariable String ref) {
-        return userService.findByRef(ref);
+        return userService.findByReference(ref);
     }
 
     @GetMapping("/Username/{name}") public User findByUsername(@PathVariable String name) {

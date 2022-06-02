@@ -11,7 +11,7 @@ public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String ref;
+    private String reference;
     private String username;
     private String serviceDemandeur;
 
@@ -31,12 +31,12 @@ public class User  {
         this.id = id;
     }
 
-    public String getRef() {
-        return ref;
+    public String getReference() {
+        return reference;
     }
 
-    public void setRef(String ref) {
-        this.ref = ref;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public String getUsername() {

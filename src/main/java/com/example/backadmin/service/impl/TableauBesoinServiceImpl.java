@@ -1,5 +1,6 @@
 package com.example.backadmin.service.impl;
 
+import com.example.backadmin.bean.Fournisseur;
 import com.example.backadmin.bean.TableauBesoin;
 import com.example.backadmin.dao.TableauBesoinDao;
 import com.example.backadmin.service.facade.ExpressionBesoinService;
@@ -12,6 +13,10 @@ import org.springframework.stereotype.Service;
 public class TableauBesoinServiceImpl implements TableauBesoinService {
     @Override
     public void save(TableauBesoin tableauBesoin){
+        Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(tableauBesoin.getFournisseur().getReferenceFournisseur());
+        tableauBesoin.setFournisseur(fournisseur);
+
+
         tableauBesoinDao.save(tableauBesoin);
     }
 

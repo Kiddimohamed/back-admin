@@ -11,7 +11,7 @@ public interface UserService  {
 
     List<User> findAll();
 
-    User findByRef(String ref);
+    User findByReference(String ref);
 
 
     User findByUsername(String username);
