@@ -38,6 +38,7 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     @Override
     public int save(ExpressionBesoinItem expressionBesoinItem) {
 //        ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(expressionBesoinItem.getExpressionBesoin().getReference());
+       produitService.save(expressionBesoinItem.getProduit());
         Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
         expressionBesoinItem.setProduit(produit);
 //        expressionBesoinItem.setExpressionBesoin(expressionBesoin);

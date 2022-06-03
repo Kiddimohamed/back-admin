@@ -20,7 +20,15 @@ public class ExpressionBesoinWs {
         return expressionBesoinService.findByReference(reference);
     }
 
-    //    @GetMapping("/service-demandeur/reference/{reference}")
+    @PostMapping("/isNull/")
+    public void saveNull(@RequestBody  ExpressionBesoin expressionBesoin) {
+        expressionBesoinService.saveNull(expressionBesoin);
+    }
+
+    public Long getMaxId() {
+        return expressionBesoinService.getMaxId();
+    }
+//    @GetMapping("/service-demandeur/reference/{reference}")
 //    public List<ExpressionBesoin> findByServiceDemandeurReference(@PathVariable String reference) {
 //        return expressionBesoinService.findByServiceDemandeurReference(reference);
 //    }

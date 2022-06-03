@@ -1,17 +1,13 @@
 package com.example.backadmin.service.impl;
 
-import com.example.backadmin.bean.ExpressionBesoin;
-import com.example.backadmin.bean.Produit;
-import com.example.backadmin.bean.ServiceDemandeur;
+import com.example.backadmin.bean.*;
 
-import com.example.backadmin.bean.User;
 import com.example.backadmin.dao.ExpressionBesoinDao;
 
 import com.example.backadmin.service.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -44,7 +40,6 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     @Override
     public int save(ExpressionBesoin expressionBesoin) {
-        prepare(expressionBesoin);
 
 //        int res = validate(expressionBesoin);
 //        if (res > 0) {
@@ -58,11 +53,11 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     private void prepare(ExpressionBesoin expressionBesoin) {
 //        Etablissement etablissement = etablissementService.findByReference(expressionBesoin.getServiceDemandeur().getEtablissement().getReference());
-
+        userService.save(expressionBesoin.getUser());
         User user = userService.findByReference(expressionBesoin.getUser().getReference());
-        if (user == null) {
-            userService.save(expressionBesoin.getUser());
-        }
+//        if (user == null) {
+//            userService.save(expressionBesoin.getUser());
+//        }
         expressionBesoin.setUser(user);
 
 
@@ -79,6 +74,12 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 //        });
     }
 
+    @Override
+    public void saveNull(ExpressionBesoin expressionBesoin) {
+        prepare(expressionBesoin);
+        expressionBesoinDao.save(expressionBesoin);
+
+    }
 
     private int validate(ExpressionBesoin expressionBesoin) {
         ExpressionBesoin expressionBesoin1 = findByReference(expressionBesoin.getReference());
@@ -95,28 +96,15 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     public int handelprocess(ExpressionBesoin expressionBesoin) {
 
-        expressionBesoin.setDateExpressionBesoin(LocalDateTime.now());
-//        expressionBesoin.setStatut("en Cours");
-//        expressionBesoin.setUsername(expressionBesoin.getUser().getUsername());
-        expressionBesoinDao.save(expressionBesoin);
-        expressionBesoin.getExpressionBesoinItems().forEach(e->{
-            e.setExpressionBesoin(expressionBesoin);
-            expressionBesoinItemService.save(e);
-        });
-        System.out.println(expressionBesoin.getStatut());
-//        expressionBesoin.getExpressionBesoinItems().forEach(expressionBesoinItem -> {
-//            produitService.save(expressionBesoinItem.getProduit());
-//            Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
-//
+        saveNull(expressionBesoin);
+        expressionBesoin.getExpressionBesoinItems().forEach(expressionBesoinItem -> {
 //            expressionBesoinItem.setExpressionBesoin(expressionBesoin);
-//            expressionBesoinItem.setProduit(produit);
-//           //expressionBesoinItem.setProduit(produit);
-//
-//            expressionBesoinItemService.save(expressionBesoinItem);
-//
-//        });
-
-//        userService.save(expressionBesoin.getUser());
+//            produitService.save(expressionBesoinItem.getProduit());
+//            //Produit produit = produitService.findByLibelle(expressionBesoinItem.getProduit().getLibelle());
+//            expressionBesoinItem.setExpressionBesoin(expressionBesoin);
+            //expressionBesoinItem.setProduit(produit);
+            expressionBesoinItemService.save(expressionBesoinItem);
+        });
 
         return 1;
     }

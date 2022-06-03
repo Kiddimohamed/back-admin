@@ -15,7 +15,7 @@ public class ExpressionBesoinItem {
     private String libelle;
     private String statut;
     private String ref;
-
+    private String refExpr;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ExpressionBesoin expressionBesoin;
@@ -102,6 +102,14 @@ public class ExpressionBesoinItem {
 
     public String getRef() {
         return ref;
+    }
+
+    public String getRefExpr() {
+        return refExpr;
+    }
+
+    public void setRefExpr(String refExpr) {
+        this.refExpr = refExpr;
     }
 
     public void setRef(String ref) {

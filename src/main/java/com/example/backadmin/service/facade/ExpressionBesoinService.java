@@ -16,5 +16,7 @@ public interface ExpressionBesoinService {
 
     int save(ExpressionBesoin expressionBesoin);
 
+    void saveNull(ExpressionBesoin expressionBesoin);
+
     Long getMaxId();
 }
