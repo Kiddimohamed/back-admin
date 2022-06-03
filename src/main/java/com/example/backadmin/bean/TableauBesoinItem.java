@@ -41,6 +41,7 @@ public class TableauBesoinItem {
         return expressionBesoinItem;
     }
 
+
     public void setExpressionBesoinItem(ExpressionBesoinItem expressionBesoinItem) {
         this.expressionBesoinItem = expressionBesoinItem;
     }
