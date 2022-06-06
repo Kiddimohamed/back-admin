@@ -1,6 +1,7 @@
 package com.example.backadmin.service.facade;
 
 import com.example.backadmin.bean.ExpressionBesoin;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -18,5 +19,4 @@ public interface ExpressionBesoinService {
 
     void saveNull(ExpressionBesoin expressionBesoin);
 
-    Long getMaxId();
 }

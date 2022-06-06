@@ -16,4 +16,6 @@ public interface ExpressionBesoinItemDao extends JpaRepository<ExpressionBesoinI
     ExpressionBesoinItem findByCode(String code);
     @Query("SELECT coalesce(max(expI.id), 0) FROM ExpressionBesoinItem expI")
     Long getMaxId();
+
+
 }

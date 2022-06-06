@@ -40,38 +40,23 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     @Override
     public int save(ExpressionBesoin expressionBesoin) {
-
+        saveNull(expressionBesoin);
 //        int res = validate(expressionBesoin);
 //        if (res > 0) {
 //        }
 
-        return handelprocess(expressionBesoin);
+        return 1;
 
 
     }
 
 
     private void prepare(ExpressionBesoin expressionBesoin) {
-//        Etablissement etablissement = etablissementService.findByReference(expressionBesoin.getServiceDemandeur().getEtablissement().getReference());
         userService.save(expressionBesoin.getUser());
         User user = userService.findByReference(expressionBesoin.getUser().getReference());
-//        if (user == null) {
-//            userService.save(expressionBesoin.getUser());
-//        }
         expressionBesoin.setUser(user);
 
 
-//        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(expressionBesoin.getServiceDemandeur().getReference());
-//
-////        serviceDemandeur.setEtablissement(etablissement);
-//      expressionBesoin.setServiceDemandeur(serviceDemandeur);
-
-//        expressionBesoin.getExpressionBesoinItems().forEach(e -> {
-//
-//            e.setExpressionBesoin(expressionBesoin);
-
-//            ExpressionBesoin expressionBesoin1 = findByReference(e.getExpressionBesoin().getReference());
-//        });
     }
 
     @Override
@@ -96,13 +81,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     public int handelprocess(ExpressionBesoin expressionBesoin) {
 
-        saveNull(expressionBesoin);
         expressionBesoin.getExpressionBesoinItems().forEach(expressionBesoinItem -> {
-//            expressionBesoinItem.setExpressionBesoin(expressionBesoin);
-//            produitService.save(expressionBesoinItem.getProduit());
-//            //Produit produit = produitService.findByLibelle(expressionBesoinItem.getProduit().getLibelle());
-//            expressionBesoinItem.setExpressionBesoin(expressionBesoin);
-            //expressionBesoinItem.setProduit(produit);
             expressionBesoinItemService.save(expressionBesoinItem);
         });
 

@@ -25,9 +25,7 @@ public class ExpressionBesoinWs {
         expressionBesoinService.saveNull(expressionBesoin);
     }
 
-    public Long getMaxId() {
-        return expressionBesoinService.getMaxId();
-    }
+
 //    @GetMapping("/service-demandeur/reference/{reference}")
 //    public List<ExpressionBesoin> findByServiceDemandeurReference(@PathVariable String reference) {
 //        return expressionBesoinService.findByServiceDemandeurReference(reference);

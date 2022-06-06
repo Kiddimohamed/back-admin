@@ -12,6 +12,8 @@ public class TableauBesoinItem {
     private Fournisseur fournisseur;
     @ManyToOne
     private ExpressionBesoinItem expressionBesoinItem;
+    @ManyToOne
+    private TableauBesoin tableauBesoin;
 
     public Long getId() {
         return id;
@@ -44,5 +46,13 @@ public class TableauBesoinItem {
 
     public void setExpressionBesoinItem(ExpressionBesoinItem expressionBesoinItem) {
         this.expressionBesoinItem = expressionBesoinItem;
+    }
+
+    public TableauBesoin getTableauBesoin() {
+        return tableauBesoin;
+    }
+
+    public void setTableauBesoin(TableauBesoin tableauBesoin) {
+        this.tableauBesoin = tableauBesoin;
     }
 }
