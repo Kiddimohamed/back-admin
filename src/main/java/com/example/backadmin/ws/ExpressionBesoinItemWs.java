@@ -44,7 +44,7 @@ public class ExpressionBesoinItemWs {
         return expressionBesoinItemService.findByStatut(statut);
     }
 
-    @PatchMapping("/")
+    @PutMapping("/")
     public int update(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
         return expressionBesoinItemService.update(expressionBesoinItem);
     }

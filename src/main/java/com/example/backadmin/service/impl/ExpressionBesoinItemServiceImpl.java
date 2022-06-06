@@ -29,10 +29,12 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
         return expressionBesoinItemDao.findAll();
     }
 
+
     @Override
     public int update(ExpressionBesoinItem expressionBesoinItem) {
         ExpressionBesoinItem expressionBesoinItem1=expressionBesoinItemDao.findByCode(expressionBesoinItem.getCode());
-        expressionBesoinItemDao.save(expressionBesoinItem);
+        expressionBesoinItem1.setPu(expressionBesoinItem.getPu());
+        expressionBesoinItemDao.save(expressionBesoinItem1);
         System.out.println(expressionBesoinItem1.getQuantite());
         return 1;
     }
@@ -61,6 +63,8 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
 
 
         } else {
+//            expressionBesoinItem.setLibelle(expressionBesoinItem.getProduit().getLibelle());
+            expressionBesoinItem.setCode("e"+expressionBesoinItem.getId());
             expressionBesoinItemDao.save(expressionBesoinItem);
             return 1;
         }

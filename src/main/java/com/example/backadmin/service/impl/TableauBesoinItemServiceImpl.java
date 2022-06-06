@@ -41,8 +41,10 @@ public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
 //        TableauBesoinItem tableauBesoinItem1 = findByReference(tableauBesoinItem.getReference());
 //        if (tableauBesoinItem1 != null) return -1;
 //        else {
+            tableauBesoinItem.setReference("t"+tableauBesoinItem.getId());
             tableauBesoinItemDao.save(tableauBesoinItem);
             return 1;
+
 //        }
     }
 

@@ -1,6 +1,5 @@
 package com.example.backadmin.service.impl;
 
-import com.example.backadmin.bean.ExpressionBesoinItem;
 import com.example.backadmin.bean.Fournisseur;
 import com.example.backadmin.bean.TableauBesoin;
 import com.example.backadmin.dao.TableauBesoinDao;
@@ -16,6 +15,7 @@ public class TableauBesoinServiceImpl implements TableauBesoinService {
 //        tableauBesoin.setFournisseur(fournisseur);
         tableauBesoin.getExpressionBesoinItems().forEach(e->{
         });
+        tableauBesoin.setReference("t1"+tableauBesoin.getReference());
         tableauBesoinDao.save(tableauBesoin);
     }
 
