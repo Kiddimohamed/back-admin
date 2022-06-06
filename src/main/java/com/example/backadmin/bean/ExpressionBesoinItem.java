@@ -8,20 +8,18 @@ import java.util.List;
 @Entity
 public class ExpressionBesoinItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double quantite;
     private String code;
     private String libelle;
     private String statut;
-    private String ref;
     private String refExpr;
+    private double pu ;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ExpressionBesoin expressionBesoin;
-    @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Fournisseur fournisseur;
+
 
     @ManyToOne
     private Produit produit;
@@ -92,16 +90,13 @@ public class ExpressionBesoinItem {
         this.statut = statut;
     }
 
-    public Fournisseur getFournisseur() {
-        return fournisseur;
+
+    public double getPu() {
+        return pu;
     }
 
-    public void setFournisseur(Fournisseur fournisseur) {
-        this.fournisseur = fournisseur;
-    }
-
-    public String getRef() {
-        return ref;
+    public void setPu(double pu) {
+        this.pu = pu;
     }
 
     public String getRefExpr() {
@@ -112,8 +107,6 @@ public class ExpressionBesoinItem {
         this.refExpr = refExpr;
     }
 
-    public void setRef(String ref) {
-        this.ref = ref;
-    }
+
 }
 

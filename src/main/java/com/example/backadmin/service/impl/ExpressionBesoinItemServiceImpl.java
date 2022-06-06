@@ -1,6 +1,5 @@
 package com.example.backadmin.service.impl;
 
-import com.example.backadmin.bean.ExpressionBesoin;
 import com.example.backadmin.bean.ExpressionBesoinItem;
 import com.example.backadmin.bean.Produit;
 import com.example.backadmin.dao.ExpressionBesoinItemDao;
@@ -31,35 +30,51 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     }
 
     @Override
+    public int update(ExpressionBesoinItem expressionBesoinItem) {
+        ExpressionBesoinItem expressionBesoinItem1=expressionBesoinItemDao.findByCode(expressionBesoinItem.getCode());
+        expressionBesoinItemDao.save(expressionBesoinItem);
+        System.out.println(expressionBesoinItem1.getQuantite());
+        return 1;
+    }
+
+    @Override
     public ExpressionBesoinItem findByCode(String code) {
         return expressionBesoinItemDao.findByCode(code);
-    }
-
-    @Override
-    public int save(ExpressionBesoinItem expressionBesoinItem) {
-//        ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(expressionBesoinItem.getExpressionBesoin().getReference());
-       produitService.save(expressionBesoinItem.getProduit());
-        Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
-        expressionBesoinItem.setProduit(produit);
-//        expressionBesoinItem.setExpressionBesoin(expressionBesoin);
-        if (expressionBesoinItem.getQuantite() <= 0) {
-            return -1;
-        } else {
-//            expressionBesoinItem.setLibelle(expressionBesoinItem.getProduit().getLibelle());
-            expressionBesoinItemDao.save(expressionBesoinItem);
-            return 1;
-        }
-    }
-
-    @Override
-    public List<ExpressionBesoinItem> findByStatut(String statut) {
-        return expressionBesoinItemDao.findByStatut(statut);
     }
 
     @Override
     public Long getMaxId() {
         return expressionBesoinItemDao.getMaxId();
     }
+
+    @Override
+    public int save(ExpressionBesoinItem expressionBesoinItem) {
+        Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
+        if (produit==null){
+            produitService.save(expressionBesoinItem.getProduit());
+            expressionBesoinItem.setProduit(produit);
+            expressionBesoinItem.setExpressionBesoin(expressionBesoinService.findByReference(expressionBesoinItem.getExpressionBesoin().getReference()));
+        }
+
+//        expressionBesoinItem.setExpressionBesoin(expressionBesoin);
+        if (expressionBesoinItem.getQuantite() <= 0) {
+            return -1;
+
+
+        } else {
+//            expressionBesoinItem.setLibelle(expressionBesoinItem.getProduit().getLibelle());
+            expressionBesoinItem.setCode("e"+expressionBesoinItem.getId());
+            expressionBesoinItemDao.save(expressionBesoinItem);
+            return 1;
+        }
+    }
+
+
+    @Override
+    public List<ExpressionBesoinItem> findByStatut(String statut) {
+        return expressionBesoinItemDao.findByStatut(statut);
+    }
+
 
     @Autowired
     private ExpressionBesoinItemDao expressionBesoinItemDao;

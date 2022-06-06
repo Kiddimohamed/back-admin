@@ -44,6 +44,11 @@ public class ExpressionBesoinItemWs {
         return expressionBesoinItemService.findByStatut(statut);
     }
 
+    @PatchMapping("/")
+    public int update(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
+        return expressionBesoinItemService.update(expressionBesoinItem);
+    }
+
     @Autowired
     ExpressionBesoinItemService expressionBesoinItemService;
 }

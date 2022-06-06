@@ -1,5 +1,8 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,11 +13,12 @@ public class TableauBesoin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
-
-    @ManyToOne
-    private ExpressionBesoin expressionBesoin;
-    @ManyToOne
-    private Fournisseur fournisseur;
+    private double tva;
+    private double ttc;
+    @JsonIgnore
+    @OneToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<ExpressionBesoinItem> expressionBesoinItems;
 
     public Long getId() {
         return id;
@@ -32,25 +36,27 @@ public class TableauBesoin {
         this.reference = reference;
     }
 
-
-
-
-
-    public ExpressionBesoin getExpressionBesoin() {
-        return expressionBesoin;
+    public double getTva() {
+        return tva;
     }
 
-    public void setExpressionBesoin(ExpressionBesoin expressionBesoin) {
-        this.expressionBesoin = expressionBesoin;
+    public void setTva(double tva) {
+        this.tva = tva;
     }
 
-    public Fournisseur getFournisseur() {
-        return fournisseur;
+    public double getTtc() {
+        return ttc;
     }
 
-    public void setFournisseur(Fournisseur fournisseur) {
-        this.fournisseur = fournisseur;
+    public void setTtc(double ttc) {
+        this.ttc = ttc;
     }
 
+    public List<ExpressionBesoinItem> getExpressionBesoinItems() {
+        return expressionBesoinItems;
+    }
 
+    public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
+        this.expressionBesoinItems = expressionBesoinItems;
+    }
 }

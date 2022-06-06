@@ -40,7 +40,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     @Override
     public int save(ExpressionBesoin expressionBesoin) {
-
+saveNull(expressionBesoin);
 //        int res = validate(expressionBesoin);
 //        if (res > 0) {
 //        }
@@ -96,7 +96,6 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
     public int handelprocess(ExpressionBesoin expressionBesoin) {
 
-        saveNull(expressionBesoin);
         expressionBesoin.getExpressionBesoinItems().forEach(expressionBesoinItem -> {
 //            expressionBesoinItem.setExpressionBesoin(expressionBesoin);
 //            produitService.save(expressionBesoinItem.getProduit());
