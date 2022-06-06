@@ -32,7 +32,8 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     @Override
     public int update(ExpressionBesoinItem expressionBesoinItem) {
         ExpressionBesoinItem expressionBesoinItem1=expressionBesoinItemDao.findByCode(expressionBesoinItem.getCode());
-        expressionBesoinItemDao.save(expressionBesoinItem);
+        expressionBesoinItem1.setPu(expressionBesoinItem.getPu());
+        expressionBesoinItemDao.save(expressionBesoinItem1);
         System.out.println(expressionBesoinItem1.getQuantite());
         return 1;
     }

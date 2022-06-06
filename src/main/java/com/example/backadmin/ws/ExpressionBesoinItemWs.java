@@ -29,7 +29,6 @@ public class ExpressionBesoinItemWs {
     }
 
     @GetMapping("/code/{code}")
-
     public ExpressionBesoinItem findByCode(@PathVariable String code) {
         return expressionBesoinItemService.findByCode(code);
     }
@@ -44,7 +43,7 @@ public class ExpressionBesoinItemWs {
         return expressionBesoinItemService.findByStatut(statut);
     }
 
-    @PatchMapping("/")
+    @PutMapping("/")
     public int update(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
         return expressionBesoinItemService.update(expressionBesoinItem);
     }
