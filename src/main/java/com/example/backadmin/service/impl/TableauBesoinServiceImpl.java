@@ -19,6 +19,11 @@ public class TableauBesoinServiceImpl implements TableauBesoinService {
         tableauBesoinDao.save(tableauBesoin);
     }
 
+    @Override
+    public TableauBesoin findByReference(String reference) {
+        return tableauBesoinDao.findByReference(reference);
+    }
+
     @Autowired
     private TableauBesoinDao tableauBesoinDao;
     @Autowired
