@@ -2,6 +2,7 @@ package com.example.backadmin;
 
 
 import com.example.backadmin.service.facade.UserService;
+import com.example.backadmin.service.impl.EmailSender2Service;
 import com.example.backadmin.service.impl.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -31,9 +32,9 @@ public class BackAdminApplication {
     @Autowired
     private UserService userService;
 
-    /*@Autowired
-    private EmailSenderService senderService;
-
+    @Autowired
+    private EmailSender2Service senderService;
+/*
 
     @EventListener(ApplicationReadyEvent.class)
     public void sendMail() {
