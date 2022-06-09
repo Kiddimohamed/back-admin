@@ -23,8 +23,9 @@ public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
 //        });
 //        tableauBesoinItem.setTtc(tableauBesoinItem.getTableauBesoin().getTtc());
 //        tableauBesoinItem.setTva(tableauBesoinItem.getTableauBesoin().getTva());
+        tableauBesoinItem.setReference("t"+System.currentTimeMillis());
         tableauBesoinItemDao.save(tableauBesoinItem);
-        return 0;
+        return 1;
     }
 
     @Override
