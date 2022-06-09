@@ -8,6 +8,10 @@ public class TableauBesoinItem1 {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
+    private String statut;
+    private String designation;
+    private double quantite;
+    private double pu;
     @ManyToOne
     private Fournisseur fournisseur;
     @ManyToOne
@@ -50,6 +54,38 @@ public class TableauBesoinItem1 {
 
     public TableauBesoin getTableauBesoin() {
         return tableauBesoin;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public double getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(double quantite) {
+        this.quantite = quantite;
+    }
+
+    public double getPu() {
+        return pu;
+    }
+
+    public void setPu(double pu) {
+        this.pu = pu;
     }
 
     public void setTableauBesoin(TableauBesoin tableauBesoin) {

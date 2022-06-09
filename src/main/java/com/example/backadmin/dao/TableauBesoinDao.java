@@ -11,4 +11,5 @@ import java.util.List;
 public interface TableauBesoinDao extends JpaRepository<TableauBesoin,Long> {
     List<TableauBesoin> findAll();
     TableauBesoin findByReference(String reference);
+    List<TableauBesoin> findByStatut(String statut);
 }

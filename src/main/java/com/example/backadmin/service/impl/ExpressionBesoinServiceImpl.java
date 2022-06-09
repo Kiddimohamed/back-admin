@@ -55,8 +55,6 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
         userService.save(expressionBesoin.getUser());
         User user = userService.findByReference(expressionBesoin.getUser().getReference());
         expressionBesoin.setUser(user);
-
-
     }
 
     @Override

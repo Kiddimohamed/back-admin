@@ -2,6 +2,7 @@ package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.ExpressionBesoinItem;
 import com.example.backadmin.bean.Produit;
+import com.example.backadmin.bean.User;
 import com.example.backadmin.dao.ExpressionBesoinItemDao;
 import com.example.backadmin.service.facade.ExpressionBesoinItemService;
 import com.example.backadmin.service.facade.ExpressionBesoinService;
@@ -32,7 +33,7 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
 
     @Override
     public int update(ExpressionBesoinItem expressionBesoinItem) {
-        ExpressionBesoinItem expressionBesoinItem1=expressionBesoinItemDao.findByCode(expressionBesoinItem.getCode());
+        ExpressionBesoinItem expressionBesoinItem1 = expressionBesoinItemDao.findByCode(expressionBesoinItem.getCode());
         expressionBesoinItem1.setPu(expressionBesoinItem.getPu());
         expressionBesoinItemDao.save(expressionBesoinItem1);
         System.out.println(expressionBesoinItem1.getQuantite());
@@ -51,20 +52,14 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
 
     @Override
     public int save(ExpressionBesoinItem expressionBesoinItem) {
+        produitService.save(expressionBesoinItem.getProduit());
         Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
-        if (produit==null){
-            produitService.save(expressionBesoinItem.getProduit());
-            expressionBesoinItem.setProduit(produit);
-            expressionBesoinItem.setExpressionBesoin(expressionBesoinService.findByReference(expressionBesoinItem.getExpressionBesoin().getReference()));
-        }
-
+        expressionBesoinItem.setProduit(produit);
         if (expressionBesoinItem.getQuantite() <= 0) {
             return -1;
-
-
         } else {
 //            expressionBesoinItem.setLibelle(expressionBesoinItem.getProduit().getLibelle());
-            expressionBesoinItem.setCode("e"+expressionBesoinItem.getId());
+            expressionBesoinItem.setCode("e" + expressionBesoinItem.getId());
             expressionBesoinItemDao.save(expressionBesoinItem);
             return 1;
         }

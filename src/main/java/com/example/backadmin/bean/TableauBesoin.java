@@ -13,6 +13,7 @@ public class TableauBesoin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
+    private String statut;
     private double tva;
     private double ttc;
     @JsonIgnore
@@ -58,5 +59,13 @@ public class TableauBesoin {
 
     public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
         this.expressionBesoinItems = expressionBesoinItems;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 }

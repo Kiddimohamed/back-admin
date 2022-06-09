@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 public class TableauBesoinItem1ServiceImpl implements TableauBesoinItem1Service {
-
+private static int i=0;
 
     @Override
     public TableauBesoinItem1 findByReference(String reference) {
@@ -30,19 +30,33 @@ public class TableauBesoinItem1ServiceImpl implements TableauBesoinItem1Service 
     public List<TableauBesoinItem1> findByExpressionBesoinItemCode(String code) {
         return tableauBesoinItemDao.findByExpressionBesoinItemCode(code);
     }
+
+    @Override
+    public TableauBesoinItem1 findByFournisseurReferenceFournisseur(String reference) {
+        return tableauBesoinItemDao.findByFournisseurReferenceFournisseur(reference);
+    }
+
+    @Override
+    public List<TableauBesoinItem1> findByStatut(String statut) {
+        return tableauBesoinItemDao.findByStatut(statut);
+    }
+
+
     @Override
     public void update(TableauBesoinItem1 tableauBesoinItem) {
         TableauBesoinItem1 tableauBesoinItem1=tableauBesoinItemDao.findByReference(tableauBesoinItem.getReference());
        tableauBesoinItemDao.save(tableauBesoinItem1);
     }
     @Override
-    public int save(TableauBesoinItem1 tableauBesoinItem) {
-        prepare(tableauBesoinItem);
+    public int save(TableauBesoinItem1 tableauBesoinItem1) {
+        prepare(tableauBesoinItem1);
+//        tableauBesoinItem1.setPu(tableauBesoinItem1.getExpressionBesoinItem().getPu());
+//        tableauBesoinItem1.setDesignation(tableauBesoinItem1.getExpressionBesoinItem().getLibelle());
+//        tableauBesoinItem1.setQuantite(tableauBesoinItem1.getExpressionBesoinItem().getQuantite());
 //        TableauBesoinItem tableauBesoinItem1 = findByReference(tableauBesoinItem.getReference());
 //        if (tableauBesoinItem1 != null) return -1;
 //        else {
-            tableauBesoinItem.setReference("t"+tableauBesoinItem.getId());
-            tableauBesoinItemDao.save(tableauBesoinItem);
+            tableauBesoinItemDao.save(tableauBesoinItem1);
             return 1;
 
 //        }

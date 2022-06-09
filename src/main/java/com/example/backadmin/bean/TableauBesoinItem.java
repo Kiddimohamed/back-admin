@@ -8,6 +8,11 @@ public class TableauBesoinItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
+    private String statut;
+    private double tva;
+    private double ttc;
+    private double ht;
+
     @ManyToOne
     private Fournisseur fournisseur;
     @ManyToOne
@@ -43,5 +48,37 @@ public class TableauBesoinItem {
 
     public void setTableauBesoin(TableauBesoin tableauBesoin) {
         this.tableauBesoin = tableauBesoin;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public double getTva() {
+        return tva;
+    }
+
+    public void setTva(double tva) {
+        this.tva = tva;
+    }
+
+    public double getTtc() {
+        return ttc;
+    }
+
+    public void setTtc(double ttc) {
+        this.ttc = ttc;
+    }
+
+    public double getHt() {
+        return ht;
+    }
+
+    public void setHt(double ht) {
+        this.ht = ht;
     }
 }

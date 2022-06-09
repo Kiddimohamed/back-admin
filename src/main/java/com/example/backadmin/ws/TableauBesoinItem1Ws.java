@@ -15,6 +15,11 @@ public class TableauBesoinItem1Ws {
         return tableauBesoinItemService.findByReference(reference);
     }
 
+    @GetMapping("/Fournisseur/{reference}")
+    public TableauBesoinItem1 findByFournisseurReferenceFournisseur(@PathVariable String reference) {
+        return tableauBesoinItemService.findByFournisseurReferenceFournisseur(reference);
+    }
+
     @GetMapping("/")
     public List<TableauBesoinItem1> findAll() {
         return tableauBesoinItemService.findAll();
@@ -33,6 +38,11 @@ public class TableauBesoinItem1Ws {
     @PutMapping("/")
     public void update(@RequestBody TableauBesoinItem1 tableauBesoinItem) {
         tableauBesoinItemService.update(tableauBesoinItem);
+    }
+
+    @GetMapping("/statut/{statut}")
+    public List<TableauBesoinItem1> findByStatut(@PathVariable String statut) {
+        return tableauBesoinItemService.findByStatut(statut);
     }
 
     @Autowired

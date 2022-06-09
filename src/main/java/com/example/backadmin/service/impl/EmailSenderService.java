@@ -64,7 +64,7 @@ public String sendMail(String to,String sujet){
                 InternetAddress.parse(to)
         );
         message.setSubject(sujet);
-        message.setText("http://"+sujet+".com");
+        message.setText("http://localhost:4200/"+sujet);
 
         Transport.send(message);
 
