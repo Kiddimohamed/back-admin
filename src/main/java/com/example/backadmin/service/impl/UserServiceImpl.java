@@ -5,12 +5,14 @@ import com.example.backadmin.dao.UserDao;
 import com.example.backadmin.service.facade.UserService;
 import com.example.backadmin.service.facade.ServiceDemandeurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.*;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import javax.persistence.EntityManager;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,7 +63,7 @@ public class UserServiceImpl implements UserService {
         //      ServiceDemandeur serviceDemandeur=serviceDemandeurService.findByReference(user.getServiceDemandeur().getReference());
         // user.setServiceDemandeur(serviceDemandeur);
         // if (loadedUser != null
-            //|| serviceDemandeur==null
+        //|| serviceDemandeur==null
         // )
         //    return null;
         // else {
@@ -69,7 +71,7 @@ public class UserServiceImpl implements UserService {
 
         //   roleService.save(user.getAuthorities());
         //   userDao.save(user);
-          return userDao.save(user);
+        return userDao.save(user);
         // }
     }
 
@@ -96,7 +98,6 @@ public class UserServiceImpl implements UserService {
     private WebClient.Builder webClientBuilder;
 
 
-
     @Override
     public ResponseEntity<String> getAllServices() {
         HttpHeaders headers = new HttpHeaders();
@@ -113,20 +114,22 @@ public class UserServiceImpl implements UserService {
     //microservice
 
 
-
     @Override
-    public int findServiceIfExist(String service){
+    public int findServiceIfExist(String service) {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8096/v1/admin/service-demandeur/reference/"+service, HttpMethod.GET, entity, String.class);
-        if(response.hasBody()==true)return -1;
+        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8096/v1/admin/service-demandeur/reference/" + service, HttpMethod.GET, entity, String.class);
+        if (response.hasBody() == true) return -1;
         else return 1;
 
     }
 
 
-
-
-//    ///microservice
+    //    //statistique
+    @Autowired
+    protected EntityManager entityManager;
+    public int findstatUsers() {
+      return userDao.findstatUsers();
+    }
 }

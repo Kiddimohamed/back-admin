@@ -6,8 +6,13 @@ import com.example.backadmin.dao.ExpressionBesoinDao;
 
 import com.example.backadmin.service.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -89,6 +94,26 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     public Long getMaxId() {
         return expressionBesoinDao.getMaxId();
     }
+
+
+    //microservice************************************
+    @Autowired
+    private RestTemplate restTemplate;
+
+    //statistique
+    @Override
+    public int expressionBesoinEncours(){
+        return expressionBesoinDao.expressionBesoinEncours();
+    }
+
+    @Override
+    public int getNumberOfExpressionBesoinEnAttente() {
+
+        int x = restTemplate.getForObject("http://localhost:8095/centre-project/v1/expression-besoin/NumberOfExpressionBesoinEnAttente", Integer.class);
+        return x;
+    }
+
+
 
     @Autowired
     ExpressionBesoinDao expressionBesoinDao;

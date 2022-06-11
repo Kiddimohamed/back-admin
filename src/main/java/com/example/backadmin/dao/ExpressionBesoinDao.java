@@ -18,4 +18,8 @@ public interface ExpressionBesoinDao extends JpaRepository<ExpressionBesoin, Lon
 //    List<ExpressionBesoin> findBySUser(String reference);
     @Query("SELECT coalesce(max(exp.id), 0) FROM ExpressionBesoin exp")
     Long getMaxId();
+
+    @Query("SELECT COUNT(e.id) FROM ExpressionBesoin e WHERE e.statut='en cours'")
+    int expressionBesoinEncours();
+
 }

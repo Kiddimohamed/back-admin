@@ -25,4 +25,7 @@ public interface UserService  {
     public ResponseEntity<String> getAllServices();
 
     public int findServiceIfExist(String service);
-}
+
+    int findstatUsers();
+
+    }
