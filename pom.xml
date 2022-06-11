@@ -65,6 +65,12 @@
         </dependency>
 
         <!--===============microservice===============-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-openfeign-dependencies -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>3.1.2</version>
+        </dependency>
 
         <!--===============eurika===============-->
         <dependency>

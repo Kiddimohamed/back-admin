@@ -20,9 +20,10 @@ public class TableauBesoinServiceImpl implements TableauBesoinService {
         tableauBesoinDao.save(tableauBesoin);
         tableauBesoin.getExpressionBesoinItems().forEach(e -> {
             e.setStatut("envoyee");
-//            e.setTableauBesoin(tableauBesoin);
             expressionBesoinItemService.save(e);
         });
+//        tableauBesoin.setReference("t1"+tableauBesoin.getReference());
+        tableauBesoinDao.save(tableauBesoin);
     }
 
     @Override

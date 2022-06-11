@@ -18,5 +18,6 @@ public interface ExpressionBesoinService {
     int save(ExpressionBesoin expressionBesoin);
 
     void saveNull(ExpressionBesoin expressionBesoin);
+    int expressionBesoinEncours();
+    public int getNumberOfExpressionBesoinEnAttente(); }
 
-}

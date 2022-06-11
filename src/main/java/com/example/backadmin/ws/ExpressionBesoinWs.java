@@ -46,7 +46,17 @@ public class ExpressionBesoinWs {
     public int save(@RequestBody ExpressionBesoin expressionBesoin) {
         return expressionBesoinService.save(expressionBesoin);
     }
+    //statistique
+    @GetMapping("/nbrExpressionBesoinEnattente")
+    int expressionBesoinEncours(){
+        return expressionBesoinService.expressionBesoinEncours();
+    }
 
+//microservice
+    @GetMapping("microservice/getNumberOfExpressionBesoinEnAttente")
+public int getNumberOfExpressionBesoinEnAttente() {
+        return expressionBesoinService.getNumberOfExpressionBesoinEnAttente();
+}
 
     @Autowired
     ExpressionBesoinService expressionBesoinService;

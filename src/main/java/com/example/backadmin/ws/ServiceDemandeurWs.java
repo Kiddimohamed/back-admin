@@ -2,6 +2,9 @@ package com.example.backadmin.ws;
 
 import com.example.backadmin.bean.ServiceDemandeur;
 import com.example.backadmin.service.facade.ServiceDemandeurService;
+import com.example.backadmin.ws.converter.ServiceDemandeurConverter;
+import com.example.backadmin.ws.provide.ServiceDemandeurVo;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,10 +50,6 @@ public class ServiceDemandeurWs {
         serviceDemandeurService.deleteByReference(reference);
     }
 
-    @GetMapping("/")
-    public List<ServiceDemandeur> findAll() {
-        return serviceDemandeurService.findAll();
-    }
 
     @PostMapping("/")
     public int save(@RequestBody ServiceDemandeur serviceDemandeur) {
@@ -59,4 +58,13 @@ public class ServiceDemandeurWs {
 
     @Autowired
     ServiceDemandeurService serviceDemandeurService;
+    @Autowired
+    private ServiceDemandeurConverter serviceDemandeurConverter;
+    //microservice
+    @ApiOperation("service user")
+    @GetMapping("/")
+    public List<ServiceDemandeurVo> findAll() {
+        return  serviceDemandeurConverter.toVo(serviceDemandeurService.findAll());
+    }
+
 }

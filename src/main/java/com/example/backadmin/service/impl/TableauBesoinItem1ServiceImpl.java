@@ -56,6 +56,7 @@ private static int i=0;
 //        TableauBesoinItem tableauBesoinItem1 = findByReference(tableauBesoinItem.getReference());
 //        if (tableauBesoinItem1 != null) return -1;
 //        else {
+        tableauBesoinItem1.setReference("t"+System.currentTimeMillis());
             tableauBesoinItemDao.save(tableauBesoinItem1);
             return 1;
 
