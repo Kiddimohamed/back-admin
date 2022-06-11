@@ -82,6 +82,12 @@ public class CommandeServiceImpl implements CommandeService {
     public List<Commande> findByRubriqueReference(String reference) {
         return commandeDao.findByRubriqueReference(reference);
     }
+    //statistique
+
+    public int getnbrOfCommande(){
+        return commandeDao.getnbrOfCommande();
+    }
+
 
 
 

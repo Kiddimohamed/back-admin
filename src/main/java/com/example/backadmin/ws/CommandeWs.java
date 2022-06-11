@@ -37,6 +37,15 @@ public class CommandeWs {
         return commandeService.save(commande);
     }
 
+
+
+    //statistique
+    @GetMapping("/getnbrOfCommande")
+    public int getnbrOfCommande(){
+        return commandeService.getnbrOfCommande();
+    }
     @Autowired
     CommandeService commandeService;
 }
+
+

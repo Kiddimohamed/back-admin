@@ -18,6 +18,9 @@ public interface CommandeService {
     List<Commande> findByFournisseurReferenceFournisseur(String reference);
 
     List<Commande> findByRubriqueReference(String reference);
+    //statistique
+    int getnbrOfCommande();
+
 
 
 }
