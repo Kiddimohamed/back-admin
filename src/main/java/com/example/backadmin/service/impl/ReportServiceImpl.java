@@ -71,7 +71,7 @@ public class ReportServiceImpl implements ReportService {
         parametres.put("totalHt", commande.getTotalHt());
         parametres.put("tva",commande.getTVA());
         JasperPrint print = JasperFillManager.fillReport(jasperReport, parametres,datesource);
-        JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\Hp\\Desktop" + "\\BonDeCommande_" + commande.getCode() + "_" + commande.getExpressionBesoin().getReference() + ".pdf");
+        JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\Hp\\Desktop" + "\\BonDeCommande_" + commande.getCode() + "_" + commande.getTableauBesoinItem().getReference() + ".pdf");
 
 
         return "okey";

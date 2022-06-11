@@ -21,7 +21,8 @@ public class ArticleWs {
         return articleService.deleteByReference(reference);
     }
 
-    @GetMapping("/chapitre/reference/{reference}") public List<Article> findByChapitreReference(@PathVariable String reference) {
+    @GetMapping("/chapitre/reference/{reference}")
+    public List<Article> findByChapitreReference(@PathVariable String reference) {
         return articleService.findByChapitreReference(reference);
     }
 
@@ -33,6 +34,11 @@ public class ArticleWs {
     @PostMapping("/")
     public int save(@RequestBody Article article) {
         return articleService.save(article);
+    }
+
+    @GetMapping("/libelleChapitre/{libelleChapitre}")
+    public List<Article> findByLibelleChapitre(@PathVariable String libelleChapitre) {
+        return articleService.findByLibelleChapitre(libelleChapitre);
     }
 
     @Autowired

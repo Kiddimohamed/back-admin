@@ -15,11 +15,14 @@ public class TableauBesoinServiceImpl implements TableauBesoinService {
     public void save(TableauBesoin tableauBesoin) {
 //        Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(tableauBesoin.getFournisseur().getReferenceFournisseur());
 //        tableauBesoin.setFournisseur(fournisseur);
+
+        tableauBesoin.setReference("t1");
+        tableauBesoinDao.save(tableauBesoin);
         tableauBesoin.getExpressionBesoinItems().forEach(e -> {
             e.setStatut("envoyee");
             expressionBesoinItemService.save(e);
         });
-     tableauBesoin.setReference("t"+System.currentTimeMillis());
+//        tableauBesoin.setReference("t1"+tableauBesoin.getReference());
         tableauBesoinDao.save(tableauBesoin);
     }
 

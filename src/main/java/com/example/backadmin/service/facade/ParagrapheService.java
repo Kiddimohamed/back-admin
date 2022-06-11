@@ -13,6 +13,7 @@ public interface ParagrapheService {
     List<Paragraphe> findByArticleReference(String reference);
 
     List<Paragraphe> findAll();
+    List<Paragraphe> findByLibelleArticle(String libelleArticle);
 
     int save(Paragraphe paragraphe);
 }

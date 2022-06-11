@@ -14,7 +14,7 @@ public class Rubrique {
     private String codeLigne;
     private String codeParagraphe;
     private String codeArticle;
-    private String libelleChapitre;
+    private String libelleLigne;
 
     @ManyToOne
     private Ligne ligne;
@@ -75,12 +75,12 @@ public class Rubrique {
         this.codeArticle = codeArticle;
     }
 
-    public String getLibelleChapitre() {
-        return libelleChapitre;
+    public String getLibelleLigne() {
+        return libelleLigne;
     }
 
-    public void setLibelleChapitre(String libelleChapitre) {
-        this.libelleChapitre = libelleChapitre;
+    public void setLibelleLigne(String libelleLigne) {
+        this.libelleLigne = libelleLigne;
     }
 
     public Ligne getLigne() {

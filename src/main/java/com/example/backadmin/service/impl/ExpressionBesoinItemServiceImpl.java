@@ -2,11 +2,13 @@ package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.ExpressionBesoinItem;
 import com.example.backadmin.bean.Produit;
+import com.example.backadmin.bean.TableauBesoin;
 import com.example.backadmin.bean.User;
 import com.example.backadmin.dao.ExpressionBesoinItemDao;
 import com.example.backadmin.service.facade.ExpressionBesoinItemService;
 import com.example.backadmin.service.facade.ExpressionBesoinService;
 import com.example.backadmin.service.facade.ProduitService;
+import com.example.backadmin.service.facade.TableauBesoinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,11 +32,23 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
         return expressionBesoinItemDao.findAll();
     }
 
+    @Override
+    public List<ExpressionBesoinItem> findByTableauBesoinReference(String reference) {
+        return expressionBesoinItemDao.findByTableauBesoinReference(reference);
+    }
+
+    @Override
+    public List<ExpressionBesoinItem> findByRefExpr(String refExpr) {
+        return expressionBesoinItemDao.findByRefExpr(refExpr);
+    }
+
 
     @Override
     public int update(ExpressionBesoinItem expressionBesoinItem) {
         ExpressionBesoinItem expressionBesoinItem1 = expressionBesoinItemDao.findByCode(expressionBesoinItem.getCode());
         expressionBesoinItem1.setPu(expressionBesoinItem.getPu());
+//        TableauBesoin tableauBesoin = tableauBesoinService.findByReference(expressionBesoinItem.getTableauBesoin().getReference());
+//        expressionBesoinItem1.setTableauBesoin(tableauBesoin);
         expressionBesoinItemDao.save(expressionBesoinItem1);
         System.out.println(expressionBesoinItem1.getQuantite());
         return 1;
@@ -55,10 +69,12 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
         produitService.save(expressionBesoinItem.getProduit());
         Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
         expressionBesoinItem.setProduit(produit);
+//        expressionBesoinItem.setRefTabBesoin(expressionBesoinItem.getTableauBesoin().getReference());
         if (expressionBesoinItem.getQuantite() <= 0) {
             return -1;
         } else {
 //            expressionBesoinItem.setLibelle(expressionBesoinItem.getProduit().getLibelle());
+            expressionBesoinItem.setPt(expressionBesoinItem.getPu()*expressionBesoinItem.getQuantite());
             expressionBesoinItem.setCode("e" + expressionBesoinItem.getId());
             expressionBesoinItemDao.save(expressionBesoinItem);
             return 1;
@@ -78,5 +94,7 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     private ExpressionBesoinService expressionBesoinService;
     @Autowired
     private ProduitService produitService;
+    @Autowired
+    private TableauBesoinService tableauBesoinService;
 
 }

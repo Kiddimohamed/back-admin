@@ -15,15 +15,17 @@ public class ExpressionBesoinItem {
     private String libelle;
     private String statut;
     private String refExpr;
+    private String refTabBesoin;
     private double pu ;
+    private double pt;
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ExpressionBesoin expressionBesoin;
 
 
     @ManyToOne
     private Produit produit;
-
+    @ManyToOne
+    private TableauBesoin tableauBesoin;
 
     public double getQuantite() {
         return quantite;
@@ -107,6 +109,28 @@ public class ExpressionBesoinItem {
         this.refExpr = refExpr;
     }
 
+    public double getPt() {
+        return pt;
+    }
 
+    public void setPt(double pt) {
+        this.pt = pt;
+    }
+
+    public TableauBesoin getTableauBesoin() {
+        return tableauBesoin;
+    }
+
+    public void setTableauBesoin(TableauBesoin tableauBesoin) {
+        this.tableauBesoin = tableauBesoin;
+    }
+
+    public String getRefTabBesoin() {
+        return refTabBesoin;
+    }
+
+    public void setRefTabBesoin(String refTabBesoin) {
+        this.refTabBesoin = refTabBesoin;
+    }
 }
 

@@ -23,8 +23,8 @@ public class CommandeWs {
     }
 
     @GetMapping("/expression-besoin/reference/{reference}")
-    public List<Commande> findByExpressionBesoinReference(@PathVariable String reference) {
-        return commandeService.findByExpressionBesoinReference(reference);
+    public List<Commande> findByTableauBesoinItemReference(@PathVariable String reference) {
+        return commandeService.findByTableauBesoinItemReference(reference);
     }
 //
 //    @GetMapping("/service-demandeur/reference/{reference}")

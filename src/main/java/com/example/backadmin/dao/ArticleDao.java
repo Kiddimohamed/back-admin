@@ -11,5 +11,6 @@ public interface ArticleDao extends JpaRepository<Article,Long> {
     Article findByReference(String reference);
     int deleteByReference(String reference);
      List<Article> findByChapitreReference(String reference);
+     List<Article> findByLibelleChapitre(String libelleChapitre);
 
 }

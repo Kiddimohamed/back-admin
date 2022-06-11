@@ -1,20 +1,15 @@
 package com.example.backadmin.bean;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
 @Entity
 public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
-
-    // todo envoi de mail a fournisseur
-
     private String raisonSociale;
     private String adresse;
     private double totalTtc;
@@ -23,23 +18,16 @@ public class Commande {
     private Date dateCommande;
     private String etablissement;
     private String serviceDemandeur;
-
+    private String exercice;
+    private String nature;
     @ManyToOne
     private Employe ordonnateur;
-
     @ManyToOne
-    private ExpressionBesoin expressionBesoin;
-
-    //
-    //    @ManyToOne
-    //    private Etablissement etablissement;
-
+    private TableauBesoinItem tableauBesoinItem;
     @ManyToOne
     private Fournisseur fournisseur;
     @ManyToOne
     private Rubrique rubrique;
-
-
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany
     private List<CommandeItem> commandeItemList;
@@ -119,7 +107,6 @@ public class Commande {
         this.dateCommande = dateCommande;
     }
 
-
     public Employe getOrdonnateur() {
         return ordonnateur;
     }
@@ -127,23 +114,6 @@ public class Commande {
     public void setOrdonnateur(Employe ordonnateur) {
         this.ordonnateur = ordonnateur;
     }
-
-
-    public ExpressionBesoin getExpressionBesoin() {
-        return expressionBesoin;
-    }
-
-    public void setExpressionBesoin(ExpressionBesoin expressionBesoin) {
-        this.expressionBesoin = expressionBesoin;
-    }
-
-//    public Etablissement getEtablissement() {
-//        return etablissement;
-//    }
-//
-//    public void setEtablissement(Etablissement etablissement) {
-//        this.etablissement = etablissement;
-//    }
 
     public Rubrique getRubrique() {
         return rubrique;
@@ -175,5 +145,29 @@ public class Commande {
 
     public void setServiceDemandeur(String serviceDemandeur) {
         this.serviceDemandeur = serviceDemandeur;
+    }
+
+    public String getExercice() {
+        return exercice;
+    }
+
+    public void setExercice(String exercice) {
+        this.exercice = exercice;
+    }
+
+    public TableauBesoinItem getTableauBesoinItem() {
+        return tableauBesoinItem;
+    }
+
+    public void setTableauBesoinItem(TableauBesoinItem tableauBesoinItem) {
+        this.tableauBesoinItem = tableauBesoinItem;
+    }
+
+    public String getNature() {
+        return nature;
+    }
+
+    public void setNature(String nature) {
+        this.nature = nature;
     }
 }

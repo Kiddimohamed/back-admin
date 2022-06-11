@@ -18,6 +18,11 @@ public class ExpressionBesoinItemWs {
         return expressionBesoinItemService.findByExpressionBesoinStatut(statut);
     }
 
+    @GetMapping("/refExpr/{refExpr}")
+    public List<ExpressionBesoinItem> findByRefExpr(@PathVariable String refExpr) {
+        return expressionBesoinItemService.findByRefExpr(refExpr);
+    }
+
     @GetMapping("/expression-besoin/reference/{reference}")
     public List<ExpressionBesoinItem> findByExpressionBesoinReference(@PathVariable String reference) {
         return expressionBesoinItemService.findByExpressionBesoinReference(reference);
@@ -47,6 +52,11 @@ public class ExpressionBesoinItemWs {
     @PutMapping("/")
     public int update(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
         return expressionBesoinItemService.update(expressionBesoinItem);
+    }
+
+    @GetMapping("/tableau-besoin/{reference}")
+    public List<ExpressionBesoinItem> findByTableauBesoinReference(@PathVariable String reference) {
+        return expressionBesoinItemService.findByTableauBesoinReference(reference);
     }
 
     @Autowired

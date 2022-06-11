@@ -39,7 +39,7 @@ public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
     }
 
     @Override
-    public List<TableauBesoinItem> findByStatut(String statut) {
+    public TableauBesoinItem findByStatut(String statut) {
         return tableauBesoinItemDao.findByStatut(statut);
     }
 

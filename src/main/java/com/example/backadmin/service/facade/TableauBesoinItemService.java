@@ -8,6 +8,6 @@ public interface TableauBesoinItemService {
     int save(TableauBesoinItem tableauBesoinItem);
     TableauBesoinItem findByReference(String reference);
     List<TableauBesoinItem> findByTableauBesoinReference(String reference);
-    List<TableauBesoinItem> findByStatut(String statut);
+   TableauBesoinItem findByStatut(String statut);
 
 }

@@ -26,7 +26,7 @@ public class ChapitreWs {
     }
 
     @GetMapping("/exercice/reference/{reference}")
-    public List<Chapitre> findByExerciceReference(@PathVariable  String reference) {
+    public List<Chapitre> findByExerciceReference(@PathVariable String reference) {
         return chapitreService.findByExerciceReference(reference);
     }
 
@@ -38,6 +38,11 @@ public class ChapitreWs {
     @PostMapping("/")
     public int save(@RequestBody Chapitre chapitre) {
         return chapitreService.save(chapitre);
+    }
+
+    @GetMapping("/libelleExercice/{libelle}")
+    public List<Chapitre> findByLibelleExercice(@PathVariable String libelle) {
+        return chapitreService.findByLibelleExercice(libelle);
     }
 
     @Autowired

@@ -13,5 +13,6 @@ public interface ParagrapheDao extends JpaRepository<Paragraphe,Long> {
     int deleteByReference(String reference);
 
     List<Paragraphe> findByArticleReference(String reference);
+    List<Paragraphe> findByLibelleArticle(String libelleArticle);
 
 }
