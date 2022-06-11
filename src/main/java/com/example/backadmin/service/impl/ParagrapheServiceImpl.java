@@ -36,6 +36,11 @@ public class ParagrapheServiceImpl implements ParagrapheService {
     }
 
     @Override
+    public List<Paragraphe> findByLibelleArticle(String libelleArticle) {
+        return paragrapheDao.findByLibelleArticle(libelleArticle);
+    }
+
+    @Override
     public  int save(Paragraphe paragraphe){
         Paragraphe paragraphe1=findByReference(paragraphe.getReference());
         prepare(paragraphe);
@@ -44,7 +49,7 @@ public class ParagrapheServiceImpl implements ParagrapheService {
         }else if(paragraphe.getArticle()==null){
             return -2;
         }else{
-            paragraphe.setLibelleArticle(paragraphe.getArticle().getCode());
+            paragraphe.setLibelleArticle(paragraphe.getArticle().getLibelle());
             paragraphe.setLibelleChapitre(paragraphe.getArticle().getLibelleChapitre());
             paragrapheDao.save(paragraphe);
             return 1;

@@ -31,6 +31,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> findByLibelleChapitre(String libelleChapitre) {
+        return articleDao.findByLibelleChapitre(libelleChapitre);
+    }
+
+    @Override
     public List<Article> findAll() {
         return articleDao.findAll();
     }

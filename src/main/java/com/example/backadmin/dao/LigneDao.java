@@ -13,6 +13,7 @@ public interface LigneDao extends JpaRepository<Ligne,Long> {
     int deleteByReference(String reference);
     List<Ligne> findByNaturePrestationReference(String reference);
     List<Ligne> findByParagrapheReference(String reference);
+    List<Ligne> findByLibelleParagraphe(String libelleParagraphe);
 
     //todo find by AND to all Dao
 

@@ -23,24 +23,29 @@ public class RubriqueServiceImpl implements RubriqueService {
         return rubriqueDao.findAll();
     }
 
-    public int save(Rubrique rubrique){
-        Rubrique rubrique1=findByReference(rubrique.getReference());
+    @Override
+    public List<Rubrique> findByLigneLibelle(String ligneLibelle) {
+        return rubriqueDao.findByLigneLibelle(ligneLibelle);
+    }
+
+    @Override
+    public int save(Rubrique rubrique) {
+        Rubrique rubrique1 = findByReference(rubrique.getReference());
         prepare(rubrique);
-        if (rubrique1!=null){
+        if (rubrique1 != null) {
             return -1;
-        }else{
+        } else {
             rubrique.setCodeArticle(rubrique.getLigne().getLibelleArticle());
             rubrique.setCodeLigne(rubrique.getLigne().getLibelle());
             rubrique.setCodeParagraphe(rubrique.getLigne().getLibelleParagraphe());
-            rubrique.setLibelleChapitre(rubrique.getLigne().getLibelleChapitre());
+            rubrique.setLibelleLigne(rubrique.getLigne().getLibelle());
             rubriqueDao.save(rubrique);
             return 1;
         }
-
     }
 
     private void prepare(Rubrique rubrique) {
-        Ligne ligne=ligneService.findByReference(rubrique.getLigne().getReference());
+        Ligne ligne = ligneService.findByReference(rubrique.getLigne().getReference());
         rubrique.setLigne(ligne);
     }
 

@@ -23,14 +23,10 @@ public class CommandeServiceImpl implements CommandeService {
     }
 
     @Override
-    public List<Commande> findByExpressionBesoinReference(String reference) {
-        return commandeDao.findByExpressionBesoinReference(reference);
+    public List<Commande> findByTableauBesoinItemReference(String reference) {
+        return commandeDao.findByTableauBesoinItemReference(reference);
     }
-//
-//    @Override
-//    public List<Commande> findByServiceDemandeurReference(String reference) {
-//        return commandeDao.findByServiceDemandeurReference(reference);
-//    }
+
 
     @Override
     public int save(Commande commande) {
@@ -38,18 +34,18 @@ public class CommandeServiceImpl implements CommandeService {
         prepare(commande);
         if (commande1 != null) {
             return -1;
-        } else if (commande.getEtablissement() == null || commande.getExpressionBesoin() == null || commande.getFournisseur() == null || commande.getOrdonnateur() == null || commande.getServiceDemandeur() == null) {
-            return -4;
+//        } else if (commande.getEtablissement() == null || commande.getTableauBesoinItem() == null || commande.getFournisseur() == null || commande.getOrdonnateur() == null || commande.getServiceDemandeur() == null) {
+//            return -4;
         } else {
-            commande.getExpressionBesoin().setStatut("En attent de livraison");
-            commande.setEtablissement(commande.getOrdonnateur().getEtablissement().getReference());
+            commande.getTableauBesoinItem().setStatut("En attent de livraison");
+//            commande.setEtablissement(commande.getOrdonnateur().getEtablissement().getReference());
 //            commande.setServiceDemandeur(commande.getExpressionBesoin().getUser().getServiceDemandeur());
 
             commandeDao.save(commande);
-            commande.getCommandeItemList().forEach(commandeItem -> {
-                commandeItem.setCommande(commande);
-                commandeItemService.save(commandeItem);
-            });
+//            commande.getCommandeItemList().forEach(commandeItem -> {
+//                commandeItem.setCommande(commande);
+//                commandeItemService.save(commandeItem);
+//            });
             return 1;
         }
     }
@@ -57,14 +53,15 @@ public class CommandeServiceImpl implements CommandeService {
     private void prepare(Commande commande) {
         Employe employe = employeService.findByReferenceEmploye(commande.getOrdonnateur().getReferenceEmploye());
         commande.setOrdonnateur(employe);
-        ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(commande.getExpressionBesoin().getReference());
-        commande.setExpressionBesoin(expressionBesoin);
+//        ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(commande.getTableauBesoinItem().getReference());
+      TableauBesoinItem tableauBesoinItem=tableauBesoinItemService.findByReference(commande.getTableauBesoinItem().getReference());
+        commande.setTableauBesoinItem(tableauBesoinItem);
 //        Etablissement etablissement = etablissementService.findByReference(commande.getOrdonnateur().getEtablissement().getReference());
 //        commande.setEtablissement(etablissement);
 //        ServiceDemandeur serviceDemandeur = serviceDemandeurService.findByReference(commande.getServiceDemandeur().getReference());
 //        commande.setServiceDemandeur(serviceDemandeur);
-        Fournisseur fournisseur = fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
-        commande.setFournisseur(fournisseur);
+//        Fournisseur fournisseur = fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
+//        commande.setFournisseur(fournisseur);
         Rubrique rubrique=rubriqueService.findByReference(commande.getRubrique().getReference());
         commande.setRubrique(rubrique);
     }
@@ -109,4 +106,6 @@ public class CommandeServiceImpl implements CommandeService {
 
     @Autowired
     ExpressionBesoinService expressionBesoinService;
+    @Autowired
+    TableauBesoinItemService tableauBesoinItemService;
 }

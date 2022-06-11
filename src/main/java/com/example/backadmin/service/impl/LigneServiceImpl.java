@@ -33,6 +33,11 @@ public class LigneServiceImpl implements LigneService {
     }
 
     @Override
+    public List<Ligne> findByLibelleParagraphe(String libelleParagraphe) {
+        return ligneDao.findByLibelleParagraphe(libelleParagraphe);
+    }
+
+    @Override
     public List<Ligne> findByParagrapheReference(String reference) {
         return ligneDao.findByParagrapheReference(reference);
     }
@@ -56,7 +61,7 @@ public class LigneServiceImpl implements LigneService {
         } else {
             ligne.setLibelleArticle(ligne.getParagraphe().getLibelleArticle());
             ligne.setLibelleChapitre(ligne.getParagraphe().getLibelleChapitre());
-            ligne.setLibelleParagraphe(ligne.getParagraphe().getCode());
+            ligne.setLibelleParagraphe(ligne.getParagraphe().getLibellePara());
             ligne.setCodeNaturePrestation(ligne.getNaturePrestation().getLibelle());
             ligneDao.save(ligne);
             return 1;

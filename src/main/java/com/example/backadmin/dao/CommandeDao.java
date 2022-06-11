@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CommandeDao extends JpaRepository<Commande, Long> {
+public interface  CommandeDao extends JpaRepository<Commande, Long> {
 
     Commande findByCode(String codeCommande);
-    List<Commande> findByExpressionBesoinReference(String reference);
+    List<Commande> findByTableauBesoinItemReference(String reference);
     List<Commande> findByFournisseurReferenceFournisseur(String reference);
     List<Commande> findByRubriqueReference(String reference);
 // todo find by other classes

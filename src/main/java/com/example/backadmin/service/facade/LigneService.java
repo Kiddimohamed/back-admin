@@ -10,6 +10,7 @@ public interface LigneService {
     int deleteByReference(String reference);
 
     List<Ligne> findByNaturePrestationReference(String reference);
+    List<Ligne> findByLibelleParagraphe(String libelleParagraphe);
 
     List<Ligne> findByParagrapheReference(String reference);
 

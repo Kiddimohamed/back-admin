@@ -9,7 +9,7 @@ public interface CommandeService {
 
     List<Commande> findAll();
 
-    List<Commande> findByExpressionBesoinReference(String reference);
+    List<Commande> findByTableauBesoinItemReference(String reference);
 
 //    List<Commande> findByServiceDemandeurReference(String reference);
 

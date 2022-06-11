@@ -16,9 +16,8 @@ public class TableauBesoin {
     private String statut;
     private double tva;
     private double ttc;
-    @JsonIgnore
     @OneToMany
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
     private List<ExpressionBesoinItem> expressionBesoinItems;
 
     public Long getId() {

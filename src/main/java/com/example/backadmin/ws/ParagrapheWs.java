@@ -36,6 +36,11 @@ public class ParagrapheWs {
         return paragrapheService.save(paragraphe);
     }
 
+    @GetMapping("/libelleArticle/{libelleArticle}")
+    public List<Paragraphe> findByLibelleArticle(@PathVariable String libelleArticle) {
+        return paragrapheService.findByLibelleArticle(libelleArticle);
+    }
+
     @Autowired
     ParagrapheService paragrapheService;
 }
