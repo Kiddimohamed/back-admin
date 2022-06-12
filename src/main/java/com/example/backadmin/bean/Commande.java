@@ -20,6 +20,10 @@ public class Commande {
     private String serviceDemandeur;
     private String exercice;
     private String nature;
+
+
+
+    private String month;
     @ManyToOne
     private Employe ordonnateur;
     @ManyToOne
@@ -41,7 +45,13 @@ public class Commande {
     public void setCommandeItemList(List<CommandeItem> commandeItemList) {
         this.commandeItemList = commandeItemList;
     }
+    public String getMonth() {
+        return month;
+    }
 
+    public void setMonth(String month) {
+        this.month = month;
+    }
     public Long getId() {
         return id;
     }
