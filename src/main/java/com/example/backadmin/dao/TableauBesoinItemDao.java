@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface TableauBesoinItemDao extends JpaRepository<TableauBesoinItem,Long> {
     TableauBesoinItem findByReference(String reference);
-    TableauBesoinItem findByStatut(String statut);
+    List<TableauBesoinItem> findByStatut(String statut);
+    TableauBesoinItem findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(String tabRef,String fournisseurRef);
     List<TableauBesoinItem> findByTableauBesoinReference(String reference);
 }

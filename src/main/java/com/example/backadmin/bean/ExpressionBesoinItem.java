@@ -24,8 +24,7 @@ public class ExpressionBesoinItem {
 
     @ManyToOne
     private Produit produit;
-    @ManyToOne
-    private TableauBesoin tableauBesoin;
+
 
     public double getQuantite() {
         return quantite;
@@ -117,13 +116,7 @@ public class ExpressionBesoinItem {
         this.pt = pt;
     }
 
-    public TableauBesoin getTableauBesoin() {
-        return tableauBesoin;
-    }
 
-    public void setTableauBesoin(TableauBesoin tableauBesoin) {
-        this.tableauBesoin = tableauBesoin;
-    }
 
     public String getRefTabBesoin() {
         return refTabBesoin;

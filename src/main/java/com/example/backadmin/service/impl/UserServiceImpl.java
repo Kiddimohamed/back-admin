@@ -59,18 +59,13 @@ public class UserServiceImpl implements UserService {
     public User save(User user) {
         //
 
-        //User loadedUser = userDao.findByUsername(user.getUsername());
+//        User loadedUser = userDao.findByReference(user.getReference());
         //      ServiceDemandeur serviceDemandeur=serviceDemandeurService.findByReference(user.getServiceDemandeur().getReference());
         // user.setServiceDemandeur(serviceDemandeur);
-        // if (loadedUser != null
-        //|| serviceDemandeur==null
-        // )
-        //    return null;
-        // else {
-        //   user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        //   roleService.save(user.getAuthorities());
-        //   userDao.save(user);
+//         if (loadedUser != null)
+//         {}else {
+//             userDao.save(loadedUser);
+//         }
         return userDao.save(user);
         // }
     }

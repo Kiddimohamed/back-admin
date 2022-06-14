@@ -16,7 +16,7 @@ public class TableauBesoinServiceImpl implements TableauBesoinService {
 //        Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(tableauBesoin.getFournisseur().getReferenceFournisseur());
 //        tableauBesoin.setFournisseur(fournisseur);
 
-        tableauBesoin.setReference("t1");
+        tableauBesoin.setReference("tab_"+System.currentTimeMillis());
         tableauBesoinDao.save(tableauBesoin);
         tableauBesoin.getExpressionBesoinItems().forEach(e -> {
             e.setStatut("envoyee");

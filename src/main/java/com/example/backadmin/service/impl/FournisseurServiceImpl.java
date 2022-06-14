@@ -1,6 +1,8 @@
 package com.example.backadmin.service.impl;
 import com.example.backadmin.bean.Fournisseur;
+import com.example.backadmin.bean.FournisseurItem;
 import com.example.backadmin.dao.FournisseurDao;
+import com.example.backadmin.service.facade.FournisseurItemService;
 import com.example.backadmin.service.facade.FournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,9 @@ public class FournisseurServiceImpl implements FournisseurService {
 
     @Override
     public int save(Fournisseur fournisseur){
+//        FournisseurItem fournisseurItem=fournisseurItemService.findByReference(fournisseur.getFournisseurItem().getReference());
+//        fournisseur.setFournisseurItem(fournisseurItem);
+        fournisseur.setReferenceFournisseur("f_"+System.currentTimeMillis());
         Fournisseur fournisseurLoaded = findByReferenceFournisseur(fournisseur.getReferenceFournisseur());
         if (fournisseurLoaded != null){
             return -1;
@@ -40,4 +45,6 @@ public class FournisseurServiceImpl implements FournisseurService {
 
     @Autowired
     FournisseurDao fournisseurDao;
+    @Autowired
+    FournisseurItemService fournisseurItemService;
 }

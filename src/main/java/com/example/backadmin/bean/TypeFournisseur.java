@@ -5,12 +5,15 @@ import java.util.List;
 
 @Entity
 public class TypeFournisseur {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     public String reference;
     public String type;
     public String description;
     public String image;
+    @ManyToOne
+    private FournisseurItem fournisseurItem;
 
     public String getDescription() {
         return description;
@@ -52,5 +55,11 @@ public class TypeFournisseur {
         this.type = type;
     }
 
+    public FournisseurItem getFournisseurItem() {
+        return fournisseurItem;
+    }
 
+    public void setFournisseurItem(FournisseurItem fournisseurItem) {
+        this.fournisseurItem = fournisseurItem;
+    }
 }

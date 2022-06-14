@@ -19,6 +19,8 @@ public class TableauBesoin {
     @OneToMany
 
     private List<ExpressionBesoinItem> expressionBesoinItems;
+    @OneToMany
+    private List<TableauBesoinItem> tableauBesoinItems;
 
     public Long getId() {
         return id;
@@ -66,5 +68,13 @@ public class TableauBesoin {
 
     public void setStatut(String statut) {
         this.statut = statut;
+    }
+
+    public List<TableauBesoinItem> getTableauBesoinItems() {
+        return tableauBesoinItems;
+    }
+
+    public void setTableauBesoinItems(List<TableauBesoinItem> tableauBesoinItems) {
+        this.tableauBesoinItems = tableauBesoinItems;
     }
 }

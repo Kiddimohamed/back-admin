@@ -19,12 +19,16 @@ public class TableauBesoinItemWs {
     public TableauBesoinItem findByReference(@PathVariable String reference) {
         return tableauBesoinItemService.findByReference(reference);
     }
+
     @GetMapping("/statut/{statut}")
-    public TableauBesoinItem findByStatut(String statut) {
+    public List<TableauBesoinItem> findByStatut(String statut) {
         return tableauBesoinItemService.findByStatut(statut);
     }
 
-
+    @GetMapping("/tableauBesoin/fournisseur/{tabRef}/{fournisseurRef}")
+    public TableauBesoinItem findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(@PathVariable String tabRef, @PathVariable String fournisseurRef) {
+        return tableauBesoinItemService.findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(tabRef, fournisseurRef);
+    }
 
     @GetMapping("/tableau-besoin/{reference}")
     public List<TableauBesoinItem> findByTableauBesoinReference(@PathVariable String reference) {

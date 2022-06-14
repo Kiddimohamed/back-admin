@@ -12,7 +12,7 @@ public interface ExpressionBesoinItemService {
 
     List<ExpressionBesoinItem> findAll();
 
-    List<ExpressionBesoinItem> findByTableauBesoinReference(String reference);
+//    List<ExpressionBesoinItem> findByTableauBesoinReference(String reference);
     List<ExpressionBesoinItem> findByRefExpr(String refExpr);
 
     int update(ExpressionBesoinItem expressionBesoinItem);
