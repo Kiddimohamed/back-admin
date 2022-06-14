@@ -11,4 +11,5 @@ import java.util.List;
 public interface FournisseurItemDao extends JpaRepository<FournisseurItem,Long> {
     List<FournisseurItem> findAll();
     List<FournisseurItem> findByTypeFournisseurReference(String reference);
+    FournisseurItem findByReference(String reference);
 }

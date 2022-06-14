@@ -57,9 +57,15 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
 
     private void prepare(ExpressionBesoin expressionBesoin) {
-        userService.save(expressionBesoin.getUser());
         User user = userService.findByReference(expressionBesoin.getUser().getReference());
-        expressionBesoin.setUser(user);
+//        userService.save(expressionBesoin.getUser());
+        if (user==null){
+        userService.save(expressionBesoin.getUser());
+        User user1=userService.findByReference(expressionBesoin.getUser().getReference());
+        expressionBesoin.setUser(user1);
+        }else {
+            expressionBesoin.setUser(user);
+        }
     }
 
     @Override
@@ -110,8 +116,10 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     public int getNumberOfExpressionBesoinEnAttente() {
         int x = restTemplate.getForObject("http://localhost:8095/centre-project/v1/expression-besoin/NumberOfExpressionBesoinEnAttente", Integer.class);
         return x;
-    }public List<String> graph_monsuel(String e1, String e2, String e3, String e4, String e5, String e6, String e7, String e8, String e9, String e10, String e11, String e12) {
-        List<String> x= restTemplate.getForObject("http://localhost:8095/centre-project/v1/expression-besoin/monthv2?e1="+e1+"&e2="+e2+"&e3="+e3+"&e4="+e4+"&e5="+e5+"&e6="+e6+"&e7="+e7+"&e8="+e8+"&e9="+e9+"&e10="+e10+"&e11="+e11+"&e12="+e12, List.class);
+    }
+
+    public List<String> graph_monsuel(String e1, String e2, String e3, String e4, String e5, String e6, String e7, String e8, String e9, String e10, String e11, String e12) {
+        List<String> x = restTemplate.getForObject("http://localhost:8095/centre-project/v1/expression-besoin/monthv2?e1=" + e1 + "&e2=" + e2 + "&e3=" + e3 + "&e4=" + e4 + "&e5=" + e5 + "&e6=" + e6 + "&e7=" + e7 + "&e8=" + e8 + "&e9=" + e9 + "&e10=" + e10 + "&e11=" + e11 + "&e12=" + e12, List.class);
         return x;
     }
 

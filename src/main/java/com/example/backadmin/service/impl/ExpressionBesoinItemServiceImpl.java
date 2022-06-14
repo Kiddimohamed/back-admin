@@ -1,9 +1,6 @@
 package com.example.backadmin.service.impl;
 
-import com.example.backadmin.bean.ExpressionBesoinItem;
-import com.example.backadmin.bean.Produit;
-import com.example.backadmin.bean.TableauBesoin;
-import com.example.backadmin.bean.User;
+import com.example.backadmin.bean.*;
 import com.example.backadmin.dao.ExpressionBesoinItemDao;
 import com.example.backadmin.service.facade.ExpressionBesoinItemService;
 import com.example.backadmin.service.facade.ExpressionBesoinService;
@@ -32,10 +29,10 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
         return expressionBesoinItemDao.findAll();
     }
 
-    @Override
-    public List<ExpressionBesoinItem> findByTableauBesoinReference(String reference) {
-        return expressionBesoinItemDao.findByTableauBesoinReference(reference);
-    }
+//    @Override
+//    public List<ExpressionBesoinItem> findByTableauBesoinReference(String reference) {
+//        return expressionBesoinItemDao.findByTableauBesoinReference(reference);
+//    }
 
     @Override
     public List<ExpressionBesoinItem> findByRefExpr(String refExpr) {
@@ -66,9 +63,16 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
 
     @Override
     public int save(ExpressionBesoinItem expressionBesoinItem) {
-        produitService.save(expressionBesoinItem.getProduit());
         Produit produit = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
-        expressionBesoinItem.setProduit(produit);
+//        ExpressionBesoin expressionBesoin=expressionBesoinService.findByReference(expressionBesoinItem.getExpressionBesoin().getReference());
+//        expressionBesoinItem.setExpressionBesoin(expressionBesoin);
+        if (produit==null){
+            produitService.save(expressionBesoinItem.getProduit());
+            Produit produit1 = produitService.findByCode(expressionBesoinItem.getProduit().getCode());
+            expressionBesoinItem.setProduit(produit1);
+
+        }else {
+        expressionBesoinItem.setProduit(produit);}
 //        expressionBesoinItem.setRefTabBesoin(expressionBesoinItem.getTableauBesoin().getReference());
         if (expressionBesoinItem.getQuantite() <= 0) {
             return -1;

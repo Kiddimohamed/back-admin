@@ -58,8 +58,8 @@ public class CommandeServiceImpl implements CommandeService {
     }
 
     private void prepare(Commande commande) {
-        Employe employe = employeService.findByReferenceEmploye(commande.getOrdonnateur().getReferenceEmploye());
-        commande.setOrdonnateur(employe);
+//        Employe employe = employeService.findByReferenceEmploye(commande.getOrdonnateur().getReferenceEmploye());
+//        commande.setOrdonnateur(employe);
 //        ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(commande.getTableauBesoinItem().getReference());
       TableauBesoinItem tableauBesoinItem=tableauBesoinItemService.findByReference(commande.getTableauBesoinItem().getReference());
         commande.setTableauBesoinItem(tableauBesoinItem);

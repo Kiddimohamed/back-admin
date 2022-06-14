@@ -31,6 +31,11 @@ public class FoournisseurItemServiceImpl implements FournisseurItemService {
     }
 
     @Override
+    public FournisseurItem findByReference(String reference) {
+        return fournisseurItemDao.findByReference(reference);
+    }
+
+    @Override
     public FournisseurItem save(FournisseurItem fournisseurItem) {
         fournisseurService.save(fournisseurItem.getFournisseur());
         Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(fournisseurItem.getFournisseur().getReferenceFournisseur());

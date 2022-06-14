@@ -54,10 +54,10 @@ public class ExpressionBesoinItemWs {
         return expressionBesoinItemService.update(expressionBesoinItem);
     }
 
-    @GetMapping("/tableau-besoin/{reference}")
-    public List<ExpressionBesoinItem> findByTableauBesoinReference(@PathVariable String reference) {
-        return expressionBesoinItemService.findByTableauBesoinReference(reference);
-    }
+//    @GetMapping("/tableau-besoin/{reference}")
+//    public List<ExpressionBesoinItem> findByTableauBesoinReference(@PathVariable String reference) {
+//        return expressionBesoinItemService.findByTableauBesoinReference(reference);
+//    }
 
     @Autowired
     ExpressionBesoinItemService expressionBesoinItemService;

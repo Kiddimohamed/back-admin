@@ -20,7 +20,8 @@ public class Fournisseur {
     @OneToMany
     private List<Commande> commandeList;
 
-
+    @ManyToOne
+    private FournisseurItem fournisseurItem;
 
 // TODO CategoryProduit
 
@@ -105,5 +106,11 @@ public class Fournisseur {
         this.commandeList = commandeList;
     }
 
+    public FournisseurItem getFournisseurItem() {
+        return fournisseurItem;
+    }
 
+    public void setFournisseurItem(FournisseurItem fournisseurItem) {
+        this.fournisseurItem = fournisseurItem;
+    }
 }

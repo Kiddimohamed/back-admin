@@ -11,13 +11,12 @@ public class TableauBesoinItem1 {
     private String statut;
     private String designation;
     private double quantite;
-    private double pu;
+//    private double pu;
     @ManyToOne
     private Fournisseur fournisseur;
     @ManyToOne
     private ExpressionBesoinItem expressionBesoinItem;
-    @ManyToOne
-    private TableauBesoin tableauBesoin;
+
 
     public Long getId() {
         return id;
@@ -52,9 +51,7 @@ public class TableauBesoinItem1 {
         this.expressionBesoinItem = expressionBesoinItem;
     }
 
-    public TableauBesoin getTableauBesoin() {
-        return tableauBesoin;
-    }
+
 
     public String getStatut() {
         return statut;
@@ -80,15 +77,6 @@ public class TableauBesoinItem1 {
         this.quantite = quantite;
     }
 
-    public double getPu() {
-        return pu;
-    }
 
-    public void setPu(double pu) {
-        this.pu = pu;
-    }
 
-    public void setTableauBesoin(TableauBesoin tableauBesoin) {
-        this.tableauBesoin = tableauBesoin;
-    }
 }

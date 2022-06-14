@@ -16,7 +16,7 @@
           registry.addMapping("/**")
               .allowedMethods("GET", "POST", "PUT", "DELETE")
               .allowedHeaders("*")
-              .allowedOrigins("*");
+              .allowedOrigins("http://localhost:4201","http://localhost:4200","http://localhost:4202");
         }
       };
     }
