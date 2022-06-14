@@ -4,8 +4,11 @@ import com.example.backadmin.bean.*;
 import com.example.backadmin.dao.CommandeDao;
 import com.example.backadmin.service.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,7 @@ public class CommandeServiceImpl implements CommandeService {
         } else {
             commande.getTableauBesoinItem().setStatut("En attent de livraison");
             commande.setMonth(LocalDateTime.now().getMonth().toString());
+            commande.setYear(LocalDateTime.now().getYear());
 //            commande.setEtablissement(commande.getOrdonnateur().getEtablissement().getReference());
 //            commande.setServiceDemandeur(commande.getExpressionBesoin().getUser().getServiceDemandeur());
 
@@ -116,6 +120,11 @@ public class CommandeServiceImpl implements CommandeService {
 
     }
 
+
+    public BigDecimal ttc_par_annes(int date){
+        return commandeDao.ttc_par_annes(date);
+
+    }
 
 
 

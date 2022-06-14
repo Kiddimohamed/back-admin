@@ -2,6 +2,8 @@ package com.example.backadmin.service.facade;
 
 import com.example.backadmin.bean.Commande;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface CommandeService {
@@ -23,6 +25,7 @@ public interface CommandeService {
     List<String> graph_commande_budjet(String e1, String e2, String e3, String e4, String e5, String e6, String e7, String e8, String e9, String e10, String e11, String e12);
 
 
+    public BigDecimal ttc_par_annes(int  date);
 
 
 }

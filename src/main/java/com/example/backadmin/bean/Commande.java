@@ -20,6 +20,7 @@ public class Commande {
     private String serviceDemandeur;
     private String exercice;
     private String nature;
+    private int year;
 
 
 
@@ -45,6 +46,15 @@ public class Commande {
     public void setCommandeItemList(List<CommandeItem> commandeItemList) {
         this.commandeItemList = commandeItemList;
     }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public String getMonth() {
         return month;
     }
