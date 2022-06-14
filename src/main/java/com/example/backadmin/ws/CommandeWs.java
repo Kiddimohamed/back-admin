@@ -52,8 +52,8 @@ public class CommandeWs {
     }
 
     @GetMapping("/getttc_par_anne")
-    public BigDecimal ttc_par_annes(int date){
-        return commandeService.ttc_par_annes(date);
+    public BigDecimal ttc_par_annes(){
+        return commandeService.ttc_par_annes(LocalDate.now().getYear());
     }
 
         @Autowired
