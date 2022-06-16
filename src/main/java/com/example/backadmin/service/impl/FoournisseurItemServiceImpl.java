@@ -42,6 +42,8 @@ public class FoournisseurItemServiceImpl implements FournisseurItemService {
         fournisseurItem.setFournisseur(fournisseur);
         TypeFournisseur typeFournisseur=typeFournisseurService.findByReference(fournisseurItem.getTypeFournisseur().getReference());
         fournisseurItem.setTypeFournisseur(typeFournisseur);
+        fournisseurItem.setReference("fi_"+System.currentTimeMillis());
+
         return fournisseurItemDao.save(fournisseurItem);
     }
 }
