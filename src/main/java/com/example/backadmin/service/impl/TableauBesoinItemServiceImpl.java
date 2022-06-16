@@ -16,12 +16,12 @@ import java.util.List;
 @Service
 public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
     @Override
-    public int save(TableauBesoinItem tableauBesoinItem) {
+    public TableauBesoinItem save(TableauBesoinItem tableauBesoinItem) {
         prepare(tableauBesoinItem);
 
         tableauBesoinItem.setReference("t"+System.currentTimeMillis());
         tableauBesoinItemDao.save(tableauBesoinItem);
-        return 1;
+        return tableauBesoinItem;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.example.backadmin.service.impl;
 
-import com.example.backadmin.bean.Fournisseur;
 import com.example.backadmin.bean.TableauBesoin;
 import com.example.backadmin.dao.TableauBesoinDao;
 import com.example.backadmin.service.facade.*;
@@ -16,7 +15,7 @@ public class TableauBesoinServiceImpl implements TableauBesoinService {
 //        Fournisseur fournisseur=fournisseurService.findByReferenceFournisseur(tableauBesoin.getFournisseur().getReferenceFournisseur());
 //        tableauBesoin.setFournisseur(fournisseur);
 
-        tableauBesoin.setReference("tab_"+System.currentTimeMillis());
+        tableauBesoin.setReference("tab_" + System.currentTimeMillis());
         tableauBesoinDao.save(tableauBesoin);
         tableauBesoin.getExpressionBesoinItems().forEach(e -> {
             e.setStatut("envoyee");
@@ -24,6 +23,13 @@ public class TableauBesoinServiceImpl implements TableauBesoinService {
         });
 //        tableauBesoin.setReference("t1"+tableauBesoin.getReference());
         tableauBesoinDao.save(tableauBesoin);
+    }
+
+    @Override
+    public void update(TableauBesoin tableauBesoin) {
+        TableauBesoin tableauBesoin1 = tableauBesoinDao.findByReference(tableauBesoin.getReference());
+        tableauBesoin1.setStatut("envoye");
+        tableauBesoinDao.save(tableauBesoin1);
     }
 
     @Override

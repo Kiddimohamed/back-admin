@@ -17,10 +17,9 @@ public class TableauBesoin {
     private double tva;
     private double ttc;
     @OneToMany
-
     private List<ExpressionBesoinItem> expressionBesoinItems;
-    @OneToMany
-    private List<TableauBesoinItem> tableauBesoinItems;
+//    @OneToMany
+//    private List<TableauBesoinItem> tableauBesoinItems;
 
     public Long getId() {
         return id;
@@ -70,11 +69,11 @@ public class TableauBesoin {
         this.statut = statut;
     }
 
-    public List<TableauBesoinItem> getTableauBesoinItems() {
-        return tableauBesoinItems;
-    }
-
-    public void setTableauBesoinItems(List<TableauBesoinItem> tableauBesoinItems) {
-        this.tableauBesoinItems = tableauBesoinItems;
-    }
+//    public List<TableauBesoinItem> getTableauBesoinItems() {
+//        return tableauBesoinItems;
+//    }
+//
+//    public void setTableauBesoinItems(List<TableauBesoinItem> tableauBesoinItems) {
+//        this.tableauBesoinItems = tableauBesoinItems;
+//    }
 }

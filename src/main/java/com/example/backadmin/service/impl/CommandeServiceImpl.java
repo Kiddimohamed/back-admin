@@ -20,6 +20,11 @@ public class CommandeServiceImpl implements CommandeService {
     }
 
     @Override
+    public List<Commande> findByStatut(String statut) {
+        return commandeDao.findByStatut(statut);
+    }
+
+    @Override
     public List<Commande> findAll() {
         return commandeDao.findAll();
     }
@@ -29,6 +34,12 @@ public class CommandeServiceImpl implements CommandeService {
         return commandeDao.findByTableauBesoinItemReference(reference);
     }
 
+    @Override
+    public void update(Commande commande,String statut) {
+        Commande commande1 = commandeDao.findByCode(commande.getCode());
+        commande1.setStatut(statut);
+        commandeDao.save(commande1);
+    }
 
     @Override
     public int save(Commande commande) {
@@ -39,8 +50,10 @@ public class CommandeServiceImpl implements CommandeService {
 //        } else if (commande.getEtablissement() == null || commande.getTableauBesoinItem() == null || commande.getFournisseur() == null || commande.getOrdonnateur() == null || commande.getServiceDemandeur() == null) {
 //            return -4;
         } else {
+            commande.setCode("cmd_" + System.currentTimeMillis());
             commande.getTableauBesoinItem().setStatut("En attent de livraison");
             commande.setMonth(LocalDateTime.now().getMonth().toString());
+            commande.setStatut("envoyee");
 //            commande.setEtablissement(commande.getOrdonnateur().getEtablissement().getReference());
 //            commande.setServiceDemandeur(commande.getExpressionBesoin().getUser().getServiceDemandeur());
 
@@ -57,7 +70,7 @@ public class CommandeServiceImpl implements CommandeService {
 //        Employe employe = employeService.findByReferenceEmploye(commande.getOrdonnateur().getReferenceEmploye());
 //        commande.setOrdonnateur(employe);
 //        ExpressionBesoin expressionBesoin = expressionBesoinService.findByReference(commande.getTableauBesoinItem().getReference());
-      TableauBesoinItem tableauBesoinItem=tableauBesoinItemService.findByReference(commande.getTableauBesoinItem().getReference());
+        TableauBesoinItem tableauBesoinItem = tableauBesoinItemService.findByReference(commande.getTableauBesoinItem().getReference());
         commande.setTableauBesoinItem(tableauBesoinItem);
 //        Etablissement etablissement = etablissementService.findByReference(commande.getOrdonnateur().getEtablissement().getReference());
 //        commande.setEtablissement(etablissement);
@@ -65,7 +78,7 @@ public class CommandeServiceImpl implements CommandeService {
 //        commande.setServiceDemandeur(serviceDemandeur);
 //        Fournisseur fournisseur = fournisseurService.findByReferenceFournisseur(commande.getFournisseur().getReferenceFournisseur());
 //        commande.setFournisseur(fournisseur);
-        Rubrique rubrique=rubriqueService.findByReference(commande.getRubrique().getReference());
+        Rubrique rubrique = rubriqueService.findByReference(commande.getRubrique().getReference());
         commande.setRubrique(rubrique);
     }
 
@@ -84,18 +97,9 @@ public class CommandeServiceImpl implements CommandeService {
     }
     //statistique
 
-    public int getnbrOfCommande(){
+    public int getnbrOfCommande() {
         return commandeDao.getnbrOfCommande();
     }
-
-
-
-
-
-
-
-
-
 
 
     public List<String> graph_commande_budjet(String e1, String e2, String e3, String e4, String e5, String e6, String e7, String e8, String e9, String e10, String e11, String e12) {
@@ -115,8 +119,6 @@ public class CommandeServiceImpl implements CommandeService {
         return commandes_mois;
 
     }
-
-
 
 
     @Autowired

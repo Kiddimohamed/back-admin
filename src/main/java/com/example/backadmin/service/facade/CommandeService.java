@@ -6,12 +6,15 @@ import java.util.List;
 
 public interface CommandeService {
     Commande findByCode(String code);
+    List<Commande> findByStatut(String statut);
 
     List<Commande> findAll();
 
     List<Commande> findByTableauBesoinItemReference(String reference);
 
 //    List<Commande> findByServiceDemandeurReference(String reference);
+
+    void update(Commande commande,String statut);
 
     int save(Commande commande);
 

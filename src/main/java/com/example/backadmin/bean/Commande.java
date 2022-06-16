@@ -20,6 +20,7 @@ public class Commande {
     private String serviceDemandeur;
     private String exercice;
     private String nature;
+    private String statut;
 
 
 
@@ -171,6 +172,14 @@ public class Commande {
 
     public void setTableauBesoinItem(TableauBesoinItem tableauBesoinItem) {
         this.tableauBesoinItem = tableauBesoinItem;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 
     public String getNature() {

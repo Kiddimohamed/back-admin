@@ -20,6 +20,8 @@ public class ExpressionBesoinItem {
     private double pt;
     @ManyToOne
     private ExpressionBesoin expressionBesoin;
+    @ManyToOne
+    private TableauBesoin tableauBesoin;
 
 
     @ManyToOne

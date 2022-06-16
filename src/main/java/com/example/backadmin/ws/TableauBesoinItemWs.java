@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/v1/admin/tableau-besoin-item")
 public class TableauBesoinItemWs {
     @PostMapping("/")
-    public int save(@RequestBody TableauBesoinItem tableauBesoinItem) {
+    public TableauBesoinItem save(@RequestBody TableauBesoinItem tableauBesoinItem) {
         return tableauBesoinItemService.save(tableauBesoinItem);
     }
 
@@ -21,7 +21,7 @@ public class TableauBesoinItemWs {
     }
 
     @GetMapping("/statut/{statut}")
-    public List<TableauBesoinItem> findByStatut(String statut) {
+    public List<TableauBesoinItem> findByStatut(@PathVariable String statut) {
         return tableauBesoinItemService.findByStatut(statut);
     }
 

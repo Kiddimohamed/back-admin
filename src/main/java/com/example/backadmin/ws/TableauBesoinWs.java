@@ -16,8 +16,17 @@ public class TableauBesoinWs {
     }
 
     @GetMapping("/statut/{statut}")
-    public List<TableauBesoin> findByStatut(String statut) {
+    public List<TableauBesoin> findByStatut(@PathVariable String statut) {
         return tableauBesoinService.findByStatut(statut);
+    }
+
+    @PostMapping("/update")
+    public void update(@RequestBody TableauBesoin tableauBesoin) {
+        tableauBesoinService.update(tableauBesoin);
+    }
+
+    public void setTableauBesoinService(TableauBesoinService tableauBesoinService) {
+        this.tableauBesoinService = tableauBesoinService;
     }
 
     @GetMapping("/")

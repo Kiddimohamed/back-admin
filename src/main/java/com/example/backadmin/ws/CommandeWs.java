@@ -11,6 +11,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/admin/commande")
 public class CommandeWs {
+    @GetMapping("/statut/{statut}")
+    public List<Commande> findByStatut(@PathVariable String statut) {
+        return commandeService.findByStatut(statut);
+    }
 
     @GetMapping("/code/{code}")
     public Commande findByCode(@PathVariable String code) {
@@ -36,14 +40,19 @@ public class CommandeWs {
     public int save(@RequestBody Commande commande) {
         return commandeService.save(commande);
     }
+    @PutMapping("/update/statut/{statut}")
+    public void update(@RequestBody Commande commande, @PathVariable String statut) {
+        commandeService.update(commande, statut);
+    }
 
 
 
     //statistique
     @GetMapping("/getnbrOfCommande")
-    public int getnbrOfCommande(){
+    public int getnbrOfCommande() {
         return commandeService.getnbrOfCommande();
     }
+
     @GetMapping("/graph_commande_budjet")
     public List<String> graph_commande_budjet(String e1, String e2, String e3, String e4, String e5, String e6, String e7, String e8, String e9, String e10, String e11, String e12) {
         return commandeService.graph_commande_budjet(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12);

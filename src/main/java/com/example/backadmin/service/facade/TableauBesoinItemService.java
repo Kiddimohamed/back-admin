@@ -5,7 +5,7 @@ import com.example.backadmin.bean.TableauBesoinItem;
 import java.util.List;
 
 public interface TableauBesoinItemService {
-    int save(TableauBesoinItem tableauBesoinItem);
+    TableauBesoinItem save(TableauBesoinItem tableauBesoinItem);
 
     TableauBesoinItem findByReference(String reference);
 
