@@ -16,7 +16,7 @@ public class EmailSenderWs {
     }
     @SneakyThrows
     @GetMapping("/{to}/{sujet}/{path}")
-    public String sendEmailWithAttachFile(String to, String sujet,String path){
-        return emailSenderService.sendEmailWithAttachFile(to,sujet,path);
+    public String sendEmailWithAttachFile(String to, String text,String path){
+        return emailSenderService.sendEmailWithAttachFile(to,text,path);
     }
 }
