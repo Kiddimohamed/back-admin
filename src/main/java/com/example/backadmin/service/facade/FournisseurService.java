@@ -12,6 +12,8 @@ public interface FournisseurService {
     List<Fournisseur> findAll();
 
     int save(Fournisseur fournisseur);
+    public int updateRib(Fournisseur fournisseur);
 
 
-}
+
+    }
