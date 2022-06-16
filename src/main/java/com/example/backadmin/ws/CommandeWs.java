@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -58,7 +60,12 @@ public class CommandeWs {
         return commandeService.graph_commande_budjet(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12);
     }
 
-    @Autowired
+    @GetMapping("/getttc_par_anne")
+    public BigDecimal ttc_par_annes(){
+        return commandeService.ttc_par_annes(LocalDate.now().getYear());
+    }
+
+        @Autowired
     CommandeService commandeService;
 }
 

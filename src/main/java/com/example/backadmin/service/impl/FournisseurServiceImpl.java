@@ -40,6 +40,12 @@ public class FournisseurServiceImpl implements FournisseurService {
             return 1;
         }
     }
+    public int updateRib(Fournisseur fournisseur){
+        Fournisseur fournisseur1=findByReferenceFournisseur(fournisseur.getReferenceFournisseur());
+        fournisseur1.setRib(fournisseur.getRib());
+        fournisseurDao.save(fournisseur1);
+        return 1;
+    }
 
 
 

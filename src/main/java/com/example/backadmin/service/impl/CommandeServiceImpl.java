@@ -4,8 +4,11 @@ import com.example.backadmin.bean.*;
 import com.example.backadmin.dao.CommandeDao;
 import com.example.backadmin.service.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +56,7 @@ public class CommandeServiceImpl implements CommandeService {
             commande.setCode("cmd_" + System.currentTimeMillis());
             commande.getTableauBesoinItem().setStatut("En attent de livraison");
             commande.setMonth(LocalDateTime.now().getMonth().toString());
+            commande.setYear(LocalDateTime.now().getYear());
             commande.setStatut("envoyee");
 //            commande.setEtablissement(commande.getOrdonnateur().getEtablissement().getReference());
 //            commande.setServiceDemandeur(commande.getExpressionBesoin().getUser().getServiceDemandeur());
@@ -102,6 +106,15 @@ public class CommandeServiceImpl implements CommandeService {
     }
 
 
+
+
+
+
+
+
+
+
+
     public List<String> graph_commande_budjet(String e1, String e2, String e3, String e4, String e5, String e6, String e7, String e8, String e9, String e10, String e11, String e12) {
         List<String> commandes_mois = new ArrayList<>();
         commandes_mois.add(commandeDao.ttc_par_mois(e1));
@@ -119,6 +132,13 @@ public class CommandeServiceImpl implements CommandeService {
         return commandes_mois;
 
     }
+
+
+    public BigDecimal ttc_par_annes(int date){
+        return commandeDao.ttc_par_annes(date);
+
+    }
+
 
 
     @Autowired

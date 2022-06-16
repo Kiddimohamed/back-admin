@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -26,6 +28,8 @@ public interface  CommandeDao extends JpaRepository<Commande, Long> {
 
     @Query(value = "SELECT SUM(c.totalTtc) FROM Commande c WHERE c.month like :month ")
     String ttc_par_mois(@Param("month") String month);
+    @Query(value = "SELECT SUM(c.totalTtc) FROM Commande c WHERE c.year=:year")
+    BigDecimal ttc_par_annes(@Param("year")int year);
 
 }
 //tot
