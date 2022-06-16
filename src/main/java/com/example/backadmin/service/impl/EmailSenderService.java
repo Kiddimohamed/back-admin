@@ -47,7 +47,7 @@ public class EmailSenderService {
     @Autowired
     private JavaMailSender emailSender;
 
-    public String sendEmailWithAttachFile(String to, String sujet,String path)  {
+    public String sendEmailWithAttachFile(String to, String text,String path)  {
         final String username = "marouansaif3@gmail.com";
         final String password = "ggvvlylvxqfrplis";
 
@@ -74,8 +74,8 @@ public class EmailSenderService {
                     Message.RecipientType.TO,
                     InternetAddress.parse(to)
             );
-            message2.setSubject(sujet);
-            message2.setText("http://localhost:4200/" + sujet);
+            message2.setSubject("demmande");
+            message2.setText("http://localhost:4200/"+text);
 
 
             MimeMultipart mimeMultipart=new MimeMultipart();
