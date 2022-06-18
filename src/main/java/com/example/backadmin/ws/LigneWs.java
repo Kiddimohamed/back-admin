@@ -43,6 +43,11 @@ public class LigneWs {
         return ligneService.save(ligne);
     }
 
+    @GetMapping("libelleParagraphe/{libelleParagraphe}")
+    public List<Ligne> findByLibelleParagraphe(@PathVariable String libelleParagraphe) {
+        return ligneService.findByLibelleParagraphe(libelleParagraphe);
+    }
+
     @Autowired
     LigneService ligneService;
 }

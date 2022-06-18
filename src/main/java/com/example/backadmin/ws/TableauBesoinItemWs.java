@@ -14,21 +14,25 @@ public class TableauBesoinItemWs {
     public int save(@RequestBody TableauBesoinItem tableauBesoinItem) {
         return tableauBesoinItemService.save(tableauBesoinItem);
     }
+
     @GetMapping("/reference/{reference}")
     public TableauBesoinItem findByReference(@PathVariable String reference) {
         return tableauBesoinItemService.findByReference(reference);
     }
 
+    @GetMapping("/statut/{statut}")
+    public List<TableauBesoinItem> findByStatut(String statut) {
+        return tableauBesoinItemService.findByStatut(statut);
+    }
 
-
+    @GetMapping("/tableauBesoin/fournisseur/{tabRef}/{fournisseurRef}")
+    public TableauBesoinItem findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(@PathVariable String tabRef, @PathVariable String fournisseurRef) {
+        return tableauBesoinItemService.findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(tabRef, fournisseurRef);
+    }
 
     @GetMapping("/tableau-besoin/{reference}")
     public List<TableauBesoinItem> findByTableauBesoinReference(@PathVariable String reference) {
         return tableauBesoinItemService.findByTableauBesoinReference(reference);
-    }
-    @GetMapping("/statut/{statut}")
-    public List<TableauBesoinItem> findByStatut(@PathVariable String statut) {
-        return tableauBesoinItemService.findByStatut(statut);
     }
 
     @Autowired

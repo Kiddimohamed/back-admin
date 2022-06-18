@@ -30,7 +30,8 @@ public class TypeFournisseurServiceImpl implements TypeFournisseurService {
     public int save(TypeFournisseur typeFournisseur) {
         TypeFournisseur typeFournisseur1=findByReference(typeFournisseur.getReference());
         if (typeFournisseur1!=null)return -1;
-        else {typeFournisseurDao.save(typeFournisseur);
+        else {
+            typeFournisseurDao.save(typeFournisseur);
         return 1;
     }}
 

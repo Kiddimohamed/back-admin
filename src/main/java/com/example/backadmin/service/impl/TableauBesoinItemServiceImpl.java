@@ -18,11 +18,7 @@ public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
     @Override
     public int save(TableauBesoinItem tableauBesoinItem) {
         prepare(tableauBesoinItem);
-//        tableauBesoinItem.getTableauBesoin().getExpressionBesoinItems().forEach(e->{
-//            expressionBesoinItemService.update(e);
-//        });
-//        tableauBesoinItem.setTtc(tableauBesoinItem.getTableauBesoin().getTtc());
-//        tableauBesoinItem.setTva(tableauBesoinItem.getTableauBesoin().getTva());
+
         tableauBesoinItem.setReference("t"+System.currentTimeMillis());
         tableauBesoinItemDao.save(tableauBesoinItem);
         return 1;
@@ -42,6 +38,14 @@ public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
     public List<TableauBesoinItem> findByStatut(String statut) {
         return tableauBesoinItemDao.findByStatut(statut);
     }
+
+
+    @Override
+    public TableauBesoinItem findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(String tabRef, String fournisseurRef) {
+        return tableauBesoinItemDao.findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(tabRef,fournisseurRef);
+    }
+
+
 
     private void prepare(TableauBesoinItem tableauBesoinItem) {
         Fournisseur fournisseur = fournisseurService.findByReferenceFournisseur(tableauBesoinItem.getFournisseur().getReferenceFournisseur());

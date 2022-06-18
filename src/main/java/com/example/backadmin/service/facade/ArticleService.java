@@ -10,6 +10,7 @@ public interface ArticleService {
     int deleteByReference(String reference);
 
     List<Article> findByChapitreReference(String reference);
+    List<Article> findByLibelleChapitre(String libelleChapitre);
 
     List<Article> findAll();
 

@@ -11,5 +11,6 @@ import java.util.List;
 public interface TableauBesoinItemDao extends JpaRepository<TableauBesoinItem,Long> {
     TableauBesoinItem findByReference(String reference);
     List<TableauBesoinItem> findByStatut(String statut);
+    TableauBesoinItem findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(String tabRef,String fournisseurRef);
     List<TableauBesoinItem> findByTableauBesoinReference(String reference);
 }

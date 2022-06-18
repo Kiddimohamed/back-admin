@@ -59,6 +59,11 @@ public class ChapitreServiceImpl implements ChapitreService {
         }
     }
 
+    @Override
+    public List<Chapitre> findByLibelleExercice(String libelle) {
+        return chapitreDao.findByLibelleExercice(libelle);
+    }
+
     private void prepare(Chapitre chapitre) {
         ChapitreType chapitreType= chapitreTypeService.findByReference(chapitre.getChapitreType().getReference());
         chapitre.setChapitreType(chapitreType);

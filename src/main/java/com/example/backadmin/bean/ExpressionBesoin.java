@@ -17,9 +17,9 @@ public class ExpressionBesoin {
     private String objet;
     private LocalDateTime dateExpressionBesoin;
     private String statut;
-    private double totalTTC;
-    private double totalHT;
-    private double TVA;
+//    private double totalTTC;
+//    private double totalHT;
+//    private double TVA;
 //    private String userName;
 
     @JsonIgnore
@@ -98,26 +98,26 @@ public class ExpressionBesoin {
         this.commandeList = commandeList;
     }
 
-    public double getTotalTTC() {
-        return totalTTC;
-    }
-
-    public void setTotalTTC(double totalTTC) {
-        this.totalTTC = totalTTC;
-    }
-
-    public double getTotalHT() {
-        return totalHT;
-    }
-
-    public void setTotalHT(double totalHT) {
-        this.totalHT = totalHT;
-    }
-
-    public double getTVA() {
-        return TVA;
-    }
-
+//    public double getTotalTTC() {
+//        return totalTTC;
+//    }
+//
+//    public void setTotalTTC(double totalTTC) {
+//        this.totalTTC = totalTTC;
+//    }
+//
+//    public double getTotalHT() {
+//        return totalHT;
+//    }
+//
+//    public void setTotalHT(double totalHT) {
+//        this.totalHT = totalHT;
+//    }
+//
+//    public double getTVA() {
+//        return TVA;
+//    }
+//
 //    public String getUserName() {
 //        return userName;
 //    }
@@ -126,8 +126,8 @@ public class ExpressionBesoin {
 //        this.userName = userName;
 //    }
 
-    public void setTVA(double TVA) {
-        this.TVA = TVA;
-    }
+//    public void setTVA(double TVA) {
+//        this.TVA = TVA;
+//    }
 
 }

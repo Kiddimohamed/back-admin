@@ -57,6 +57,10 @@ public class ExpressionBesoinWs {
 public int getNumberOfExpressionBesoinEnAttente() {
         return expressionBesoinService.getNumberOfExpressionBesoinEnAttente();
 }
+    @GetMapping("/monthv2")
+    public List<String> graph_monsuel(String e1, String e2, String e3, String e4, String e5, String e6, String e7, String e8, String e9, String e10, String e11, String e12) {
+        return expressionBesoinService.graph_monsuel(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12);
+    }
 
     @Autowired
     ExpressionBesoinService expressionBesoinService;

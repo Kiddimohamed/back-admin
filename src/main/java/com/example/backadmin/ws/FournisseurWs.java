@@ -29,11 +29,14 @@ public class FournisseurWs {
     }
 
     @PostMapping("/")
-
     public int save(@RequestBody Fournisseur fournisseur) {
         return fournisseurService.save(fournisseur);
     }
 
+    @PutMapping("/rib")
+    public int updateRib(@RequestBody Fournisseur fournisseur){
+        return fournisseurService.updateRib(fournisseur);
+    }
 
     @Autowired
     FournisseurService fournisseurService;

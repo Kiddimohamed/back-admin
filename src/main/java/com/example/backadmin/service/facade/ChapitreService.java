@@ -16,4 +16,6 @@ public interface ChapitreService {
     List<Chapitre> findAll();
 
     int save(Chapitre chapitre);
+    List<Chapitre> findByLibelleExercice(String libelle);
+
 }

@@ -15,15 +15,25 @@ public class Fournisseur {
     private String faxFournisseur;
     private String villeFournisseur;
     private String emailFournisseur;
+    private String rib;
 
 
     @OneToMany
     private List<Commande> commandeList;
 
+    @ManyToOne
+    private FournisseurItem fournisseurItem;
 
 
-// TODO CategoryProduit
+    // TODO CategoryProduit
 
+    public String getRib() {
+        return rib;
+    }
+
+    public void setRib(String rib) {
+        this.rib = rib;
+    }
 
     public String getRaisonSocial() {
         return raisonSocial;
@@ -36,6 +46,7 @@ public class Fournisseur {
     public String getEmailFournisseur() {
         return emailFournisseur;
     }
+
 
     public void setEmailFournisseur(String emailFournisseur) {
         this.emailFournisseur = emailFournisseur;
@@ -105,5 +116,11 @@ public class Fournisseur {
         this.commandeList = commandeList;
     }
 
+    public FournisseurItem getFournisseurItem() {
+        return fournisseurItem;
+    }
 
+    public void setFournisseurItem(FournisseurItem fournisseurItem) {
+        this.fournisseurItem = fournisseurItem;
+    }
 }
