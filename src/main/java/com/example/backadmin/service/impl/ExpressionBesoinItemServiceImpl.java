@@ -1,5 +1,7 @@
 package com.example.backadmin.service.impl;
 
+import com.example.backadmin.bean.ExpressionBesoinItem;
+import com.example.backadmin.bean.Produit;
 import com.example.backadmin.bean.*;
 import com.example.backadmin.dao.ExpressionBesoinItemDao;
 import com.example.backadmin.service.facade.ExpressionBesoinItemService;

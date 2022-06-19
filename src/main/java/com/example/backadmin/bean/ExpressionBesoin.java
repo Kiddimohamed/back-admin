@@ -1,5 +1,6 @@
 package com.example.backadmin.bean;
 
+import com.example.backadmin.security.bean.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
