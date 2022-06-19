@@ -17,18 +17,18 @@ public class TableauBesoinServiceImpl implements TableauBesoinService {
 
         tableauBesoin.setReference("tab_" + System.currentTimeMillis());
         tableauBesoinDao.save(tableauBesoin);
-        tableauBesoin.getExpressionBesoinItems().forEach(e -> {
-            e.setStatut("envoyee");
-            expressionBesoinItemService.save(e);
-        });
+//        tableauBesoin.getExpressionBesoinItems().forEach(e -> {
+//            e.setStatut("envoyee");
+//            expressionBesoinItemService.save(e);
+//        });
 //        tableauBesoin.setReference("t1"+tableauBesoin.getReference());
         tableauBesoinDao.save(tableauBesoin);
     }
 
     @Override
-    public void update(TableauBesoin tableauBesoin) {
+    public void update(TableauBesoin tableauBesoin,String statut) {
         TableauBesoin tableauBesoin1 = tableauBesoinDao.findByReference(tableauBesoin.getReference());
-        tableauBesoin1.setStatut("envoye");
+        tableauBesoin1.setStatut(statut);
         tableauBesoinDao.save(tableauBesoin1);
     }
 

@@ -7,7 +7,8 @@ import java.util.List;
 public interface TableauBesoinService {
     void save(TableauBesoin tableauBesoin);
 
-    void update(TableauBesoin tableauBesoin);
+
+    void update(TableauBesoin tableauBesoin, String statut);
 
     TableauBesoin findByReference(String reference);
     List<TableauBesoin> findAll();

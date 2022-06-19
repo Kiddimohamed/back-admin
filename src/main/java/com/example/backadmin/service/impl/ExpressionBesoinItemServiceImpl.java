@@ -45,6 +45,7 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
         ExpressionBesoinItem expressionBesoinItem1 = expressionBesoinItemDao.findByCode(expressionBesoinItem.getCode());
         expressionBesoinItem1.setPu(expressionBesoinItem.getPu());
         expressionBesoinItem1.setPt(expressionBesoinItem.getPu()*expressionBesoinItem.getQuantite());
+        expressionBesoinItem1.setStatut(expressionBesoinItem.getStatut());
 //        TableauBesoin tableauBesoin = tableauBesoinService.findByReference(expressionBesoinItem.getTableauBesoin().getReference());
 //        expressionBesoinItem1.setTableauBesoin(tableauBesoin);
         expressionBesoinItemDao.save(expressionBesoinItem1);

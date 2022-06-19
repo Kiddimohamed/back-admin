@@ -19,11 +19,12 @@ public class TableauBesoinWs {
     public List<TableauBesoin> findByStatut(@PathVariable String statut) {
         return tableauBesoinService.findByStatut(statut);
     }
-
-    @PostMapping("/update")
-    public void update(@RequestBody TableauBesoin tableauBesoin) {
-        tableauBesoinService.update(tableauBesoin);
+    @PutMapping("/update/statut/{statut}")
+    public void update(@RequestBody TableauBesoin tableauBesoin,@PathVariable String statut) {
+        tableauBesoinService.update(tableauBesoin, statut);
     }
+
+
 
     public void setTableauBesoinService(TableauBesoinService tableauBesoinService) {
         this.tableauBesoinService = tableauBesoinService;

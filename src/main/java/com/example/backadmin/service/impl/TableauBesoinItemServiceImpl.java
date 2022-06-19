@@ -52,6 +52,7 @@ public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
         tableauBesoinItem.setFournisseur(fournisseur);
         TableauBesoin tableauBesoin = tableauBesoinService.findByReference(tableauBesoinItem.getTableauBesoin().getReference());
         tableauBesoinItem.setTableauBesoin(tableauBesoin);
+
     }
 
 
