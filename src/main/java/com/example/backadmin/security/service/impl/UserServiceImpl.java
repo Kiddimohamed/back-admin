@@ -21,7 +21,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import javax.persistence.EntityManager;
@@ -121,12 +120,8 @@ public class UserServiceImpl implements UserService {
 //        return null;
 //    }
 
-    @Autowired
-    private RestTemplate restTemplate;
-    @Autowired
-    private WebClient.Builder webClientBuilder;
 
-//
+
 //    @Override
 //    public ResponseEntity<String> getAllServices() {
 //        HttpHeaders headers = new HttpHeaders();
