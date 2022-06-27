@@ -17,8 +17,6 @@ public interface EmployeService {
 
     int save(Employe employe);
 
-    ResponseEntity<String> getAllExpressionServices();
 
-    ResponseEntity<String> getEnAttenteExpressionServices();
 
 }

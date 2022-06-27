@@ -31,16 +31,7 @@ public class EmployeWs {
         return employeService.findAll();
     }
 
-    @GetMapping("/all-expression-services")
-    public ResponseEntity<String> getAllExpressionServices() {
-        return employeService.getAllExpressionServices();
-    }
 
-    //@CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/en-attente-expression-services")
-    public ResponseEntity<String> getEnAttenteExpressionServices() {
-        return employeService.getEnAttenteExpressionServices();
-    }
 
     @PostMapping("/")
     public int save(@RequestBody Employe employe) {

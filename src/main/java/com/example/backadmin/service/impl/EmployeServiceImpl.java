@@ -69,30 +69,10 @@ public class EmployeServiceImpl implements EmployeService {
 
 
     //microservice************************************
-    @Autowired
-    private RestTemplate restTemplate;
-    @Autowired
-    private WebClient.Builder webClientBuilder;
-    @Override
-    public ResponseEntity<String> getAllExpressionServices(){
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8095/centre-project/v1/expression-besoin/", HttpMethod.GET, entity, String.class);
-        System.out.println(response);
-        return response;
 
 
-    }
 
-    @Override
-    public ResponseEntity<String> getEnAttenteExpressionServices() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8095/centre-project/v1/expression-besoin/statut/"+"En attente", HttpMethod.GET, entity, String.class);
-        return response;
-    }
+
 
 
 

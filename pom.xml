@@ -64,35 +64,13 @@
             <version>2.6.7</version>
         </dependency>
 
-        <!--===============microservice===============-->
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-openfeign-dependencies -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>3.1.2</version>
-        </dependency>
-        <!--===============eurika===============-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>3.1.2</version>
 
-        </dependency>
         <!--===============lombobok===============-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--===============webclient===============-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webflux</artifactId>
-            <version>5.3.19</version>
-        </dependency>
-
-
-
 
 
         <!--==============================-->
