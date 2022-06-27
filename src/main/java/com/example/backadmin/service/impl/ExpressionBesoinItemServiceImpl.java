@@ -8,10 +8,17 @@ import com.example.backadmin.service.facade.ExpressionBesoinItemService;
 import com.example.backadmin.service.facade.ExpressionBesoinService;
 import com.example.backadmin.service.facade.ProduitService;
 import com.example.backadmin.service.facade.TableauBesoinService;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemService {
@@ -54,7 +61,29 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
         System.out.println(expressionBesoinItem1.getQuantite());
         return 1;
     }
+    @Override
+    public List<ExpressionBesoinItem> findByExpressionBesoinObjet(String objet) {
+        return expressionBesoinItemDao.findByExpressionBesoinObjet(objet);
+    }
 
+
+    @Override
+    public String imprimer(String objet) throws FileNotFoundException, JRException {
+        List<ExpressionBesoinItem> expressionBesoinItems = findByExpressionBesoinObjet(objet);
+        ExpressionBesoin byObjet = expressionBesoinService.findByObjet(objet);
+//        System.out.println(78888);
+//        System.out.println(byRef.getObjet());
+        File file = ResourceUtils.getFile("classpath:Reports\\ExpressionDeBesoin.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource datesource = new JRBeanCollectionDataSource(expressionBesoinItems);
+        Map<String, Object> parametres = new HashMap<String, Object>();
+        parametres.put("objet", byObjet.getObjet());
+        parametres.put("dateExb", byObjet.getDateExb());
+        JasperPrint print = JasperFillManager.fillReport(jasperReport, parametres, datesource);
+
+        JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\DELL\\Desktop\\image\\Expresion_besoin_" + byObjet.getReference() + "_" + byObjet.getObjet() + ".pdf");
+        return "hahahah";
+    }
     @Override
     public ExpressionBesoinItem findByCode(String code) {
         return expressionBesoinItemDao.findByCode(code);
