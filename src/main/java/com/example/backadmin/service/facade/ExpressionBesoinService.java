@@ -7,13 +7,14 @@ import java.util.List;
 
 public interface ExpressionBesoinService {
     ExpressionBesoin findByObjet(String objet);
-
+    public void updateExpressionBesoin(ExpressionBesoin expressionBesoin) ;
     ExpressionBesoin findByReference(String reference);
-
+    public void refuser(ExpressionBesoin expressionBesoin) ;
     List<ExpressionBesoin> findByStatut(String statut);
 //    List<ExpressionBesoin> findByUserReference(String reference);
 
     List<ExpressionBesoin> findAll();
+
 
     int save(ExpressionBesoin expressionBesoin);
 

@@ -17,10 +17,39 @@ public class ExpressionBesoin {
     private String objet;
     private LocalDateTime dateExpressionBesoin;
     private String statut;
+    private String month;
+    private LocalDateTime dateExb;
+
+    public LocalDateTime getDateExb() {
+        return dateExb;
+    }
+
+    public void setDateExb(LocalDateTime dateExb) {
+        this.dateExb = dateExb;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
 //    private double totalTTC;
 //    private double totalHT;
 //    private double TVA;
 //    private String userName;
+
+    @ManyToOne
+    private NatureDemande natureDemande;
+    public NatureDemande getNatureDemande() {
+        return natureDemande;
+    }
+
+    public void setNatureDemande(NatureDemande natureDemande) {
+        this.natureDemande = natureDemande;
+    }
 
     @JsonIgnore
     @OneToMany
