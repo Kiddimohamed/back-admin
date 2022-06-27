@@ -1,37 +1,28 @@
 package com.example.backadmin.service.impl;
 
-import com.example.backadmin.bean.*;
 
+import com.example.backadmin.bean.ExpressionBesoin;
+import com.example.backadmin.bean.NatureDemande;
 import com.example.backadmin.dao.ExpressionBesoinDao;
-
 import com.example.backadmin.security.bean.User;
 import com.example.backadmin.security.service.facade.UserService;
-import com.example.backadmin.service.facade.*;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import com.example.backadmin.service.facade.ExpressionBesoinItemService;
+import com.example.backadmin.service.facade.ExpressionBesoinService;
+import com.example.backadmin.service.facade.NatureDemandeService;
+import com.example.backadmin.service.facade.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
-    @Override
-    public ExpressionBesoin findByObjet(String objet) {
-        return expressionBesoinDao.findByObjet(objet);
-    }
 
     @Override
     public ExpressionBesoin findByReference(String reference) {
@@ -39,8 +30,24 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     }
 
     @Override
-    public List<ExpressionBesoin> findByStatut(String statut) {
-        return expressionBesoinDao.findByStatut(statut);
+    public ExpressionBesoin findByObjet(String objet) {
+        return expressionBesoinDao.findByObjet(objet);
+    }
+
+    @Override
+    public ExpressionBesoin findByDateExb(LocalDateTime date) {
+        return expressionBesoinDao.findByDateExb(date);
+    }
+
+    @Override
+    public List<ExpressionBesoin> findByUserReference(String reference) {
+        return expressionBesoinDao.findByUserReference(reference);
+    }
+
+    @Override
+    @Transactional
+    public int deleteByReference(String reference) {
+        return expressionBesoinDao.deleteByReference(reference);
     }
 
 
@@ -49,8 +56,16 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
         return expressionBesoinDao.findAll();
     }
 
-    // TODO all Delete
-    // TODO Validate a Simo
+    @Override
+    public List<ExpressionBesoin> findByStatutAndUserUsername(String statut, String username) {
+        return expressionBesoinDao.findByStatutAndUserUsername(statut, username);
+    }
+
+    @Override
+    public List<ExpressionBesoin> findByStatut(String statut) {
+        return expressionBesoinDao.findByStatut(statut);
+    }
+
 
     @Override
     public int save(ExpressionBesoin expressionBesoin) {
@@ -62,24 +77,14 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
             return 1;
         } else return res;
 
-
     }
+
     public void increment(ExpressionBesoin expressionBesoin) {
         int i;
 
     }
 
-
-    private void prepare(ExpressionBesoin expressionBesoin) {/*
-        User user = userService.findByReference(expressionBesoin.getUser().getReference());
-//        userService.save(expressionBesoin.getUser());
-        if (user==null){
-        userService.save(expressionBesoin.getUser());
-        User user1=userService.findByReference(expressionBesoin.getUser().getReference());
-        expressionBesoin.setUser(user1);
-        }else {
-            expressionBesoin.setUser(user);
-        }*/
+    private void prepare(ExpressionBesoin expressionBesoin) {
         User user = userService.findByReference(expressionBesoin.getUser().getReference());
         expressionBesoin.setUser(user);
 
@@ -93,28 +98,28 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 //        });
     }
 
-    @Override
-    public void saveNull(ExpressionBesoin expressionBesoin) {
-        prepare(expressionBesoin);
-        expressionBesoinDao.save(expressionBesoin);
-
-    }
 
     private int validate(ExpressionBesoin expressionBesoin) {
         ExpressionBesoin expressionBesoin1 = findByReference(expressionBesoin.getReference());
 
         if (expressionBesoin1 != null) {
             return -3;
-        } else if(expressionBesoin.getUser()==null){
-            return -4;
+//        } else if(expressionBesoin.getUser()==null){
+//            return -4;
         } else {
             return 1;
         }
     }
 
+    @Override
+    public String getRefExpressionBesoin(ExpressionBesoin expressionBesoin) {
+        return expressionBesoin.getReference();
+    }
+
+
+
 
     public void handelprocess(ExpressionBesoin expressionBesoin) {
-
         expressionBesoin.setStatut("En attente");
         expressionBesoin.setDateExb(LocalDateTime.now());
         expressionBesoin.setMonth(LocalDateTime.now().getMonth().toString());
@@ -125,10 +130,15 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
             //Produit produit = produitService.findByLibelle(expressionBesoinItem.getProduit().getLibelle());
             expressionBesoinItem.setExpressionBesoin(expressionBesoin);
             //expressionBesoinItem.setProduit(produit);
-            expressionBesoinItem.setCode("ExpI-" + getMaxId() + "-" + (expressionBesoinItemService.getMaxId() + 1));
+            expressionBesoinItem.setRef("ExpI-" + getMaxId() + "-" + (expressionBesoinItemService.getMaxId() + 1));
             expressionBesoinItemService.save(expressionBesoinItem);
         });
     }
+
+    public Long getMaxId() {
+        return expressionBesoinDao.getMaxId();
+    }
+
     public void updateExpressionBesoin(ExpressionBesoin expressionBesoin) {
 
         ExpressionBesoin e = expressionBesoinDao.findByReference(expressionBesoin.getReference());
@@ -142,16 +152,12 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
         e.setStatut("Refusée");
         expressionBesoinDao.save(e);
     }
-    public Long getMaxId() {
-        return expressionBesoinDao.getMaxId();
+    @Override
+    public List<ExpressionBesoin> findByNatureDemandeNom(String nom) {
+        return expressionBesoinDao.findByNatureDemandeNom(nom);
     }
 
 
-    //microservice************************************
-    @Autowired
-    private RestTemplate restTemplate;
-
-    //statistique
 
 
     //statistique
@@ -192,29 +198,19 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
     }
 
 
-    @Override
-    public int expressionBesoinEncours() {
-        return expressionBesoinDao.expressionBesoinEncours();
-    }
-
-
-
+    @Autowired
+    private ExpressionBesoinDao expressionBesoinDao;
 
     @Autowired
-    ExpressionBesoinDao expressionBesoinDao;
-    @Autowired
-    EmployeService employeService;
+    private UserService userService;
+
+
     @Autowired
     ProduitService produitService;
-    @Autowired
-    EtablissementService etablissementService;
-    @Autowired
-    ExpressionBesoinItemService expressionBesoinItemService;
-    @Autowired
-    UserService userService;
-    @Autowired
-    ServiceDemandeurService serviceDemandeurService;
-    @Autowired
-   NatureDemandeService natureDemandeService;
 
+    @Autowired
+    private ExpressionBesoinItemService expressionBesoinItemService;
+
+    @Autowired
+    NatureDemandeService natureDemandeService;
 }

@@ -51,17 +51,17 @@ public class UserWs {
         return userService.findByReference(ref);
     }
 
-    public ResponseEntity<String> getAllService() {
-        return userService.getAllService();
-    }
+//    public ResponseEntity<String> getAllService() {
+//        return userService.getAllService();
+//    }
 
-    public ResponseEntity<String> getAllServices() {
-        return userService.getAllServices();
-    }
-
-    public int findServiceIfExist(String service) {
-        return userService.findServiceIfExist(service);
-    }
+//    public ResponseEntity<String> getAllServices() {
+//        return userService.getAllServices();
+//    }
+//
+//    public int findServiceIfExist(String service) {
+//        return userService.findServiceIfExist(service);
+//    }
 
     @GetMapping("/username/{username}")
     public UserDetails loadUserByUsername(@PathVariable String username) throws UsernameNotFoundException {

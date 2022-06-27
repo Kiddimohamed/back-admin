@@ -28,11 +28,11 @@ public interface UserService extends UserDetailsService {
     User findByUsername(String username);
 
 
-    public ResponseEntity<String> getAllService();
+//    public ResponseEntity<String> getAllService();
+//
+//    public ResponseEntity<String> getAllServices();
 
-    public ResponseEntity<String> getAllServices();
-
-    public int findServiceIfExist(String service);
+//    public int findServiceIfExist(String service);
 
     int findstatUsers();
 }

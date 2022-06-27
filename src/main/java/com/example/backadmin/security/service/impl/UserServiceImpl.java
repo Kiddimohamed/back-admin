@@ -116,25 +116,25 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
-    public ResponseEntity<String> getAllService() {
-        return null;
-    }
+//    @Override
+//    public ResponseEntity<String> getAllService() {
+//        return null;
+//    }
 
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
     private WebClient.Builder webClientBuilder;
 
-
-    @Override
-    public ResponseEntity<String> getAllServices() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8096/v1/admin/service-demandeur/", HttpMethod.GET, entity, String.class);
-        return response;
-    }
+//
+//    @Override
+//    public ResponseEntity<String> getAllServices() {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+//        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+//        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8096/v1/admin/service-demandeur/", HttpMethod.GET, entity, String.class);
+//        return response;
+//    }
 
 
     @Autowired
@@ -142,22 +142,22 @@ public class UserServiceImpl implements UserService {
 
     //microservice
 
-
-    @Override
-    public int findServiceIfExist(String service) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8096/v1/admin/service-demandeur/reference/" + service, HttpMethod.GET, entity, String.class);
-        if (response.hasBody() == true) return -1;
-        else return 1;
-
-    }
+//
+//    @Override
+//    public int findServiceIfExist(String service) {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+//        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+//        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8096/v1/admin/service-demandeur/reference/" + service, HttpMethod.GET, entity, String.class);
+//        if (response.hasBody() == true) return -1;
+//        else return 1;
+//
+//    }
 
 
     //    //statistique
-    @Autowired
-    protected EntityManager entityManager;
+//    @Autowired
+//    protected EntityManager entityManager;
     public int findstatUsers() {
         return userDao.findstatUsers();
     }

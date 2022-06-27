@@ -7,24 +7,35 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface ExpressionBesoinDao extends JpaRepository<ExpressionBesoin, Long> {
 
+    ExpressionBesoin findByReference(String ref);
+
     ExpressionBesoin findByObjet(String objet);
-    ExpressionBesoin findByReference(String reference);
+
     List<ExpressionBesoin> findByStatut(String statut);
 
-//    List<ExpressionBesoin> findBySUser(String reference);
+    ExpressionBesoin findByDateExb(LocalDateTime date);
+
+    List<ExpressionBesoin> findByUserReference(String ref);
+
+
+    List<ExpressionBesoin> findByStatutAndUserUsername(String statut, String username);
+
+
+    int deleteByReference(String ref);
+
+
+    List<ExpressionBesoin> findByNatureDemandeNom(String nom);
+
+
+
     @Query("SELECT coalesce(max(exp.id), 0) FROM ExpressionBesoin exp")
     Long getMaxId();
-
-    @Query("SELECT COUNT(e.id) FROM ExpressionBesoin e WHERE e.statut='en cours'")
-    int expressionBesoinEncours();
-
-
-
     //statistique
     @Query("SELECT COUNT(e.id) from ExpressionBesoin e WHERE e.statut='En attente'")
     int getNumberOfExpressionBesoinEnAttente();

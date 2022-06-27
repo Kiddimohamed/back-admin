@@ -12,6 +12,7 @@ public class ExpressionBesoinItem {
     private Long id;
     private double quantite;
     private String code;
+    private String ref;
     private String libelle;
     private String statut;
     private String refExpr;
@@ -118,7 +119,13 @@ public class ExpressionBesoinItem {
         this.pt = pt;
     }
 
+    public String getRef() {
+        return ref;
+    }
 
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
 
     public String getRefTabBesoin() {
         return refTabBesoin;
