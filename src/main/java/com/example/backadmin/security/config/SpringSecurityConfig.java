@@ -41,23 +41,36 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
                 //
-                .antMatchers(
-                        "/back-admin/v1/**",
-                        "/**",
-                        "/swagger-resources/**",
-                        "/swagger-ui.html",
-                        "/webjars/**",
-                        /*Probably not needed*/ "/swagger.json")
-                .permitAll()
+//                .antMatchers(
+//                        "/back-admin/v1/**",
+//                        "/**",
+//                        "/swagger-resources/**",
+//                        "/swagger-ui.html",
+//                        "/webjars/**",
+//                        /*Probably not needed*/ "/swagger.json")
+//                .permitAll()
 
 
                 .antMatchers(HttpMethod.POST, "/v1/admin/user/sign-in/").permitAll()
                 .antMatchers(HttpMethod.POST, "/v1/admin/user/").permitAll()
                 .antMatchers("/v1/admin/service-demandeur/**").permitAll()
+        //
+                .antMatchers("/v1/admin/produit/**").permitAll()
+                .antMatchers("/v1/admin/expression-besoin/**").permitAll()
+
+
+
+
+
+
+
+
+
+
 //                .antMatchers("/api/v1/admin/**").hasAuthority("ROLE_ADMIN")
 //                .antMatchers("/api/v1/admin/user/**").hasAuthority("ROLE_ADMIN")
-                //  .anyRequest().permitAll();
-                .anyRequest().authenticated();
+                 .anyRequest().permitAll();
+        // .anyRequest().authenticated();
 
 
 

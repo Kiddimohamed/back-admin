@@ -11,22 +11,17 @@ import com.example.backadmin.security.jwt.JwtUtil;
 import com.example.backadmin.security.service.facade.RoleService;
 import com.example.backadmin.security.service.facade.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -60,6 +55,27 @@ public class UserServiceImpl implements UserService {
         User loadedUser = userDao.findByUsername(user.getUsername());
         if (loadedUser != null)
             return null;
+        else if (!user.getUsername().matches("[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(uca.ma|uca.ac.ma)")){
+            return null;
+        }
+        else {
+            Role role = new Role();
+            role = roleService.findByAuthority("ROLE_USER");
+            Collection<Role> roles = new ArrayList<>();
+            roles.add(role);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setAuthorities(roles);
+            user.setReference("user"+LocalDate.now().getChronology()+"e"+user.getUsername());
+            userDao.save(user);
+            return user;
+        }
+    }
+    @Override
+    public User saveAdmin(User user) {
+        User loadedUser = userDao.findByUsername(user.getUsername());
+        if (loadedUser != null)
+            return null;
+
         else {
             Role role = new Role();
             role = roleService.findByAuthority("ROLE_ADMIN");
@@ -67,6 +83,7 @@ public class UserServiceImpl implements UserService {
             roles.add(role);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setAuthorities(roles);
+            user.setReference("user"+LocalDate.now().getChronology()+"e"+user.getUsername());
             userDao.save(user);
             return user;
         }

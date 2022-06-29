@@ -26,6 +26,11 @@ public class UserWs {
         return userService.findByUsername(name);
     }
 
+    @PostMapping("/save-admin")
+    public User saveAdmin(@RequestBody User user) {
+        return userService.saveAdmin(user);
+    }
+
     @PostMapping("/")
     public User save(@RequestBody User user) {
         return userService.save(user);

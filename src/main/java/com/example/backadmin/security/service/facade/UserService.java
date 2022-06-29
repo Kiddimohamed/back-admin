@@ -13,6 +13,8 @@ public interface UserService extends UserDetailsService {
 
     User save(User user);
 
+    User saveAdmin(User user);
+
     List<User> findAll();
 
     //    sign Up user
