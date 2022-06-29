@@ -24,8 +24,7 @@ public interface ExpressionBesoinDao extends JpaRepository<ExpressionBesoin, Lon
     List<ExpressionBesoin> findByUserReference(String ref);
 
 
-    List<ExpressionBesoin> findByStatutAndUserUsername(String statut, String username);
-
+    List<ExpressionBesoin> findByStatutAndUserUsername(String statut, String userName);
 
     int deleteByReference(String ref);
 

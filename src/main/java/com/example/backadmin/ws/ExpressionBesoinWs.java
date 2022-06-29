@@ -13,14 +13,12 @@ import java.util.List;
 @RequestMapping("/v1/admin/expression-besoin")
 public class ExpressionBesoinWs {
 
-
-
         @GetMapping("/reference/{reference}")
         public ExpressionBesoin findByReference(@PathVariable String reference) {
             return expressionBesoinService.findByReference(reference);
         }
 
-        @GetMapping("/statut/{statut}/username/{username}")
+        @GetMapping("/historique/{statut}/{username}")
         public List<ExpressionBesoin> findByStatutAndUserUsername(@PathVariable String statut, @PathVariable String username) {
             return expressionBesoinService.findByStatutAndUserUsername(statut, username);
         }
@@ -75,7 +73,7 @@ public class ExpressionBesoinWs {
 //    public String version(@PathVariable String type,@PathVariable String ref) throws FileNotFoundException, JRException {
 //        return expressionDeBesoinService.version(type, ref);
 //    }
-        @GetMapping("/expressionBesoin/")
+        @GetMapping("/expressionBesoin")
         public String getRefExpressionBesoin(@RequestBody ExpressionBesoin expressionBesoin) {
             return expressionBesoinService.getRefExpressionBesoin(expressionBesoin);
         }

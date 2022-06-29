@@ -33,8 +33,7 @@ public class ProduitServiceImpl implements ProduitService {
 
     @Override
     public int save(Produit produit) {
-
-//        produit.setCode("produit" + (getMaxId() + 1));
+        produit.setCode("produit" + (getMaxId() + 1));
         produitDao.save(produit);
         return 1;
 

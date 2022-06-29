@@ -9,15 +9,23 @@ import java.util.List;
 
 @Repository
 public interface ExpressionBesoinItemDao extends JpaRepository<ExpressionBesoinItem, Long> {
-    public List<ExpressionBesoinItem> findByExpressionBesoinObjet(String objet) ;
+    ExpressionBesoinItem findByRef(String ref);
+
+    int deleteByRef(String ref);
+
     List<ExpressionBesoinItem> findByExpressionBesoinReference(String reference);
+
     List<ExpressionBesoinItem> findByExpressionBesoinStatut(String statut);
-//    List<ExpressionBesoinItem> findByTableauBesoinReference(String reference);
+
+    List<ExpressionBesoinItem> findByExpressionBesoinObjet(String objet);
+
     List<ExpressionBesoinItem> findByStatut(String statut);
-    List<ExpressionBesoinItem> findByRefExpr(String refExpr);
-    ExpressionBesoinItem findByCode(String code);
+
+    List<ExpressionBesoinItem> findByRefExpr(String ref);
+
     @Query("SELECT coalesce(max(expI.id), 0) FROM ExpressionBesoinItem expI")
     Long getMaxId();
 
+    ExpressionBesoinItem findByCode(String code);
 
 }

@@ -7,42 +7,31 @@ import java.util.List;
 
 @Entity
 public class ExpressionBesoinItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private double quantite;
-    private String code;
     private String ref;
+    private long quantite;
     private String libelle;
+    private String code;
     private String statut;
     private String refExpr;
-    private String refTabBesoin;
-    private double pu ;
-    private double pt;
-    @ManyToOne
-    private ExpressionBesoin expressionBesoin;
-    @ManyToOne
-    private TableauBesoin tableauBesoin;
-
-
     @ManyToOne
     private Produit produit;
 
+    @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private ExpressionBesoin expressionBesoin;
+    @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private TableauBesoin tableauBesoin;
 
-    public double getQuantite() {
+
+    public long getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(double quantite) {
+    public void setQuantite(long quantite) {
         this.quantite = quantite;
-    }
-
-    public Produit getProduit() {
-        return produit;
-    }
-
-    public void setProduit(Produit produit) {
-        this.produit = produit;
     }
 
 
@@ -62,20 +51,20 @@ public class ExpressionBesoinItem {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getRef() {
+        return ref;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setRef(String ref) {
+        this.ref = ref;
     }
 
-    public ExpressionBesoin getExpressionBesoins() {
-        return expressionBesoin;
+    public Produit getProduit() {
+        return produit;
     }
 
-    public void setExpressionBesoins(ExpressionBesoin expressionBesoin) {
-        this.expressionBesoin = expressionBesoin;
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 
     public String getLibelle() {
@@ -94,15 +83,6 @@ public class ExpressionBesoinItem {
         this.statut = statut;
     }
 
-
-    public double getPu() {
-        return pu;
-    }
-
-    public void setPu(double pu) {
-        this.pu = pu;
-    }
-
     public String getRefExpr() {
         return refExpr;
     }
@@ -111,28 +91,12 @@ public class ExpressionBesoinItem {
         this.refExpr = refExpr;
     }
 
-    public double getPt() {
-        return pt;
+    public String getCode() {
+        return code;
     }
 
-    public void setPt(double pt) {
-        this.pt = pt;
-    }
-
-    public String getRef() {
-        return ref;
-    }
-
-    public void setRef(String ref) {
-        this.ref = ref;
-    }
-
-    public String getRefTabBesoin() {
-        return refTabBesoin;
-    }
-
-    public void setRefTabBesoin(String refTabBesoin) {
-        this.refTabBesoin = refTabBesoin;
+    public void setCode(String code) {
+        this.code = code;
     }
 }
 

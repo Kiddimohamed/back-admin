@@ -16,12 +16,9 @@ public class TableauBesoin {
     private String statut;
     private double tva;
     private double ttc;
-    @JsonIgnore
-    @OneToMany
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "tableauBesoin")
     private List<ExpressionBesoinItem> expressionBesoinItems;
-//    @OneToMany
-//    private List<TableauBesoinItem> tableauBesoinItems;
+
 
     public Long getId() {
         return id;

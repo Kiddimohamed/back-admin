@@ -21,7 +21,7 @@ public interface ExpressionBesoinService {
 
     List<ExpressionBesoin> findAll();
 
-    List<ExpressionBesoin> findByStatutAndUserUsername(String statut, String username);
+    List<ExpressionBesoin> findByStatutAndUserUsername(String statut,String userName);
 
     List<ExpressionBesoin> findByStatut(String statut);
 

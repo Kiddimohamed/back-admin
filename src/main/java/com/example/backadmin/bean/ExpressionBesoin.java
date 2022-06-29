@@ -10,23 +10,17 @@ import java.util.List;
 
 @Entity
 public class ExpressionBesoin {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String reference;
     private String objet;
-    private LocalDateTime dateExpressionBesoin;
+    private LocalDateTime dateExb;
+    private static int i;
     private String statut;
     private String month;
-    private LocalDateTime dateExb;
-
-    public LocalDateTime getDateExb() {
-        return dateExb;
-    }
-
-    public void setDateExb(LocalDateTime dateExb) {
-        this.dateExb = dateExb;
-    }
 
     public String getMonth() {
         return month;
@@ -36,43 +30,22 @@ public class ExpressionBesoin {
         this.month = month;
     }
 
-//    private double totalTTC;
-//    private double totalHT;
-//    private double TVA;
-//    private String userName;
+    @ManyToOne
+    private User user;
+
+    @OneToMany(mappedBy = "expressionBesoin")
+    private List<ExpressionBesoinItem> expressionBesoinItems;
 
     @ManyToOne
     private NatureDemande natureDemande;
+
+
     public NatureDemande getNatureDemande() {
         return natureDemande;
     }
 
     public void setNatureDemande(NatureDemande natureDemande) {
         this.natureDemande = natureDemande;
-    }
-
-    @JsonIgnore
-    @OneToMany
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<ExpressionBesoinItem> expressionBesoinItems;
-    @OneToMany
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Commande> commandeList;
-
-
-    @ManyToOne
-    private User user;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getObjet() {
-        return objet;
     }
 
     public String getReference() {
@@ -83,32 +56,36 @@ public class ExpressionBesoin {
         this.reference = reference;
     }
 
-    public void setObjet(String objet) {
-        this.objet = objet;
-    }
-
-    public LocalDateTime getDateExpressionBesoin() {
-        return dateExpressionBesoin;
-    }
-
-    public void setDateExpressionBesoin(LocalDateTime dateExpressionBesoin) {
-        this.dateExpressionBesoin = dateExpressionBesoin;
+    public String getObjet() {
+        return objet;
     }
 
     public List<ExpressionBesoinItem> getExpressionBesoinItems() {
         return expressionBesoinItems;
     }
 
+    public static int getI() {
+        return i;
+    }
+
+    public static void setI(int i) {
+        ExpressionBesoin.i = i;
+    }
+
     public void setExpressionBesoinItems(List<ExpressionBesoinItem> expressionBesoinItems) {
         this.expressionBesoinItems = expressionBesoinItems;
     }
 
-    public String getStatut() {
-        return statut;
+    public void setObjet(String objet) {
+        this.objet = objet;
     }
 
-    public void setStatut(String statut) {
-        this.statut = statut;
+    public LocalDateTime getDateExb() {
+        return dateExb;
+    }
+
+    public void setDateExb(LocalDateTime dateExb) {
+        this.dateExb = dateExb;
     }
 
     public User getUser() {
@@ -119,44 +96,20 @@ public class ExpressionBesoin {
         this.user = user;
     }
 
-    public List<Commande> getCommandeList() {
-        return commandeList;
+    public Long getId() {
+        return id;
     }
 
-    public void setCommandeList(List<Commande> commandeList) {
-        this.commandeList = commandeList;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-//    public double getTotalTTC() {
-//        return totalTTC;
-//    }
-//
-//    public void setTotalTTC(double totalTTC) {
-//        this.totalTTC = totalTTC;
-//    }
-//
-//    public double getTotalHT() {
-//        return totalHT;
-//    }
-//
-//    public void setTotalHT(double totalHT) {
-//        this.totalHT = totalHT;
-//    }
-//
-//    public double getTVA() {
-//        return TVA;
-//    }
-//
-//    public String getUserName() {
-//        return userName;
-//    }
-//
-//    public void setUserName(String userName) {
-//        this.userName = userName;
-//    }
+    public String getStatut() {
+        return statut;
+    }
 
-//    public void setTVA(double TVA) {
-//        this.TVA = TVA;
-//    }
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
 
 }
