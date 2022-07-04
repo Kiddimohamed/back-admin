@@ -7,8 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FournisseurDao  extends JpaRepository<Fournisseur,Long> {
+public interface FournisseurDao extends JpaRepository<Fournisseur, Long> {
+    List<Fournisseur> findByStatut(String statut);
 
     Fournisseur findByReferenceFournisseur(String reference);
+
     Fournisseur findByVilleFournisseur(String ville);
 }

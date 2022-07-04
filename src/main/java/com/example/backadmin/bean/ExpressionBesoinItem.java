@@ -7,9 +7,11 @@ import java.util.List;
 
 @Entity
 public class ExpressionBesoinItem {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String ref;
+    private double PU;
+    private double PT;
     private long quantite;
     private String libelle;
     private String code;
@@ -97,6 +99,30 @@ public class ExpressionBesoinItem {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public TableauBesoin getTableauBesoin() {
+        return tableauBesoin;
+    }
+
+    public double getPU() {
+        return PU;
+    }
+
+    public void setPU(double PU) {
+        this.PU = PU;
+    }
+
+    public double getPT() {
+        return PT;
+    }
+
+    public void setPT(double PT) {
+        this.PT = PT;
+    }
+
+    public void setTableauBesoin(TableauBesoin tableauBesoin) {
+        this.tableauBesoin = tableauBesoin;
     }
 }
 

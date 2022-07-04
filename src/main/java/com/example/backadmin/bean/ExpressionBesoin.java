@@ -33,7 +33,7 @@ public class ExpressionBesoin {
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "expressionBesoin")
+    @OneToMany
     private List<ExpressionBesoinItem> expressionBesoinItems;
 
     @ManyToOne

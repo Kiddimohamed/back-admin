@@ -1,11 +1,14 @@
 package com.example.backadmin.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
 public class TableauBesoinItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
     private String statut;
@@ -16,6 +19,7 @@ public class TableauBesoinItem {
     @ManyToOne
     private Fournisseur fournisseur;
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private TableauBesoin tableauBesoin;
 
     public Long getId() {

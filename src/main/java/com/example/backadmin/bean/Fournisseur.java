@@ -5,7 +5,8 @@ import java.util.List;
 
 @Entity
 public class Fournisseur {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String referenceFournisseur;
     private String nomFournisseur;
@@ -16,6 +17,7 @@ public class Fournisseur {
     private String villeFournisseur;
     private String emailFournisseur;
     private String rib;
+    private String statut;
 
 
     @OneToMany
@@ -23,8 +25,8 @@ public class Fournisseur {
 
     @OneToMany
     private List<FournisseurItem> fournisseurItems;
-
-
+    @OneToMany
+    private List<TableauBesoinItem> tableauBesoinItems;
     // TODO CategoryProduit
 
     public String getRib() {
@@ -122,5 +124,13 @@ public class Fournisseur {
 
     public void setFournisseurItems(List<FournisseurItem> fournisseurItems) {
         this.fournisseurItems = fournisseurItems;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 }

@@ -1,13 +1,9 @@
 package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.ExpressionBesoinItem;
-import com.example.backadmin.bean.Produit;
 import com.example.backadmin.bean.*;
 import com.example.backadmin.dao.ExpressionBesoinItemDao;
-import com.example.backadmin.service.facade.ExpressionBesoinItemService;
-import com.example.backadmin.service.facade.ExpressionBesoinService;
-import com.example.backadmin.service.facade.ProduitService;
-import com.example.backadmin.service.facade.TableauBesoinService;
+import com.example.backadmin.service.facade.*;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +42,12 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     }
 
     @Override
+    public List<ExpressionBesoinItem> findByTableauBesoinItemRef(String ref) {
+        TableauBesoinItem tableauBesoinItem = tableauBesoinItemService.findByReference(ref);
+        return expressionBesoinItemDao.findByTableauBesoinReference(tableauBesoinItem.getTableauBesoin().getReference());
+    }
+
+    @Override
     public List<ExpressionBesoinItem> findAll() {
         return expressionBesoinItemDao.findAll();
     }
@@ -56,8 +58,30 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     }
 
     @Override
+    public List<ExpressionBesoinItem> findByTableauBesoinReference(String reference) {
+        return expressionBesoinItemDao.findByTableauBesoinReference(reference);
+    }
+
+    @Override
     public List<ExpressionBesoinItem> findByExpressionBesoinObjet(String objet) {
         return expressionBesoinItemDao.findByExpressionBesoinObjet(objet);
+    }
+
+    @Override
+    public int updateStatut(ExpressionBesoinItem expressionBesoinItem) {
+        ExpressionBesoinItem expressionBesoinItem1 = expressionBesoinItemDao.findByRef(expressionBesoinItem.getRef());
+        expressionBesoinItem1.setStatut(expressionBesoinItem.getStatut());
+        expressionBesoinItemDao.save(expressionBesoinItem1);
+        return 1;
+    }
+
+    @Override
+    public int updateTableauBesoin(ExpressionBesoinItem expressionBesoinItem) {
+        ExpressionBesoinItem expressionBesoinItem1 = expressionBesoinItemDao.findByRef(expressionBesoinItem.getRef());
+        TableauBesoin tableauBesoin = tableauBesoinService.findByReference(expressionBesoinItem.getTableauBesoin().getReference());
+        expressionBesoinItem1.setTableauBesoin(tableauBesoin);
+        expressionBesoinItemDao.save(expressionBesoinItem1);
+        return 1;
     }
 
     @Override
@@ -90,23 +114,13 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
         return "hahahah";
     }
 
-//    @Bean
-//    public JavaMailSender getJavaMailSender() {
-//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-//        mailSender.setHost("smtp.gmail.com");
-//        mailSender.setPort(587);
-//
-//        mailSender.setUserName("woo.omis@gmail.com");
-//        mailSender.setPassword("ozwyjngsfwaxgtfh");
-//
-//        Properties props = mailSender.getJavaMailProperties();
-//        props.put("mail.transport.protocol", "smtp");
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.starttls.enable", "true");
-//        props.put("mail.debug", "true");
-//
-//        return mailSender;
-//    }
+    @Override
+    public void updatePrix(ExpressionBesoinItem expressionBesoinItem) {
+        ExpressionBesoinItem expressionBesoinItem1 = expressionBesoinItemDao.findByRef(expressionBesoinItem.getRef());
+        expressionBesoinItem1.setPU(expressionBesoinItem.getPU());
+        expressionBesoinItem1.setPT((expressionBesoinItem.getPU()) * (expressionBesoinItem.getQuantite()));
+        expressionBesoinItemDao.save(expressionBesoinItem1);
+    }
 
     @Override
     public List<ExpressionBesoinItem> findByExpressionBesoinStatut(String statut) {
@@ -124,6 +138,9 @@ public class ExpressionBesoinItemServiceImpl implements ExpressionBesoinItemServ
     private ExpressionBesoinService expressionBesoinService;
     @Autowired
     private ProduitService produitService;
-
+    @Autowired
+    private TableauBesoinService tableauBesoinService;
+    @Autowired
+    private TableauBesoinItemService tableauBesoinItemService;
 
 }

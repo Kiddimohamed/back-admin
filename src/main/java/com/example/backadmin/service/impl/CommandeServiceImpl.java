@@ -42,6 +42,9 @@ public class CommandeServiceImpl implements CommandeService {
         Commande commande1 = commandeDao.findByCode(commande.getCode());
         commande1.setStatut(statut);
         commandeDao.save(commande1);
+        if (statut=="laivree"){
+            //send bn reception
+        }
     }
 
     @Override

@@ -10,6 +10,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/admin/fournisseur")
 public class FournisseurWs {
+    @GetMapping("/statut/{statut}")
+    public List<Fournisseur> findByStatut(@PathVariable String statut) {
+        return fournisseurService.findByStatut(statut);
+    }
+
+    @PutMapping ("/updateStatut")
+    public int updateStatut(@RequestBody Fournisseur fournisseur) {
+        return fournisseurService.updateStatut(fournisseur);
+    }
 
     @GetMapping("/reference/{reference}")
     public Fournisseur findByReferenceFournisseur(@PathVariable String reference) {

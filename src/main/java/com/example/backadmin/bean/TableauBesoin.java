@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,8 +17,10 @@ public class TableauBesoin {
     private String statut;
     private double tva;
     private double ttc;
-    @OneToMany(mappedBy = "tableauBesoin")
+    @OneToMany
     private List<ExpressionBesoinItem> expressionBesoinItems;
+    @OneToMany
+    private List<TableauBesoinItem> tableauBesoinItems;
 
 
     public Long getId() {
@@ -68,11 +71,13 @@ public class TableauBesoin {
         this.statut = statut;
     }
 
-//    public List<TableauBesoinItem> getTableauBesoinItems() {
-//        return tableauBesoinItems;
-//    }
-//
-//    public void setTableauBesoinItems(List<TableauBesoinItem> tableauBesoinItems) {
-//        this.tableauBesoinItems = tableauBesoinItems;
-//    }
+    public List<TableauBesoinItem> getTableauBesoinItems() {
+        return tableauBesoinItems;
+    }
+
+    public void setTableauBesoinItems(List<TableauBesoinItem> tableauBesoinItems) {
+        this.tableauBesoinItems = tableauBesoinItems;
+    }
+
+
 }

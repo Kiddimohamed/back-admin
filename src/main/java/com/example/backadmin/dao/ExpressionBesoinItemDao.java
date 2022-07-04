@@ -14,6 +14,7 @@ public interface ExpressionBesoinItemDao extends JpaRepository<ExpressionBesoinI
     int deleteByRef(String ref);
 
     List<ExpressionBesoinItem> findByExpressionBesoinReference(String reference);
+    List<ExpressionBesoinItem> findByTableauBesoinReference(String reference);
 
     List<ExpressionBesoinItem> findByExpressionBesoinStatut(String statut);
 

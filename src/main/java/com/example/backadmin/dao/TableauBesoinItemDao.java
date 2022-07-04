@@ -13,4 +13,8 @@ public interface TableauBesoinItemDao extends JpaRepository<TableauBesoinItem,Lo
     List<TableauBesoinItem> findByStatut(String statut);
     TableauBesoinItem findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(String tabRef,String fournisseurRef);
     List<TableauBesoinItem> findByTableauBesoinReference(String reference);
+    List<TableauBesoinItem> findByStatutAndTableauBesoinReference(String statut,String reference);
+    List<TableauBesoinItem> findByTableauBesoinStatut(String statut);
+
+
 }

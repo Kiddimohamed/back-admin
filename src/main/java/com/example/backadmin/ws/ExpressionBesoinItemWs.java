@@ -19,6 +19,10 @@ public class ExpressionBesoinItemWs {
     public ExpressionBesoinItem findByRef(@PathVariable String ref) {
         return expressionBesoinItemService.findByRef(ref);
     }
+    @GetMapping("/tableau-besoin-item/ref/{ref}")
+    public List<ExpressionBesoinItem> findByTableauBesoinItemRef(@PathVariable String ref) {
+        return expressionBesoinItemService.findByTableauBesoinItemRef(ref);
+    }
 
     @DeleteMapping("/ref/{ref}")
     public int deleteByRef(@PathVariable String ref) {
@@ -38,6 +42,25 @@ public class ExpressionBesoinItemWs {
     @PostMapping("/")
     public int save(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
         return expressionBesoinItemService.save(expressionBesoinItem);
+    }
+    @PutMapping("/prix")
+    public void updatePrix(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
+        expressionBesoinItemService.updatePrix(expressionBesoinItem);
+    }
+
+    @PutMapping("/updateTableauBesoin")
+    public int updateTableauBesoin(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
+        return expressionBesoinItemService.updateTableauBesoin(expressionBesoinItem);
+    }
+
+    @GetMapping("/tableau-besoin/reference/{reference}")
+    public List<ExpressionBesoinItem> findByTableauBesoinReference(@PathVariable String reference) {
+        return expressionBesoinItemService.findByTableauBesoinReference(reference);
+    }
+
+    @PutMapping("/updateStatut")
+    public int updateStatut(@RequestBody ExpressionBesoinItem expressionBesoinItem) {
+        return expressionBesoinItemService.updateStatut(expressionBesoinItem);
     }
 
     @GetMapping("/expression-besoin/objet/{objet}")

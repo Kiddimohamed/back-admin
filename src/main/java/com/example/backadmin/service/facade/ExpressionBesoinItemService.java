@@ -11,13 +11,24 @@ public interface ExpressionBesoinItemService {
     ExpressionBesoinItem findByRef(String ref);
 
     int deleteByRef(String ref);
+
+    void updatePrix(ExpressionBesoinItem expressionBesoinItem);
+
     List<ExpressionBesoinItem> findByExpressionBesoinStatut(String statut);
     List<ExpressionBesoinItem> findByExpressionBesoinObjet(String objet);
     List<ExpressionBesoinItem> findByExpressionBesoinReference(String reference);
     List<ExpressionBesoinItem> findByStatut(String statut);
+
+    List<ExpressionBesoinItem> findByTableauBesoinItemRef(String ref);
+
     List<ExpressionBesoinItem> findAll();
     ExpressionBesoinItem findByCode(String code);
+    List<ExpressionBesoinItem> findByTableauBesoinReference(String reference);
 
+
+    int updateStatut(ExpressionBesoinItem expressionBesoinItem);
+
+    int updateTableauBesoin(ExpressionBesoinItem expressionBesoinItem);
 
     int save(ExpressionBesoinItem expressionBesoinItem);
 
