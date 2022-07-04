@@ -12,17 +12,20 @@ import java.util.List;
 @RequestMapping("/v1/admin/tableau-besoin-item")
 public class TableauBesoinItemWs {
     @GetMapping("/statut/tableauBesoin/reference/{statut}/{reference}")
-    public List<TableauBesoinItem> findByStatutAndTableauBesoinReference(@PathVariable String statut,@PathVariable String reference) {
+    public List<TableauBesoinItem> findByStatutAndTableauBesoinReference(@PathVariable String statut, @PathVariable String reference) {
         return tableauBesoinItemService.findByStatutAndTableauBesoinReference(statut, reference);
     }
 
-
-
+    @PutMapping("/update/statut")
+    public void updateStatut(@RequestBody TableauBesoinItem tableauBesoinItem) {
+        tableauBesoinItemService.updateStatut(tableauBesoinItem);
+    }
 
     @PostMapping("/")
     public TableauBesoinItem save(@RequestBody TableauBesoinItem tableauBesoinItem) {
         return tableauBesoinItemService.save(tableauBesoinItem);
     }
+
     @GetMapping("/tableauBesoin/statut/{statut}")
     public List<TableauBesoinItem> findByTableauBesoinStatut(String statut) {
         return tableauBesoinItemService.findByTableauBesoinStatut(statut);

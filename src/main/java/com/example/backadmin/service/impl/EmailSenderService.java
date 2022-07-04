@@ -132,7 +132,7 @@ public class EmailSenderService {
 
 
             Transport.send(message2);
-            System.out.println("Done");
+            System.out.println(to);
 
         } catch (MessagingException e) {
             e.printStackTrace();

@@ -19,7 +19,6 @@ public class TableauBesoinItem {
     @ManyToOne
     private Fournisseur fournisseur;
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private TableauBesoin tableauBesoin;
 
     public Long getId() {

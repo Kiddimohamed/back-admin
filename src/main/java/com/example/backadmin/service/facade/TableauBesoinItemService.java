@@ -18,4 +18,5 @@ public interface TableauBesoinItemService {
 
     TableauBesoinItem findByTableauBesoinReferenceAndFournisseurReferenceFournisseur(String tabRef, String fournisseurRef);
 
+    void updateStatut(TableauBesoinItem tableauBesoinItem);
 }

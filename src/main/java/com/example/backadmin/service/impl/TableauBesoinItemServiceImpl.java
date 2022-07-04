@@ -1,7 +1,6 @@
 package com.example.backadmin.service.impl;
 
 import com.example.backadmin.bean.Fournisseur;
-import com.example.backadmin.bean.TableauBesoin;
 import com.example.backadmin.bean.TableauBesoinItem;
 import com.example.backadmin.dao.TableauBesoinItemDao;
 import com.example.backadmin.service.facade.ExpressionBesoinItemService;
@@ -19,6 +18,7 @@ public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
     public TableauBesoinItem save(TableauBesoinItem tableauBesoinItem) {
         prepare(tableauBesoinItem);
         tableauBesoinItem.setReference("t" + System.currentTimeMillis());
+
         tableauBesoinItemDao.save(tableauBesoinItem);
         return tableauBesoinItem;
     }
@@ -64,6 +64,15 @@ public class TableauBesoinItemServiceImpl implements TableauBesoinItemService {
 
     }
 
+    @Override
+    public void updateStatut(TableauBesoinItem tableauBesoinItem) {
+        TableauBesoinItem tableauBesoinItem1 = tableauBesoinItemDao.findByReference(tableauBesoinItem.getReference());
+        tableauBesoinItem1.setStatut(tableauBesoinItem.getStatut());
+        tableauBesoinItem1.setHt(tableauBesoinItem.getHt());
+        tableauBesoinItem1.setTtc(tableauBesoinItem.getTtc());
+        tableauBesoinItem1.setTva(tableauBesoinItem.getTva());
+        tableauBesoinItemDao.save(tableauBesoinItem1);
+    }
 
 
     @Autowired
